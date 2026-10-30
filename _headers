@@ -1,0 +1,18 @@
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+/styles.css
+  Cache-Control: public, max-age=31536000, immutable
+/site.js
+  Cache-Control: public, max-age=31536000, immutable
+/assets/fonts/*
+  Access-Control-Allow-Origin: https://feedback.globalstabilization.org
+/summit-insights-2026/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+/summit-risk-explainer-v1-2026/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+/summit-risk-longform-v1-2026/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+/summit-risk-explainer-v2-2026/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex
+/summit-risk-longform-v2-2026/*
+  X-Robots-Tag: noindex, nofollow, noarchive, nosnippet, noimageindex

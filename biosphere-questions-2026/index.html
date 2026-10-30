@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Biosphere Question Wall — The Global Risk and Stabilization Summit</title>
+<meta name="description" content="Digital twins of the nine research questions the Biosphere & Ecosystems track refined and voted on at the Global Risk and Stabilization Summit, Reykjavík, 12 October 2026.">
+<link rel="canonical" href="https://globalstabilization.org/biosphere-questions-2026/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://globalstabilization.org/biosphere-questions-2026/">
+<meta property="og:site_name" content="The Global Risk and Stabilization Summit">
+<meta property="og:title" content="Biosphere Question Wall — The Global Risk and Stabilization Summit">
+<meta property="og:description" content="Digital twins of the nine research questions the Biosphere & Ecosystems track refined and voted on at the Global Risk and Stabilization Summit, Reykjavík, 12 October 2026.">
+<meta property="og:image" content="https://globalstabilization.org/assets/images/social-card.jpg?v=ad44cda4">
+<link rel="icon" href="/assets/favicon.ico?v=c302b58f" sizes="any">
+<style>
+@font-face { font-family: "Summit Display"; font-weight: 300; font-display: swap; src: url(/assets/fonts/Dirk-Light.woff2?v=7bca59de) format("woff2"); }
+@font-face { font-family: "Summit Sans"; font-weight: 400; font-display: swap; src: url(/assets/fonts/NewEdge666-RegularRounded.woff2?v=f5d55f0e) format("woff2"); }
+@font-face { font-family: "Summit Sans"; font-weight: 800; font-display: swap; src: url(/assets/fonts/NewEdge666-UltraBoldRounded.woff2?v=48187657) format("woff2"); }
+@font-face { font-family: "Summit Serif"; font-weight: 400; font-display: swap; src: url(/assets/fonts/OTScholar-Book.woff2?v=773ebd05) format("woff2"); }
+@font-face { font-family: "Summit Serif"; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/OTScholar-BookItalic.woff2?v=5bf3edfc) format("woff2"); }
+body { margin: 0; } img { max-width: 100%; } [hidden] { display: none !important; }
+.lockup a { color: inherit; text-decoration: none; }
+
+/* Layout: indigo summit band, then the wall (overview grid of nine boards) or one board with its photo beside the twin. */
+:root {
+  --paper: #FEFEF2;           /* summit offwhite */
+  --ink: #1F190B;             /* summit offblack */
+  --indigo: #4C4C6E;
+  --indigo-900: #313151;
+  --indigo-200: #EFF2FE;
+  --indigo-400: #C8C9E4;
+  --chart: #FFFFF8;
+  --muted: #4C4C6E;
+  --rule: #C8C9E4;
+  --axis: #4C4C6E;
+  --ghost: #ABADCF;
+  --spread: rgba(76, 76, 110, 0.12);
+  --spread-line: #4C4C6E;
+  --band: #313151;
+  --band-ink: #FEFEF2;
+  --band-muted: #C8C9E4;
+  --font-display: "Summit Display", "Roboto Slab", Georgia, serif;
+  --font-sans: "Summit Sans", "Figtree", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Summit Serif", "Source Serif 4", Georgia, serif;
+  --research: #3B6FC4; --research-light: #7CC6DE;
+  --funding: #94C83D;
+  --risk: #B7241B; --risk-light: #EE7A3A;
+  --policy: #DB62AE; --policy-dark: #D6337F; --policy-light: #F09AB8;
+  --advocacy: #6B3A8A;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #1B1B2C; --ink: #FEFEF2; --indigo-200: #26263D; --chart: #222236; --muted: #C8C9E4; --rule: #47476A;
+    --axis: #C8C9E4; --ghost: #6E7099; --spread: rgba(200, 201, 228, 0.16); --spread-line: #C8C9E4;
+    --band: #12121F; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #1B1B2C; --ink: #FEFEF2; --indigo-200: #26263D; --chart: #222236; --muted: #C8C9E4; --rule: #47476A;
+  --axis: #C8C9E4; --ghost: #6E7099; --spread: rgba(200, 201, 228, 0.16); --spread-line: #C8C9E4;
+  --band: #12121F; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 16px; line-height: 1.5; }
+.band { background: var(--band); color: var(--band-ink);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 14px 26px; }
+.band-inner, .page { max-width: 1140px; margin: 0 auto; }
+.lockup { font-family: var(--font-sans); font-size: 15px; display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  border: 1px dashed rgba(254, 254, 242, 0.35); padding: 8px 12px; }
+.lockup b { font-weight: 800; }
+.lockup span:last-child { color: var(--band-muted); }
+h1 { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; letter-spacing: -0.02em;
+  font-size: clamp(34px, 6vw, 56px); line-height: 1; margin: 26px 0 10px; text-wrap: balance; }
+.lede { margin: 0; max-width: 64ch; color: var(--band-muted); font-size: 17px; }
+.page { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 22px 44px; display: grid; gap: 24px; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; justify-content: space-between; }
+.switch { display: flex; align-items: center; gap: 8px; font-family: var(--font-sans); font-size: 14px; cursor: pointer; }
+.switch input { width: 18px; height: 18px; accent-color: var(--indigo); }
+.banner { border: 1px dashed var(--indigo); background: var(--indigo-200); padding: 12px 14px; font-size: 14px; display: grid; gap: 6px; }
+.banner p { margin: 0; }
+.banner summary { cursor: pointer; display: flex; justify-content: space-between; gap: 12px; list-style: none; }
+.banner summary::-webkit-details-marker { display: none; }
+.banner summary::after { content: "Hide note"; font-family: var(--font-sans); font-size: 13px; color: var(--muted); text-decoration: underline; }
+.banner:not([open]) summary::after { content: "Show note"; }
+.banner summary:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+.banner b { font-family: var(--font-sans); font-weight: 800; }
+.banner a, footer a { color: inherit; }
+nav { display: flex; flex-wrap: wrap; gap: 6px; font-family: var(--font-sans); }
+nav button { font: inherit; font-size: 14px; padding: 6px 12px; border: 1px dashed var(--rule); background: transparent; color: var(--ink); cursor: pointer; }
+nav button[aria-current="true"] { background: var(--indigo-900); border-color: var(--indigo-900); color: #FEFEF2; }
+:root[data-theme="dark"] nav button[aria-current="true"] { background: var(--indigo-400); color: #1B1B2C; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) nav button[aria-current="true"] { background: var(--indigo-400); color: #1B1B2C; } }
+button:focus-visible, .card:focus-visible, .segmented input:focus-visible + span { outline: 2px solid var(--indigo); outline-offset: 2px; }
+.tier-head { display: flex; align-items: center; gap: 10px; margin: 6px 0 10px; }
+.tier-head h2 { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; letter-spacing: -0.01em; font-size: 22px; margin: 0; }
+.badge { flex: none; display: inline-grid; place-items: center; width: 26px; height: 26px; border-radius: 50%;
+  font-family: var(--font-sans); font-weight: 800; font-size: 12px; color: #FEFEF2; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 14px; }
+.card { background: var(--indigo-200); border: 1px dashed var(--rule); padding: 12px; display: grid; gap: 8px; align-content: start;
+  cursor: pointer; text-align: left; font: inherit; color: inherit; }
+.card:hover { border-style: solid; border-color: var(--indigo); }
+.card h3 { margin: 0; font-family: var(--font-sans); font-size: 14px; font-weight: 400; line-height: 1.3; }
+.card h3 b { font-weight: 800; }
+.card .meta { font-family: var(--font-sans); font-size: 12px; color: var(--muted); }
+.card svg { width: 100%; height: auto; display: block; }
+.board { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+@media (max-width: 860px) { .board { grid-template-columns: minmax(0, 1fr); } }
+.chart-box { background: var(--indigo-200); border: 1px dashed var(--rule); padding: 10px; position: relative; }
+.chart-box svg { width: 100%; height: auto; display: block; }
+.side { display: grid; gap: 16px; min-width: 0; }
+.qhead { display: flex; gap: 10px; align-items: center; font-family: var(--font-sans); font-size: 13px; color: var(--muted); }
+.question { font-size: 22px; line-height: 1.3; margin: 6px 0 0; text-wrap: pretty; }
+.subtitle { font-size: 17px; font-style: italic; margin: 4px 0 0; }
+.ins { font-family: var(--font-sans); font-size: 0.72em; color: var(--muted); font-style: normal; }
+.notes { display: grid; gap: 6px; font-size: 14px; }
+.notes p { margin: 0; }
+.notes b { font-family: var(--font-sans); font-weight: 800; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); margin-right: 6px; }
+.segmented { display: inline-flex; flex-wrap: wrap; border: 1px dashed var(--rule); width: fit-content; max-width: 100%; font-family: var(--font-sans); }
+.segmented label { cursor: pointer; font-size: 14px; }
+.segmented input { position: absolute; opacity: 0; pointer-events: none; }
+.segmented span { display: block; padding: 7px 12px; color: var(--ink); }
+.segmented label + label span { border-left: 1px dashed var(--rule); }
+.segmented input:checked + span { background: var(--indigo-900); color: #FEFEF2; }
+.legend { display: flex; flex-wrap: wrap; gap: 6px; font-family: var(--font-sans); }
+.chip { display: flex; align-items: center; gap: 6px; font: inherit; font-size: 13px; padding: 4px 9px; border: 1px dashed var(--rule);
+  background: transparent; color: var(--ink); cursor: pointer; }
+.chip[aria-pressed="false"] { opacity: 0.4; }
+.chip:disabled { cursor: default; }
+.table-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-family: var(--font-sans); font-size: 13px; }
+th, td { padding: 5px 6px; border-bottom: 1px dashed var(--rule); text-align: right; font-variant-numeric: tabular-nums; }
+th { font-weight: 800; font-size: 12px; }
+th:first-child, td:first-child { text-align: left; }
+.photo { display: grid; gap: 6px; }
+.label { font-family: var(--font-sans); font-weight: 800; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+.photo img { width: 100%; border: 1px dashed var(--rule); }
+.tip { position: absolute; pointer-events: none; background: var(--ink); color: var(--paper); font-family: var(--font-sans); font-size: 12px; line-height: 1.35;
+  padding: 6px 8px; max-width: 250px; transform: translate(-50%, calc(-100% - 12px)); }
+footer { font-size: 14px; display: grid; gap: 8px; max-width: 78ch; border-top: 1px dashed var(--rule); padding-top: 18px; }
+footer p { margin: 0; }
+footer b { font-family: var(--font-sans); font-weight: 800; }
+@media (prefers-reduced-motion: no-preference) { .card, nav button, .chip { transition: border-color 120ms, background 120ms, opacity 120ms; } }
+</style>
+</head>
+<body>
+
+<div class="band">
+  <div class="band-inner">
+    <div class="lockup"><a href="/">Global Risk &amp; <b>Stabilization</b> Summit</a><span>Reykjavík · Biosphere &amp; Ecosystems track · 12 October 2026</span></div>
+    <h1>Biosphere question wall</h1>
+    <p class="lede">The nine research questions the track refined and voted on. Each participant put one sticker per question on the board, in the colour of their role. These digital twins place every sticker where it sat on the paper.</p>
+  </div>
+</div>
+
+<div class="page">
+  <div class="toolbar">
+    <nav id="tabs" aria-label="Boards"></nav>
+    <label class="switch"><input type="checkbox" id="adjust"> Adjust for response bias</label>
+  </div>
+
+  <details class="banner" id="adjust-banner" hidden open>
+    <summary><b>Adjusted for response bias</b></summary>
+    <p>People using rating scales lean toward some answers regardless of the question: agreeing, rating everything important, or sticking to the middle or the extremes (<a href="https://doi.org/10.1509/jmkr.38.2.143.18840">Baumgartner &amp; Steenkamp 2001</a>). This room put nearly every sticker on the important side of every board. This view re-expresses each vote relative to how that role voted across all nine boards: it subtracts the role's average and divides by its spread, a group-level form of the score standardization reviewed by <a href="https://doi.org/10.1177/0022022104264122">Fischer (2004)</a>. The crossing now means "this role's typical rating," and each axis end is three standard deviations from it.</p>
+    <p>Stickers carry no names, so the adjustment works at the level of roles, not people. Standardizing can also remove real differences along with the bias (<a href="https://doi.org/10.1093/ijpor/eds021">Van Vaerenbergh &amp; Thomas 2013</a>), so read this view beside the unadjusted one. To pool the boards, it treats each board's importance-type axis (critical, important, transformative, desirable) as one scale and its readiness-type axis (ready, soon, feasible, easy or cheap) as another; Q7's axes are swapped back for this.</p>
+  </details>
+
+  <section id="overview-view" aria-label="All nine boards"></section>
+
+  <section id="board-view" hidden>
+    <div class="board">
+      <div class="chart-box" id="chart-box"></div>
+      <div class="side">
+        <div>
+          <div class="qhead" id="board-head"></div>
+          <p class="question" id="board-question"></p>
+          <p class="subtitle" id="board-subtitle"></p>
+        </div>
+        <div class="notes" id="board-notes"></div>
+        <div class="segmented" role="radiogroup" aria-label="View">
+          <label><input type="radio" name="mode" id="mode-dots" value="dots" checked><span>Individual votes</span></label>
+          <label><input type="radio" name="mode" id="mode-roles" value="roles"><span>Role averages</span></label>
+          <label><input type="radio" name="mode" id="mode-all" value="all"><span>Everyone's average</span></label>
+        </div>
+        <div class="legend" id="legend" role="group" aria-label="Show or hide a role"></div>
+        <div class="table-wrap"><table id="means-table"></table></div>
+        <div class="photo">
+          <div class="label">The original board</div>
+          <img id="board-photo" alt="" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p><b>Reading the twins.</b> All nine twins share one scale. Each half-axis runs from the board's crossing (0) to its end label (±1), so every quadrant is the same size even where the hand-drawn axes weren't. The labels are as written on each board, and groups chose their own, so read each board against its own labels. Each shaded circle is centred on an average and holds the two-thirds of votes nearest it; votes outside it are the outliers it ignores. Role averages drawn hollow, with dashed circles, rest on three votes or fewer. Words in [brackets] are our additions, such as spelled-out acronyms.</p>
+    <p><b>Roles.</b> Participants picked a sticker colour for their own role: research (light or dark blue), funding (green), risk (red or orange), policy (light or dark pink), advocacy (purple). White stickers were a backup for advocacy and don't show on white paper, so any white votes are missing here.</p>
+    <p><b>Groupings.</b> The four headings on the overview are our reading of the votes, explained in the track's outputs summary.</p>
+    <p><b>Machine generated.</b> This page was built by an AI model. It located each sticker by colour in phone photos of the boards, checked the result against annotated copies of each photo, split touching stickers apart, and transcribed the handwriting. Expect positions to be off by about ±0.05 of an axis from perspective and sticker size, and check the photo before quoting a question. The summit ran under the Chatham House Rule; no votes are attributed to people.</p>
+  </footer>
+</div>
+
+<script type="application/json" id="wall-data">{"boards":[{"id":"Q1","short":"Centre Indigenous and local voices","question":"How do [we] centre IPLC* [Indigenous Peoples and Local Communities] voices – traditional stewards – in climate intervention discourse?","subtitle":"*Indigenous Peoples & Local Communities","board_notes":"The horizontal axis first read “Slow → Quick”; both words are crossed out and replaced with “Not yet → Now!!”","editor_note":"","tier":"ready","value_axis":"y","x":["Not yet","Now!!"],"y":["Not","Important"],"votes":[{"group":"Research","shade":"DBL","x":0.968,"y":1.114},{"group":"Research","shade":"DBL","x":0.937,"y":1.027},{"group":"Policy","shade":"MAG","x":0.326,"y":0.987},{"group":"Funding","shade":"GRN","x":0.752,"y":0.946},{"group":"Risk","shade":"ORG","x":0.149,"y":0.907},{"group":"Funding","shade":"GRN","x":0.698,"y":0.909},{"group":"Research","shade":"DBL","x":0.857,"y":0.907},{"group":"Funding","shade":"GRN","x":0.538,"y":0.887},{"group":"Funding","shade":"GRN","x":0.77,"y":0.884},{"group":"Policy","shade":"LPK","x":0.063,"y":0.867},{"group":"Advocacy","shade":"PUR","x":0.665,"y":0.864},{"group":"Research","shade":"DBL","x":0.344,"y":0.83},{"group":"Funding","shade":"GRN","x":0.19,"y":0.8},{"group":"Funding","shade":"GRN","x":0.592,"y":0.799},{"group":"Research","shade":"DBL","x":0.883,"y":0.796},{"group":"Funding","shade":"GRN","x":0.035,"y":0.783},{"group":"Risk","shade":"RED","x":0.795,"y":0.745},{"group":"Research","shade":"DBL","x":0.705,"y":0.708},{"group":"Funding","shade":"GRN","x":0.347,"y":0.701},{"group":"Research","shade":"LBL","x":0.617,"y":0.696},{"group":"Advocacy","shade":"PUR","x":0.873,"y":0.679},{"group":"Funding","shade":"GRN","x":0.462,"y":0.675},{"group":"Policy","shade":"LPK","x":0.401,"y":0.635},{"group":"Research","shade":"DBL","x":0.177,"y":0.571},{"group":"Risk","shade":"RED","x":0.523,"y":0.574},{"group":"Research","shade":"DBL","x":0.453,"y":0.568},{"group":"Policy","shade":"MAG","x":0.763,"y":0.504},{"group":"Funding","shade":"GRN","x":0.507,"y":0.484},{"group":"Research","shade":"DBL","x":0.071,"y":0.464},{"group":"Research","shade":"DBL","x":0.314,"y":0.431},{"group":"Policy","shade":"LPK","x":0.869,"y":0.42},{"group":"Policy","shade":"LPK","x":0.625,"y":0.329},{"group":"Advocacy","shade":"PUR","x":0.116,"y":0.321},{"group":"Policy","shade":"MAG","x":0.234,"y":0.211},{"group":"Risk","shade":"RED","x":0.034,"y":0.171},{"group":"Policy","shade":"LPK","x":0.745,"y":-0.06},{"group":"Funding","shade":"GRN","x":0.646,"y":-0.075},{"group":"Funding","shade":"GRN","x":0.067,"y":-0.761}]},{"id":"Q2","short":"Aggregate & synthesise research for decision-makers","question":"Should we aggregate & synthesise research better for decision-makers?","subtitle":"","board_notes":"“Should” is written above the crossed-out words “How can.”","editor_note":"","tier":"ready","value_axis":"y","x":["Unfeasible","Feasible"],"y":["Undesirable","Desirable"],"votes":[{"group":"Funding","shade":"GRN","x":1.069,"y":1.041},{"group":"Policy","shade":"LPK","x":0.864,"y":0.988},{"group":"Risk","shade":"RED","x":1.0,"y":0.989},{"group":"Policy","shade":"MAG","x":0.392,"y":0.963},{"group":"Research","shade":"DBL","x":0.679,"y":0.963},{"group":"Funding","shade":"GRN","x":-0.786,"y":0.936},{"group":"Research","shade":"LBL","x":-0.33,"y":0.939},{"group":"Risk","shade":"ORG","x":-0.25,"y":0.931},{"group":"Research","shade":"DBL","x":-0.491,"y":0.918},{"group":"Research","shade":"DBL","x":0.285,"y":0.914},{"group":"Funding","shade":"GRN","x":0.05,"y":0.894},{"group":"Funding","shade":"GRN","x":0.771,"y":0.89},{"group":"Funding","shade":"GRN","x":0.941,"y":0.882},{"group":"Funding","shade":"GRN","x":0.188,"y":0.84},{"group":"Policy","shade":"LPK","x":0.71,"y":0.846},{"group":"Risk","shade":"RED","x":1.027,"y":0.825},{"group":"Policy","shade":"MAG","x":0.557,"y":0.815},{"group":"Research","shade":"DBL","x":0.798,"y":0.808},{"group":"Advocacy","shade":"PUR","x":-0.048,"y":0.795},{"group":"Advocacy","shade":"PUR","x":-0.215,"y":0.784},{"group":"Funding","shade":"GRN","x":0.398,"y":0.779},{"group":"Funding","shade":"GRN","x":0.685,"y":0.751},{"group":"Policy","shade":"LPK","x":0.318,"y":0.744},{"group":"Research","shade":"DBL","x":0.234,"y":0.734},{"group":"Policy","shade":"LPK","x":0.884,"y":0.732},{"group":"Funding","shade":"GRN","x":0.524,"y":0.679},{"group":"Research","shade":"DBL","x":0.75,"y":0.678},{"group":"Research","shade":"DBL","x":0.791,"y":0.601},{"group":"Funding","shade":"GRN","x":0.564,"y":0.592},{"group":"Research","shade":"LBL","x":0.311,"y":0.589},{"group":"Research","shade":"DBL","x":0.448,"y":0.589},{"group":"Research","shade":"DBL","x":0.95,"y":0.552},{"group":"Research","shade":"DBL","x":0.416,"y":0.444},{"group":"Research","shade":"DBL","x":0.155,"y":0.421},{"group":"Funding","shade":"GRN","x":0.628,"y":0.425},{"group":"Policy","shade":"LPK","x":0.943,"y":0.333},{"group":"Research","shade":"DBL","x":0.533,"y":0.327},{"group":"Research","shade":"DBL","x":0.15,"y":0.24},{"group":"Funding","shade":"GRN","x":0.282,"y":0.197},{"group":"Risk","shade":"RED","x":0.793,"y":0.161},{"group":"Policy","shade":"MAG","x":0.091,"y":0.107}]},{"id":"Q3","short":"Three things for public-good decisions","question":"What are the three things needed to ensure this research/decision making about interventions are centered in the public good and inclusive of risks?","subtitle":"","board_notes":"","editor_note":"","tier":"governance","value_axis":"y","x":["Not yet","Ready now"],"y":["Not very","Critical"],"votes":[{"group":"Research","shade":"DBL","x":0.088,"y":0.925},{"group":"Advocacy","shade":"PUR","x":0.284,"y":0.924},{"group":"Risk","shade":"RED","x":0.427,"y":0.907},{"group":"Policy","shade":"LPK","x":-0.457,"y":0.905},{"group":"Policy","shade":"LPK","x":0.214,"y":0.897},{"group":"Funding","shade":"GRN","x":0.017,"y":0.88},{"group":"Research","shade":"DBL","x":-0.098,"y":0.88},{"group":"Funding","shade":"GRN","x":-0.617,"y":0.876},{"group":"Research","shade":"DBL","x":0.769,"y":0.859},{"group":"Risk","shade":"RED","x":0.832,"y":0.818},{"group":"Funding","shade":"GRN","x":0.016,"y":0.815},{"group":"Research","shade":"DBL","x":0.754,"y":0.742},{"group":"Funding","shade":"GRN","x":0.014,"y":0.743},{"group":"Advocacy","shade":"PUR","x":-0.722,"y":0.744},{"group":"Policy","shade":"LPK","x":-0.309,"y":0.726},{"group":"Funding","shade":"GRN","x":0.128,"y":0.721},{"group":"Funding","shade":"GRN","x":0.011,"y":0.673},{"group":"Risk","shade":"ORG","x":0.007,"y":0.593},{"group":"Research","shade":"DBL","x":-0.103,"y":0.592},{"group":"Research","shade":"DBL","x":0.16,"y":0.579},{"group":"Policy","shade":"LPK","x":0.173,"y":0.5},{"group":"Funding","shade":"GRN","x":-0.222,"y":0.447},{"group":"Policy","shade":"MAG","x":0.129,"y":0.37},{"group":"Research","shade":"DBL","x":-0.098,"y":0.368},{"group":"Policy","shade":"MAG","x":0.141,"y":0.237},{"group":"Risk","shade":"RED","x":-0.304,"y":0.21},{"group":"Advocacy","shade":"PUR","x":-0.137,"y":0.135},{"group":"Funding","shade":"GRN","x":-0.385,"y":0.116},{"group":"Research","shade":"DBL","x":0.339,"y":0.108},{"group":"Research","shade":"DBL","x":0.79,"y":0.085},{"group":"Policy","shade":"LPK","x":0.645,"y":-0.127}]},{"id":"Q4","short":"Allocate responsibility, accountability & benefit","question":"How do we allocate responsibility for funding, accountability for trade-offs & allocation of benefit, without thwarting momentum","subtitle":"","board_notes":"","editor_note":"","tier":"governance","value_axis":"y","x":["Not ready yet","Ready"],"y":["Not very","Critical"],"votes":[{"group":"Policy","shade":"LPK","x":-0.71,"y":0.987},{"group":"Risk","shade":"RED","x":0.505,"y":1.035},{"group":"Funding","shade":"GRN","x":-0.927,"y":0.963},{"group":"Funding","shade":"GRN","x":-0.828,"y":0.96},{"group":"Risk","shade":"ORG","x":0.218,"y":0.974},{"group":"Advocacy","shade":"PUR","x":0.306,"y":0.98},{"group":"Research","shade":"DBL","x":-0.491,"y":0.935},{"group":"Funding","shade":"GRN","x":0.766,"y":1.011},{"group":"Funding","shade":"GRN","x":0.096,"y":0.955},{"group":"Policy","shade":"LPK","x":-0.602,"y":0.923},{"group":"Policy","shade":"LPK","x":-0.521,"y":0.844},{"group":"Research","shade":"DBL","x":0.465,"y":0.894},{"group":"Research","shade":"DBL","x":-0.242,"y":0.846},{"group":"Research","shade":"DBL","x":-0.797,"y":0.822},{"group":"Research","shade":"DBL","x":0.0,"y":0.825},{"group":"Advocacy","shade":"PUR","x":-0.425,"y":0.807},{"group":"Research","shade":"DBL","x":0.303,"y":0.845},{"group":"Funding","shade":"GRN","x":-0.908,"y":0.762},{"group":"Policy","shade":"LPK","x":0.685,"y":0.814},{"group":"Funding","shade":"GRN","x":0.384,"y":0.755},{"group":"Funding","shade":"GRN","x":0.139,"y":0.689},{"group":"Funding","shade":"GRN","x":-0.88,"y":0.64},{"group":"Research","shade":"DBL","x":-0.48,"y":0.646},{"group":"Funding","shade":"GRN","x":0.303,"y":0.672},{"group":"Risk","shade":"RED","x":-0.172,"y":0.564},{"group":"Research","shade":"DBL","x":-0.306,"y":0.558},{"group":"Advocacy","shade":"PUR","x":0.326,"y":0.57},{"group":"Funding","shade":"GRN","x":0.002,"y":0.541},{"group":"Funding","shade":"GRN","x":0.221,"y":0.555},{"group":"Research","shade":"DBL","x":-0.556,"y":0.491},{"group":"Policy","shade":"LPK","x":-0.835,"y":0.446},{"group":"Funding","shade":"GRN","x":0.254,"y":0.415},{"group":"Research","shade":"DBL","x":-0.058,"y":0.387},{"group":"Research","shade":"DBL","x":-0.168,"y":0.364},{"group":"Funding","shade":"GRN","x":-0.362,"y":0.314},{"group":"Policy","shade":"LPK","x":-0.491,"y":0.195},{"group":"Risk","shade":"RED","x":-0.008,"y":0.179},{"group":"Research","shade":"DBL","x":-0.2,"y":0.14},{"group":"Policy","shade":"MAG","x":0.187,"y":0.148},{"group":"Research","shade":"DBL","x":0.006,"y":0.05},{"group":"Research","shade":"DBL","x":-0.95,"y":-0.141}]},{"id":"Q5","short":"Integrate silos for people-centred decisions","question":"How to address + integrate current silos to ensure people-centred and informed decisions + action, that integrates local knowledge and priorities, with understandable scientific, climate + ecosystem info.","subtitle":"","board_notes":"One word before “understandable” is blacked out.","editor_note":"The low end of the vertical axis reads “not yet” on the board, probably meant as “not very.”","tier":"governance","value_axis":"y","x":["Not yet","Ready"],"y":["Not yet","Critical"],"votes":[{"group":"Research","shade":"DBL","x":-0.91,"y":1.131},{"group":"Policy","shade":"MAG","x":-0.602,"y":1.021},{"group":"Research","shade":"DBL","x":0.521,"y":1.016},{"group":"Policy","shade":"LPK","x":-0.742,"y":0.972},{"group":"Advocacy","shade":"PUR","x":0.143,"y":0.95},{"group":"Risk","shade":"ORG","x":-0.324,"y":0.884},{"group":"Advocacy","shade":"PUR","x":-0.476,"y":0.869},{"group":"Research","shade":"LBL","x":0.075,"y":0.848},{"group":"Funding","shade":"GRN","x":0.168,"y":0.811},{"group":"Research","shade":"DBL","x":-0.153,"y":0.746},{"group":"Funding","shade":"GRN","x":-0.457,"y":0.639},{"group":"Research","shade":"DBL","x":0.191,"y":0.619},{"group":"Policy","shade":"LPK","x":-0.38,"y":0.592},{"group":"Funding","shade":"GRN","x":-0.218,"y":0.466},{"group":"Funding","shade":"GRN","x":-0.076,"y":0.334},{"group":"Risk","shade":"ORG","x":0.22,"y":0.293},{"group":"Research","shade":"DBL","x":0.045,"y":0.275},{"group":"Policy","shade":"LPK","x":0.249,"y":-0.15}]},{"id":"Q6","short":"What are we optimising for?","question":"What are we optimising for?","subtitle":"Just mitigation w/ nature as instrumental, or both as equals? Tech dev vs political strategies?","board_notes":"","editor_note":"","tier":"governance","value_axis":"y","x":["Slow","Quick"],"y":["Not","Important"],"votes":[{"group":"Policy","shade":"MAG","x":-0.41,"y":1.03},{"group":"Funding","shade":"GRN","x":0.026,"y":0.973},{"group":"Policy","shade":"LPK","x":-0.109,"y":0.96},{"group":"Risk","shade":"RED","x":0.155,"y":0.959},{"group":"Policy","shade":"LPK","x":0.351,"y":0.95},{"group":"Research","shade":"DBL","x":-0.341,"y":0.951},{"group":"Research","shade":"DBL","x":-0.673,"y":0.941},{"group":"Funding","shade":"GRN","x":-0.204,"y":0.936},{"group":"Policy","shade":"LPK","x":0.481,"y":0.93},{"group":"Research","shade":"DBL","x":0.748,"y":0.889},{"group":"Advocacy","shade":"PUR","x":0.231,"y":0.87},{"group":"Funding","shade":"GRN","x":0.399,"y":0.815},{"group":"Funding","shade":"GRN","x":0.318,"y":0.775},{"group":"Funding","shade":"GRN","x":0.156,"y":0.77},{"group":"Policy","shade":"LPK","x":0.001,"y":0.736},{"group":"Research","shade":"LBL","x":-0.365,"y":0.725},{"group":"Advocacy","shade":"PUR","x":-0.232,"y":0.718},{"group":"Risk","shade":"RED","x":0.063,"y":0.626},{"group":"Research","shade":"DBL","x":0.376,"y":0.414},{"group":"Advocacy","shade":"PUR","x":-0.144,"y":0.336},{"group":"Funding","shade":"GRN","x":-0.023,"y":0.3},{"group":"Risk","shade":"RED","x":0.001,"y":0.182},{"group":"Policy","shade":"MAG","x":-0.587,"y":0.135},{"group":"Policy","shade":"LPK","x":0.009,"y":0.08},{"group":"Research","shade":"DBL","x":0.379,"y":0.056},{"group":"Funding","shade":"GRN","x":0.005,"y":0.007},{"group":"Funding","shade":"GRN","x":-0.415,"y":-0.085},{"group":"Policy","shade":"LPK","x":0.136,"y":-0.26}]},{"id":"Q7","short":"Integrated multimodal observation network","question":"How can we build an integrated, multimodal observational network that captures regional variation in response to interventions?","subtitle":"Would answering this transform the field / is this feasible","board_notes":"","editor_note":"This group swapped the axes: transformation runs left to right and cost runs bottom to top.","tier":"infrastructure","value_axis":"x","x":["Not very transformative","Critical / very transformative"],"y":["Challenging / expensive","Easy / cheap"],"votes":[{"group":"Funding","shade":"GRN","x":0.94,"y":0.433},{"group":"Funding","shade":"GRN","x":0.865,"y":0.38},{"group":"Risk","shade":"RED","x":0.418,"y":0.329},{"group":"Research","shade":"DBL","x":0.636,"y":0.278},{"group":"Research","shade":"DBL","x":0.947,"y":0.268},{"group":"Research","shade":"DBL","x":0.558,"y":0.18},{"group":"Advocacy","shade":"PUR","x":0.622,"y":0.067},{"group":"Policy","shade":"LPK","x":0.114,"y":-0.095},{"group":"Research","shade":"DBL","x":0.54,"y":-0.122},{"group":"Policy","shade":"LPK","x":0.361,"y":-0.153},{"group":"Research","shade":"LBL","x":0.914,"y":-0.278},{"group":"Policy","shade":"LPK","x":0.82,"y":-0.354},{"group":"Policy","shade":"LPK","x":1.029,"y":-0.374},{"group":"Funding","shade":"GRN","x":0.967,"y":-0.495},{"group":"Funding","shade":"GRN","x":-0.003,"y":-0.604},{"group":"Policy","shade":"LPK","x":0.418,"y":-0.59},{"group":"Risk","shade":"RED","x":0.566,"y":-0.585},{"group":"Funding","shade":"GRN","x":0.71,"y":-0.674},{"group":"Funding","shade":"GRN","x":0.562,"y":-0.706},{"group":"Funding","shade":"GRN","x":0.952,"y":-0.795},{"group":"Funding","shade":"GRN","x":0.858,"y":-0.809},{"group":"Research","shade":"DBL","x":0.665,"y":-0.825},{"group":"Advocacy","shade":"PUR","x":0.751,"y":-0.829},{"group":"Funding","shade":"GRN","x":0.94,"y":-0.874},{"group":"Policy","shade":"MAG","x":0.566,"y":-0.915},{"group":"Research","shade":"DBL","x":0.915,"y":-0.948},{"group":"Advocacy","shade":"PUR","x":0.662,"y":-0.966}]},{"id":"Q8","short":"Standardised biosphere-health framework","question":"How can we establish a globally standardized interdisciplinary framework to assess and track biosphere + ecosystem health.","subtitle":"To evaluate interventions + guide resource allocation.","board_notes":"","editor_note":"","tier":"infrastructure","value_axis":"y","x":["Decades","Within a few years"],"y":["Rabbit hole","Transformative"],"votes":[{"group":"Research","shade":"DBL","x":-0.71,"y":0.983},{"group":"Risk","shade":"RED","x":0.231,"y":0.937},{"group":"Funding","shade":"GRN","x":-0.098,"y":0.939},{"group":"Funding","shade":"GRN","x":0.33,"y":0.933},{"group":"Funding","shade":"GRN","x":-0.958,"y":0.965},{"group":"Risk","shade":"RED","x":0.433,"y":0.864},{"group":"Advocacy","shade":"PUR","x":-0.826,"y":0.881},{"group":"Research","shade":"DBL","x":-0.517,"y":0.863},{"group":"Research","shade":"LBL","x":-0.196,"y":0.829},{"group":"Research","shade":"DBL","x":-0.391,"y":0.829},{"group":"Funding","shade":"GRN","x":0.337,"y":0.777},{"group":"Funding","shade":"GRN","x":0.23,"y":0.777},{"group":"Funding","shade":"GRN","x":0.469,"y":0.774},{"group":"Risk","shade":"ORG","x":-0.076,"y":0.777},{"group":"Research","shade":"DBL","x":0.085,"y":0.77},{"group":"Research","shade":"LBL","x":-0.258,"y":0.743},{"group":"Research","shade":"DBL","x":-0.58,"y":0.755},{"group":"Research","shade":"DBL","x":-0.008,"y":0.668},{"group":"Funding","shade":"GRN","x":-0.395,"y":0.674},{"group":"Research","shade":"DBL","x":0.059,"y":0.61},{"group":"Funding","shade":"GRN","x":0.361,"y":0.608},{"group":"Policy","shade":"LPK","x":0.926,"y":0.572},{"group":"Risk","shade":"RED","x":-0.007,"y":0.555},{"group":"Policy","shade":"LPK","x":-0.266,"y":0.554},{"group":"Advocacy","shade":"PUR","x":-0.583,"y":0.553},{"group":"Risk","shade":"RED","x":-0.104,"y":0.508},{"group":"Funding","shade":"GRN","x":-0.34,"y":0.466},{"group":"Policy","shade":"LPK","x":-0.461,"y":0.46},{"group":"Research","shade":"LBL","x":-0.002,"y":0.358},{"group":"Policy","shade":"LPK","x":0.979,"y":0.351},{"group":"Research","shade":"DBL","x":-0.114,"y":0.311},{"group":"Research","shade":"LBL","x":-0.288,"y":0.229},{"group":"Research","shade":"DBL","x":0.006,"y":0.203},{"group":"Funding","shade":"GRN","x":-0.142,"y":0.063},{"group":"Funding","shade":"GRN","x":0.132,"y":-0.033},{"group":"Research","shade":"DBL","x":-0.614,"y":-0.043},{"group":"Research","shade":"LBL","x":-0.86,"y":-0.193},{"group":"Policy","shade":"LPK","x":0.002,"y":-0.287},{"group":"Advocacy","shade":"PUR","x":-0.053,"y":-0.431},{"group":"Funding","shade":"GRN","x":-0.924,"y":-0.809},{"group":"Policy","shade":"MAG","x":-0.824,"y":-0.817}]},{"id":"Q9","short":"Ship-based solar radiation modification","question":"IMO [International Maritime Organization]-based, SRM [solar radiation modification], feasible?","subtitle":"(From SAI [stratospheric aerosol injection] to TAI [troposphere aerosol injection]!)","board_notes":"","editor_note":"“Troposphere aerosol injection” is the group's own coinage: restoring the ship-sulfur cooling lost after the IMO's 2020 low-sulfur fuel rules, using blended shipping fuel on ships already at sea.","tier":"divided","value_axis":"y","x":["Decades","Within a few years"],"y":["Rabbit hole","Transformative"],"votes":[{"group":"Funding","shade":"GRN","x":0.776,"y":0.936},{"group":"Risk","shade":"RED","x":0.899,"y":0.93},{"group":"Funding","shade":"GRN","x":0.679,"y":0.925},{"group":"Funding","shade":"GRN","x":0.004,"y":0.911},{"group":"Funding","shade":"GRN","x":0.887,"y":0.83},{"group":"Risk","shade":"RED","x":0.799,"y":0.83},{"group":"Funding","shade":"GRN","x":0.893,"y":0.732},{"group":"Research","shade":"DBL","x":-0.137,"y":0.716},{"group":"Research","shade":"DBL","x":0.697,"y":0.689},{"group":"Advocacy","shade":"PUR","x":0.649,"y":0.502},{"group":"Funding","shade":"GRN","x":-0.146,"y":0.491},{"group":"Research","shade":"DBL","x":0.347,"y":0.376},{"group":"Research","shade":"DBL","x":0.0,"y":0.323},{"group":"Funding","shade":"GRN","x":0.174,"y":0.257},{"group":"Policy","shade":"LPK","x":-0.932,"y":0.205},{"group":"Funding","shade":"GRN","x":0.732,"y":0.138},{"group":"Policy","shade":"LPK","x":-0.729,"y":0.138},{"group":"Policy","shade":"LPK","x":0.099,"y":0.097},{"group":"Advocacy","shade":"PUR","x":0.315,"y":-0.045},{"group":"Research","shade":"DBL","x":-0.531,"y":-0.275},{"group":"Advocacy","shade":"PUR","x":-0.013,"y":-0.371},{"group":"Funding","shade":"GRN","x":0.962,"y":-0.501},{"group":"Policy","shade":"LPK","x":0.39,"y":-0.518},{"group":"Policy","shade":"MAG","x":0.99,"y":-0.619},{"group":"Research","shade":"DBL","x":-0.321,"y":-0.659},{"group":"Funding","shade":"GRN","x":-0.949,"y":-0.944},{"group":"Risk","shade":"RED","x":1.003,"y":-0.992}]}],"tiers":{"ready":{"label":"Ready to start","colour":"#60803E"},"governance":{"label":"Critical, not ready","colour":"#C23753"},"infrastructure":{"label":"Transformative, but slow or costly","colour":"#65AABB"},"divided":{"label":"Divided","colour":"#D39135"}},"photo_urls":{"Q1":"/assets/images/biosphere/board-q1.webp?v=16f5bddc","Q2":"/assets/images/biosphere/board-q2.webp?v=97a51a52","Q3":"/assets/images/biosphere/board-q3.webp?v=2fbe53e2","Q4":"/assets/images/biosphere/board-q4.webp?v=b60575a6","Q5":"/assets/images/biosphere/board-q5.webp?v=75e090df","Q6":"/assets/images/biosphere/board-q6.webp?v=d9fc5f37","Q7":"/assets/images/biosphere/board-q7.webp?v=c53eef99","Q8":"/assets/images/biosphere/board-q8.webp?v=5ab20f60","Q9":"/assets/images/biosphere/board-q9.webp?v=1b45cec2"}}</script>
+<script>
+(() => {
+  const data = JSON.parse(document.getElementById("wall-data").textContent);
+  const GROUPS = ["Research", "Funding", "Risk", "Policy", "Advocacy"];
+  const LOW_N = 3, RANGE = 1.18, SPREAD_SHARE = 2 / 3;
+  const css = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  const SHADE_VAR = { DBL: "--research", LBL: "--research-light", GRN: "--funding", RED: "--risk", ORG: "--risk-light",
+                      MAG: "--policy-dark", LPK: "--policy-light", PUR: "--advocacy" };
+  const MEAN_VAR = { Research: "--research", Funding: "--funding", Risk: "--risk", Policy: "--policy", Advocacy: "--advocacy" };
+  const SHAPE = { Research: "circle", Funding: "triangle-up", Risk: "diamond", Policy: "triangle-down", Advocacy: "hexagon" };
+  const hidden = new Set();
+  const state = { view: "overview", adjust: false };
+  const NS = "http://www.w3.org/2000/svg";
+
+  const mean = arr => arr.reduce((a, b) => a + b, 0) / arr.length;
+  const sd = arr => { const m = mean(arr); return Math.sqrt(mean(arr.map(v => (v - m) ** 2))); };
+
+  // Response-bias adjustment: standardize each role's votes against that role's own average and
+  // spread across all nine boards (Fischer 2004), on a pooled importance axis and readiness axis.
+  // Q7 has its axes swapped (transformation runs left to right), so its x and y swap for pooling.
+  const SD_AT_EDGE = 3;
+  let clipCount = 0;
+  (function precomputeAdjusted() {
+    const pooled = (board, v) => board.value_axis === "x" ? [v.x, v.y] : [v.y, v.x];   // [importance, readiness]
+    const byRole = {};
+    for (const b of data.boards) for (const v of b.votes) (byRole[v.group] ??= []).push(pooled(b, v));
+    const stats = Object.fromEntries(Object.entries(byRole).map(([g, vs]) =>
+      [g, { mi: mean(vs.map(p => p[0])), si: sd(vs.map(p => p[0])), mr: mean(vs.map(p => p[1])), sr: sd(vs.map(p => p[1])) }]));
+    for (const b of data.boards) for (const v of b.votes) {
+      const [imp, ready] = pooled(b, v), s = stats[v.group];
+      const zi = (imp - s.mi) / s.si / SD_AT_EDGE, zr = (ready - s.mr) / s.sr / SD_AT_EDGE;
+      [v.ax, v.ay] = b.value_axis === "x" ? [zi, zr] : [zr, zi];
+    }
+  })();
+  const votesOf = board => state.adjust ? board.votes.map(v => ({ ...v, x: v.ax, y: v.ay })) : board.votes;
+  const fmt = n => (n >= 0 ? "+" : "−") + Math.abs(n).toFixed(2);
+  function spread(votes) {
+    const cx = mean(votes.map(v => v.x)), cy = mean(votes.map(v => v.y));
+    const dist = votes.map(v => Math.hypot(v.x - cx, v.y - cy)).sort((a, b) => a - b);
+    const keep = Math.ceil(votes.length * SPREAD_SHARE);
+    return { x: cx, y: cy, r: dist[keep - 1], inside: keep, n: votes.length };
+  }
+  function el(tag, attrs = {}, parent) {
+    const node = document.createElementNS(NS, tag);
+    for (const [k, v] of Object.entries(attrs)) node.setAttribute(k, v);
+    if (parent) parent.appendChild(node);
+    return node;
+  }
+  function shapePoints(shape, cx, cy, r) {
+    const pts = {
+      "triangle-up": [[0, -1.15], [1.05, 0.75], [-1.05, 0.75]],
+      "triangle-down": [[0, 1.15], [1.05, -0.75], [-1.05, -0.75]],
+      "diamond": [[0, -1.2], [1.2, 0], [0, 1.2], [-1.2, 0]],
+      "hexagon": [30, 90, 150, 210, 270, 330].map(a => [1.1 * Math.cos(a * Math.PI / 180), 1.1 * Math.sin(a * Math.PI / 180)]),
+    }[shape];
+    return pts.map(([x, y]) => `${(cx + x * r).toFixed(1)},${(cy + y * r).toFixed(1)}`).join(" ");
+  }
+  function drawShape(parent, shape, cx, cy, r, attrs) {
+    return shape === "circle" ? el("circle", { cx, cy, r, ...attrs }, parent)
+                              : el("polygon", { points: shapePoints(shape, cx, cy, r), ...attrs }, parent);
+  }
+  // Question text with our [bracketed] additions set apart from what was written on the board.
+  function writeWithInsertions(node, text) {
+    node.replaceChildren();
+    for (const part of text.split(/(\[[^\]]+\])/)) {
+      if (!part) continue;
+      if (part.startsWith("[")) { const s = document.createElement("span"); s.className = "ins"; s.textContent = part; node.append(s); }
+      else node.append(part);
+    }
+  }
+  function badge(board) {
+    const b = document.createElement("span");
+    b.className = "badge"; b.style.background = data.tiers[board.tier].colour; b.textContent = board.id;
+    return b;
+  }
+
+  // One board as SVG. Every board shares one scale: each half-axis runs from the crossing (0)
+  // to its end label (±1), so all quadrants are the same size whatever the paper looked like.
+  // mode: "preview" (overview card), "dots", "roles" or "all".
+  function drawBoard(board, mode) {
+    const small = mode === "preview";
+    const size = small ? 230 : 440, pad = small ? 10 : 14, font = small ? 10 : 12.5;
+    const svg = el("svg", { viewBox: `0 0 ${size + 2 * pad} ${size + 2 * pad}`, role: "img",
+      "aria-label": `${board.id}: ${board.short}. ${board.votes.length} votes.` });
+    const px = x => pad + (Math.max(-RANGE, Math.min(RANGE, x)) + RANGE) / (2 * RANGE) * size;
+    const py = y => pad + (RANGE - Math.max(-RANGE, Math.min(RANGE, y))) / (2 * RANGE) * size;
+    const unit = size / (2 * RANGE);
+    el("rect", { x: pad, y: pad, width: size, height: size, fill: css("--chart"), stroke: css("--rule") }, svg);
+    el("line", { x1: px(-1), y1: py(0), x2: px(1), y2: py(0), stroke: css("--axis"), "stroke-width": 1.4 }, svg);
+    el("line", { x1: px(0), y1: py(1), x2: px(0), y2: py(-1), stroke: css("--axis"), "stroke-width": 1.4 }, svg);
+    const votes = votesOf(board).filter(v => small || mode === "all" || !hidden.has(v.group));
+
+    // Axis end labels, as written on the board. Drawn before the marks so a sticker is never hidden
+    // under a label. In the small previews the high-end label sits above the axis to clear long labels.
+    const halo = { "paint-order": "stroke", stroke: css("--chart"), "stroke-width": 3.5, "stroke-linejoin": "round",
+                   "font-size": font, "font-family": css("--font-sans") };
+    const text = (x, y, s, attrs) => { const t = el("text", { x, y, ...halo, ...attrs }, svg); t.textContent = s; };
+    text(pad + 4, py(0) + font + 4, board.x[0], { fill: css("--muted") });
+    text(pad + size - 4, small ? py(0) - 6 : py(0) + font + 4, board.x[1] + " →", { fill: css("--ink"), "font-weight": 800, "text-anchor": "end" });
+    text(px(0) + 5, pad + font + 3, "↑ " + board.y[1], { fill: css("--ink"), "font-weight": 800 });
+    text(px(0) + 5, pad + size - 5, board.y[0], { fill: css("--muted") });
+
+    const clipId = `plot-${++clipCount}`;
+    el("rect", { x: pad, y: pad, width: size, height: size }, el("clipPath", { id: clipId }, el("defs", {}, svg)));
+    const plot = el("g", { "clip-path": `url(#${clipId})` }, svg);
+
+    // Ghost votes behind the averages, so the outliers a circle leaves out stay visible.
+    if (mode !== "dots") {
+      for (const v of votes) el("circle", { cx: px(v.x), cy: py(v.y), r: small ? 2.3 : 3, fill: css("--ghost"), "fill-opacity": 0.8 }, plot);
+    }
+    if (mode === "dots") {
+      const [w, h] = [12, 8];
+      for (const v of votes) {
+        const r = el("rect", { x: px(v.x) - w / 2, y: py(v.y) - h / 2, width: w, height: h, rx: 1.6,
+          fill: css(SHADE_VAR[v.shade]), "fill-opacity": 0.92, stroke: css("--chart"), "stroke-width": 1.2 }, plot);
+        r.dataset.tip = `${v.group} vote\n${board.x[v.x >= 0 ? 1 : 0]} ${fmt(v.x)} · ${board.y[v.y >= 0 ? 1 : 0]} ${fmt(v.y)}`;
+      }
+    }
+    if (mode === "roles") {
+      const present = GROUPS.map(g => [g, votes.filter(v => v.group === g)]).filter(([, gv]) => gv.length);
+      for (const [g, gv] of present) {
+        const s = spread(gv), low = gv.length <= LOW_N;
+        el("circle", { cx: px(s.x), cy: py(s.y), r: Math.max(s.r * unit, 3), fill: css(MEAN_VAR[g]),
+          "fill-opacity": low ? 0.06 : 0.14, stroke: css(MEAN_VAR[g]), "stroke-width": 1.6,
+          "stroke-dasharray": low ? "3 3" : "none" }, plot);
+      }
+      for (const [g, gv] of present) {
+        const s = spread(gv), low = gv.length <= LOW_N;
+        drawShape(plot, SHAPE[g], px(s.x), py(s.y), 10, { fill: css("--chart") });
+        const node = drawShape(plot, SHAPE[g], px(s.x), py(s.y), 8, {
+          fill: low ? css("--chart") : css(MEAN_VAR[g]), stroke: low ? css(MEAN_VAR[g]) : css("--ink"), "stroke-width": low ? 2.4 : 1.2 });
+        node.dataset.tip = `${g} average, ${gv.length} vote${gv.length === 1 ? "" : "s"}${low ? " (few votes)" : ""}\n` +
+          `${fmt(s.x)}, ${fmt(s.y)}\nCircle holds the ${s.inside} ${g.toLowerCase()} votes nearest the average`;
+      }
+    }
+    if (mode === "all" || small) {
+      const all = spread(votes);
+      el("circle", { cx: px(all.x), cy: py(all.y), r: all.r * unit, fill: css("--spread"), stroke: css("--spread-line"), "stroke-width": 1.6 }, plot);
+      const g = el("g", {}, plot), ring = small ? 6 : 8, x = px(all.x), y = py(all.y);
+      el("circle", { cx: x, cy: y, r: ring + 2, fill: css("--chart") }, g);
+      el("circle", { cx: x, cy: y, r: ring, fill: "none", stroke: css("--ink"), "stroke-width": 2 }, g);
+      el("line", { x1: x - ring - 4, y1: y, x2: x + ring + 4, y2: y, stroke: css("--ink"), "stroke-width": 1.6 }, g);
+      el("line", { x1: x, y1: y - ring - 4, x2: x, y2: y + ring + 4, stroke: css("--ink"), "stroke-width": 1.6 }, g);
+      g.dataset.tip = `Everyone, ${all.n} votes\nAverage ${fmt(all.x)}, ${fmt(all.y)}\nCircle holds the ${all.inside} votes nearest the average`;
+    }
+    return svg;
+  }
+
+  function renderTabs() {
+    const nav = document.getElementById("tabs");
+    nav.replaceChildren();
+    const make = (key, label) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.textContent = label; b.setAttribute("aria-current", String(state.view === key));
+      b.addEventListener("click", () => go(key));
+      nav.appendChild(b);
+    };
+    make("overview", "All boards");
+    data.boards.forEach(b => make(b.id.toLowerCase(), b.id));
+  }
+  function renderOverview() {
+    const view = document.getElementById("overview-view");
+    view.replaceChildren();
+    for (const [tier, spec] of Object.entries(data.tiers)) {
+      const head = document.createElement("div");
+      head.className = "tier-head";
+      const dot = document.createElement("span"); dot.className = "badge"; dot.style.background = spec.colour; dot.setAttribute("aria-hidden", "true");
+      const h = document.createElement("h2"); h.textContent = spec.label;
+      head.append(dot, h);
+      const grid = document.createElement("div"); grid.className = "grid";
+      for (const b of data.boards.filter(b => b.tier === tier)) {
+        const card = document.createElement("button");
+        card.type = "button"; card.className = "card";
+        const s = spread(votesOf(b));
+        const title = document.createElement("h3");
+        const id = document.createElement("b"); id.textContent = b.id;
+        title.append(id, ` · ${b.short}`);
+        const meta = document.createElement("div"); meta.className = "meta";
+        meta.textContent = `${b.votes.length} votes · the circle holds the ${s.inside} nearest the average`;
+        card.append(title, drawBoard(b, "preview"), meta);
+        card.addEventListener("click", () => go(b.id.toLowerCase()));
+        grid.appendChild(card);
+      }
+      const section = document.createElement("div");
+      section.append(head, grid);
+      view.appendChild(section);
+    }
+  }
+  function renderBoard(board) {
+    const head = document.getElementById("board-head");
+    head.replaceChildren(badge(board), `${data.tiers[board.tier].label} · ${board.votes.length} votes`);
+    writeWithInsertions(document.getElementById("board-question"), board.question);
+    const sub = document.getElementById("board-subtitle");
+    writeWithInsertions(sub, board.subtitle || "");
+    sub.hidden = !board.subtitle;
+    const notes = document.getElementById("board-notes");
+    notes.replaceChildren();
+    for (const [label, text] of [["On the board", board.board_notes], ["Note", board.editor_note]]) {
+      if (!text) continue;
+      const p = document.createElement("p"); const b = document.createElement("b"); b.textContent = label;
+      p.append(b, text); notes.appendChild(p);
+    }
+    notes.hidden = !notes.children.length;
+    const photo = document.getElementById("board-photo");
+    photo.src = data.photo_urls?.[board.id] ?? `photos/board-${board.id}.jpg`;
+    photo.alt = `Photo of the ${board.id} board with its stickers`;
+    const mode = document.querySelector('input[name="mode"]:checked').value;
+    const box = document.getElementById("chart-box");
+    box.replaceChildren(drawBoard(board, mode));
+    attachTips(box);
+
+    const legend = document.getElementById("legend");
+    legend.replaceChildren();
+    for (const g of GROUPS) {
+      const n = board.votes.filter(v => v.group === g).length;
+      if (!n) continue;
+      const chip = document.createElement("button");
+      chip.type = "button"; chip.className = "chip"; chip.setAttribute("aria-pressed", String(!hidden.has(g)));
+      chip.disabled = mode === "all";
+      chip.title = mode === "all" ? "Everyone's average always uses every vote" : `Show or hide ${g.toLowerCase()} votes`;
+      const icon = el("svg", { width: 18, height: 18, viewBox: "0 0 18 18", "aria-hidden": "true" });
+      drawShape(icon, SHAPE[g], 9, 9, 6, { fill: css(MEAN_VAR[g]), stroke: css("--ink"), "stroke-width": 1 });
+      chip.appendChild(icon);
+      chip.append(`${g} · ${n}`);
+      chip.addEventListener("click", () => { hidden.has(g) ? hidden.delete(g) : hidden.add(g); renderBoard(board); });
+      legend.appendChild(chip);
+    }
+
+    const shown = votesOf(board);
+    const rows = GROUPS.map(g => {
+      const gv = shown.filter(v => v.group === g);
+      if (!gv.length) return "";
+      return `<tr><td>${g}</td><td>${gv.length}</td><td>${fmt(mean(gv.map(v => v.x)))}</td><td>${fmt(mean(gv.map(v => v.y)))}</td></tr>`;
+    }).join("");
+    const s = spread(shown);
+    const table = document.getElementById("means-table");
+    table.innerHTML = `<thead><tr><th>Role</th><th>Votes</th><th></th><th></th></tr></thead>` +
+      `<tbody>${rows}<tr><td><b>Everyone</b></td><td>${s.n}</td><td>${fmt(s.x)}</td><td>${fmt(s.y)}</td></tr></tbody>`;
+    const ths = table.querySelectorAll("th");
+    const suffix = state.adjust ? " (adjusted)" : "";
+    ths[2].textContent = `→ ${board.x[1]}${suffix}`; ths[3].textContent = `↑ ${board.y[1]}${suffix}`;
+  }
+  function attachTips(box) {
+    let tip = null;
+    const show = (target, evt) => {
+      const msg = target.closest("[data-tip]")?.dataset.tip;
+      if (!msg) { tip?.remove(); tip = null; return; }
+      if (!tip) { tip = document.createElement("div"); tip.className = "tip"; box.appendChild(tip); }
+      tip.textContent = ""; msg.split("\n").forEach((line, i) => { if (i) tip.appendChild(document.createElement("br")); tip.append(line); });
+      const r = box.getBoundingClientRect();
+      tip.style.left = `${evt.clientX - r.left}px`; tip.style.top = `${evt.clientY - r.top}px`;
+    };
+    box.addEventListener("pointermove", e => show(e.target, e));
+    box.addEventListener("pointerleave", () => { tip?.remove(); tip = null; });
+  }
+  function go(key) {
+    state.view = key;
+    try { history.replaceState(null, "", "#" + key); } catch (e) {}
+    render();
+    window.scrollTo({ top: 0 });
+  }
+  function render() {
+    renderTabs();
+    document.getElementById("adjust-banner").hidden = !state.adjust;
+    const board = data.boards.find(b => b.id.toLowerCase() === state.view);
+    document.getElementById("overview-view").hidden = !!board;
+    document.getElementById("board-view").hidden = !board;
+    board ? renderBoard(board) : renderOverview();
+  }
+  document.querySelectorAll('input[name="mode"]').forEach(input => input.addEventListener("change", render));
+  document.getElementById("adjust").addEventListener("change", e => { state.adjust = e.target.checked; render(); });
+  // Remember, per viewer, whether the bias note is collapsed.
+  const note = document.getElementById("adjust-banner");
+  try { if (localStorage.getItem("wall-bias-note") === "closed") note.open = false; } catch (e) {}
+  note.addEventListener("toggle", () => { try { localStorage.setItem("wall-bias-note", note.open ? "open" : "closed"); } catch (e) {} });
+  matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", render);
+  new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  document.fonts?.ready?.then(render);
+
+  const initial = (location.hash || "").slice(1).toLowerCase();
+  if (data.boards.some(b => b.id.toLowerCase() === initial)) state.view = initial;
+  render();
+})();
+</script>
+</body>
+</html>
