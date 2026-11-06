@@ -1,0 +1,1638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="referrer" content="no-referrer">
+<title>Where We Stand on Stabilization — The Global Risk and Stabilization Summit</title>
+<link rel="icon" href="/assets/favicon.ico?v=c302b58f" sizes="any">
+<meta name="description" content="A three-minute explainer: why warming is speeding up, the risk that remains after cutting emissions and adapting, and the young field working on Earth system stabilization.">
+<!--
+  Exported from the CEF research repo (analysis/deliverable-assets/outlier-stabilization-explainer.html).
+  Site copy: fonts load from the site's own font files instead of being embedded.
+
+  Built from tools/scroll-explainer/template.html. Zones 1–5 are this piece;
+  zone 6 (the engine) is the template's, unchanged. Fonts are the
+  globalstabilization.org typefaces, embedded so the file stays self-contained.
+-->
+<style>
+/* The site's own web fonts: Dirk Light, OT Scholar, NewEdge 666 */
+@font-face { font-family: "Dirk"; font-weight: 300; font-style: normal; font-display: block; src: url(/assets/fonts/Dirk-Light.woff2?v=7bca59de) format("woff2"); }
+@font-face { font-family: "OT Scholar"; font-weight: 400; font-style: normal; font-display: block; src: url(/assets/fonts/OTScholar-Book.woff2?v=773ebd05) format("woff2"); }
+@font-face { font-family: "OT Scholar"; font-weight: 400; font-style: italic; font-display: block; src: url(/assets/fonts/OTScholar-BookItalic.woff2?v=5bf3edfc) format("woff2"); }
+@font-face { font-family: "NewEdge 666"; font-weight: 400; font-style: normal; font-display: block; src: url(/assets/fonts/NewEdge666-RegularRounded.woff2?v=f5d55f0e) format("woff2"); }
+@font-face { font-family: "NewEdge 666"; font-weight: 800; font-style: normal; font-display: block; src: url(/assets/fonts/NewEdge666-UltraBoldRounded.woff2?v=48187657) format("woff2"); }
+
+/* ======================================================================
+   1. THEME TOKENS — colors from The Gap; type from globalstabilization.org.
+   ====================================================================== */
+:root {
+  --ex-bg:              #070b16;
+  --ex-surface:         rgba(12, 18, 34, 0.74);
+  --ex-surface-border:  rgba(255, 255, 255, 0.12);
+  --ex-text:            #e8ecf4;
+  --ex-text-muted:      #97a0b5;
+  --ex-text-faint:      #5a6478;
+  --ex-accent:          #2dd4bf;
+  --ex-accent-2:        #f59e0b;
+  --ex-accent-3:        #ef4444;
+  --ex-gradient:        linear-gradient(100deg, #fbbf24 0%, #f97316 45%, #ef4444 100%);
+  --ex-glow:            rgba(45, 212, 191, 0.10);
+  --ex-glow-2:          rgba(245, 158, 11, 0.08);
+  --ex-particle:        251, 191, 36;
+  --ex-font-body:       "OT Scholar", Georgia, serif;
+  --ex-font-display:    Dirk, Georgia, serif;
+  --ex-font-ui:         "NewEdge 666", "Helvetica Neue", Arial, sans-serif;
+  --ex-radius:          14px;
+  --ex-shadow-text:     0 1px 4px rgba(0, 0, 0, 0.7), 0 0 24px rgba(0, 0, 0, 0.7);
+}
+
+/* ======================================================================
+   2. LAYOUT — structure only. References tokens; never raw colors.
+   ====================================================================== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: auto; }
+body {
+  background: var(--ex-bg); color: var(--ex-text);
+  font-family: var(--ex-font-body); overflow-x: hidden;
+}
+
+#track { position: relative; }
+#stage { position: fixed; inset: 0; height: 100vh; height: 100dvh; overflow: hidden; }
+button { touch-action: manipulation; -webkit-tap-highlight-color: transparent; }
+
+#backdrop {
+  position: absolute; inset: 0; opacity: 0; pointer-events: none;
+  background:
+    radial-gradient(1100px 700px at 78% 18%, var(--ex-glow), transparent 65%),
+    radial-gradient(900px 600px at 30% 90%, var(--ex-glow-2), transparent 60%);
+}
+#vignette {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(120% 90% at 50% 45%, transparent 55%, rgba(0,0,0,0.5) 100%);
+}
+#particles { position: absolute; inset: 0; pointer-events: none; }
+#scene { position: absolute; inset: 0; width: 100%; height: 100%; }
+svg text { font-family: var(--ex-font-ui); }
+g.note text { font-family: var(--ex-font-body); }   /* labels grouped under one .note keep the serif italic */
+
+.world-label { fill: var(--ex-text); font-weight: 800; }
+.axis-label  { fill: var(--ex-text-faint); font-size: 18px; }
+.note        { font-family: var(--ex-font-body); font-style: italic; }
+.drawn       { fill: none; stroke-linecap: round; }
+.bar         { fill: none; stroke-linecap: butt; }
+
+.pulse-ring {
+  fill: none; stroke: var(--ex-text); stroke-width: 2; opacity: 0.8;
+  transform-origin: center; transform-box: fill-box;
+  animation: pulse 2.4s ease-out infinite;
+}
+@keyframes pulse { 0% { transform: scale(0.6); opacity: .8; } 100% { transform: scale(3.4); opacity: 0; } }
+
+/* ---------- HUD ---------- */
+#hud { position: absolute; inset: 0; pointer-events: none; z-index: 5; }
+#progressBar { position: absolute; top: 0; left: 0; height: 3px; width: 0%; background: var(--ex-gradient); }
+.beat-tick { position: absolute; top: 0; width: 2px; height: 6px; background: var(--ex-surface-border); }
+#brand {
+  position: absolute; top: 18px; left: 24px; font-family: var(--ex-font-ui);
+  font-size: 12px; font-weight: 800; letter-spacing: .26em; color: var(--ex-text-muted);
+}
+#brand span { color: var(--ex-accent); }
+#readout {
+  position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+  text-align: center; font-family: var(--ex-font-ui); font-variant-numeric: tabular-nums;
+  text-shadow: var(--ex-shadow-text); white-space: nowrap;
+}
+#readout .primary { font-size: 28px; font-weight: 800; letter-spacing: .02em; line-height: 1.1; }
+#readout .secondary {
+  font-size: 12px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; margin-top: 4px;
+  background: var(--ex-gradient); -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.pill {
+  pointer-events: auto; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--ex-surface); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--ex-surface-border); border-radius: 999px;
+  color: var(--ex-text); font: 400 13px var(--ex-font-ui); letter-spacing: .06em;
+  padding: 11px 18px 7px; transition: border-color .2s, color .2s;
+}
+.pill:hover { border-color: var(--ex-text-muted); }
+#playBtn { position: absolute; top: 16px; right: 20px; }
+#playBtn .ico { font-size: 11px; }
+#hint {
+  position: absolute; bottom: 26px; left: 50%; transform: translateX(-50%); font-family: var(--ex-font-ui);
+  font-size: 12px; letter-spacing: .2em; color: var(--ex-text-muted);
+  text-transform: uppercase; text-align: center; line-height: 1.8; white-space: nowrap;
+  animation: bob 2s ease-in-out infinite;
+}
+@keyframes bob { 0%,100% { transform: translate(-50%,0); } 50% { transform: translate(-50%,8px); } }
+
+/* ---------- Captions ---------- */
+.cap {
+  --k: 0; --pos: translate(0, 0);
+  position: absolute; z-index: 4; pointer-events: none;
+  opacity: var(--k);
+  transform: var(--pos) translateY(calc((1 - var(--k)) * 14px));
+}
+.cap .kicker {
+  font-family: var(--ex-font-ui); font-size: 11px; font-weight: 800; letter-spacing: .24em;
+  text-transform: uppercase; color: var(--ex-accent-2); margin-bottom: 12px;
+}
+.cap h2 {
+  font-family: var(--ex-font-display); font-size: clamp(26px, 3.2vw, 42px); font-weight: 300;
+  letter-spacing: -.01em; line-height: 1.12; margin-bottom: 12px;
+}
+.cap h2 em { font-family: var(--ex-font-body); font-style: italic; font-weight: 400; color: var(--ex-accent); }
+.cap h2, .cap p { text-shadow: var(--ex-shadow-text); }
+.cap p { font-size: clamp(15px, 1.35vw, 18px); color: var(--ex-text-muted); line-height: 1.55; }
+.cap p strong { color: var(--ex-text); font-weight: 400; }
+.cap p a { color: var(--ex-accent); text-decoration: none; border-bottom: 1px solid rgba(45, 212, 191, .4); }
+
+.cap-center { --pos: translate(-50%, -50%); left: 50%; top: 42%; text-align: center; width: min(760px, 88vw); }
+.cap-side   {
+  --pos: translateY(-50%); left: 4.5%; top: 52%; width: min(390px, 40vw);
+  background: var(--ex-surface); border: 1px solid var(--ex-surface-border);
+  border-radius: var(--ex-radius); padding: 22px 24px 20px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
+.cap-side p:last-child, .cap-side h2:last-child { margin-bottom: 0; }
+
+.hero-title { font-size: clamp(40px, 6.4vw, 84px) !important; line-height: 1.04 !important; }
+.ex-short { display: none; }
+
+/* ---------- Motion that runs on its own clock (not scroll) ---------- */
+.cloud-drift { animation: cloudDrift 26s ease-in-out infinite alternate; }
+@keyframes cloudDrift { from { transform: translateX(-34px); } to { transform: translateX(34px); } }
+.cloud-drift-near { animation: cloudDriftNear 26s ease-in-out infinite alternate; }
+@keyframes cloudDriftNear { from { transform: translateX(-8px); } to { transform: translateX(8px); } }
+#earthRise { animation: earthRise 2.6s cubic-bezier(.16, 1, .3, 1) both; }
+@keyframes earthRise { from { opacity: 0; transform: translateY(70px); } to { opacity: 1; transform: none; } }
+.hero-title { animation: heroFocus 1.6s cubic-bezier(.2, .7, .2, 1) .25s both; }
+@keyframes heroFocus { from { opacity: 0; filter: blur(12px); transform: translateY(10px); } to { opacity: 1; filter: none; transform: none; } }
+[data-caption="intro"] .kicker { animation: fadeIn 1s ease .1s both; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+#tail { animation: breathe 3.4s ease-in-out infinite; }
+@keyframes breathe { 0%, 100% { fill-opacity: .9; } 50% { fill-opacity: .55; } }
+.program { opacity: 0; transform: translateY(12px); transition: opacity .7s ease, transform .9s cubic-bezier(.16, 1, .3, 1); }
+#finale.in .program { opacity: 1; transform: none; }
+#finale.in .program:nth-child(2) { transition-delay: .09s; }
+#finale.in .program:nth-child(3) { transition-delay: .18s; }
+#finale.in .program:nth-child(4) { transition-delay: .27s; }
+#finale.in .program:nth-child(5) { transition-delay: .36s; }
+#finale.in .program:nth-child(6) { transition-delay: .45s; }
+#finale.in .program:nth-child(7) { transition-delay: .54s; }
+#finale.in .program:nth-child(8) { transition-delay: .63s; }
+#finale.in .program:nth-child(9) { transition-delay: .72s; }
+#finale.in .program:nth-child(10) { transition-delay: .81s; }
+#finale.in .program-group + .program-group .program { transition-delay: calc(.25s + var(--i, 0) * .07s); }
+/* Portrait phones and tablets see the world at about half scale: lift small scene labels. */
+@media (max-aspect-ratio: 105/100) and (max-width: 900px) {
+  .axis-label, .ph { font-size: 25px; }
+  .ph-node { font-size: 24px; }
+  .ph-small { font-size: 19px; }
+  .ph-bar { font-size: 20px; }
+  .ph-band { font-size: 22px; }
+  .ex-long { display: none; }       /* short example names under the curve on a phone */
+  .ex-short { display: inline; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .cloud-drift, .cloud-drift-near, #earthRise, .hero-title, #tail, [data-caption="intro"] .kicker { animation: none; }
+  .program { transition: none; }
+}
+#heroPlay {
+  margin: 36px auto 0; width: 68px; height: 68px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--ex-surface); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+  border: 1.5px solid var(--ex-surface-border); color: var(--ex-text); cursor: pointer;
+  font-size: 20px; padding-left: 5px; pointer-events: auto;
+  opacity: 0; transform: scale(.85);
+  transition: opacity .7s ease, transform .7s ease, border-color .2s;
+}
+#heroPlay.show { opacity: 1; transform: scale(1); animation: heroPulse 2.4s ease-out infinite; }
+#heroPlay.show:hover { border-color: var(--ex-text-muted); }
+#heroPlay.gone { opacity: 0 !important; transform: scale(.8); pointer-events: none; animation: none; }
+@keyframes heroPulse {
+  0% { box-shadow: 0 0 0 0 var(--ex-glow); }
+  70%, 100% { box-shadow: 0 0 0 20px transparent; }
+}
+
+/* ---------- Finale ---------- */
+#dim {
+  position: absolute; inset: 0; opacity: 0; pointer-events: none; z-index: 6;
+  background: radial-gradient(900px 500px at 50% 60%, rgba(0,0,0,0.85), rgba(0,0,0,0.93));
+}
+#finale {
+  position: absolute; inset: 0; z-index: 7; opacity: 0; pointer-events: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 0 24px 60px;
+}
+#finale .kicker { font-family: var(--ex-font-ui); font-size: 11px; font-weight: 800; letter-spacing: .26em; text-transform: uppercase; color: var(--ex-text-muted); margin-bottom: 22px; }
+#finale .question {
+  font-family: var(--ex-font-display); font-weight: 300;
+  font-size: clamp(34px, 6vw, 68px); line-height: 1.1; max-width: 900px; margin-bottom: 30px;
+}
+#finale .question .highlight { background: var(--ex-gradient); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+.program-group { margin-bottom: 18px; }
+.group-label { font-family: var(--ex-font-ui); font-size: 10px; font-weight: 800; letter-spacing: .22em; text-transform: uppercase; color: var(--ex-accent); margin-bottom: 8px; }
+.programs { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; max-width: 1100px; }
+#replay { margin-top: 12px; }
+#finale { justify-content: safe center; overflow-y: auto; padding: 44px 24px 24px; }
+#finale .kicker { margin-bottom: 12px; }
+#finale .question { font-size: clamp(30px, 4.2vw, 50px); margin-bottom: 12px; }
+#finale .landing { font-size: clamp(14px, 1.3vw, 16px); max-width: 560px; margin: 0 0 26px; }
+/* organizations: balanced columns of named groups, links underlined */
+.org-grid { columns: 3 200px; column-gap: 48px; width: min(1080px, 100%); text-align: left; }
+.org-group { break-inside: avoid; margin: 0 0 26px; opacity: 0; transform: translateY(10px); transition: opacity .7s ease, transform .9s cubic-bezier(.16, 1, .3, 1); }
+#finale.in .org-group { opacity: 1; transform: none; }
+#finale.in .org-group:nth-child(2) { transition-delay: .08s; } #finale.in .org-group:nth-child(3) { transition-delay: .16s; }
+#finale.in .org-group:nth-child(4) { transition-delay: .24s; } #finale.in .org-group:nth-child(5) { transition-delay: .32s; }
+#finale.in .org-group:nth-child(6) { transition-delay: .40s; } #finale.in .org-group:nth-child(7) { transition-delay: .48s; }
+.org-group .group-label { font-size: 12.5px; letter-spacing: .18em; margin-bottom: 8px; line-height: 1.4; }
+.org-group ul { list-style: none; margin: 0; padding: 0; }
+.org-group li { font: 400 17px/1.7 var(--ex-font-ui); letter-spacing: .02em; color: var(--ex-text-muted); }
+.org-group li a { color: var(--ex-text); text-decoration: none; border-bottom: 1px solid rgba(45, 212, 191, .4); }
+.org-group li a:hover { color: var(--ex-accent); border-bottom-color: var(--ex-accent); }
+.finale-actions { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; align-items: center; margin: 10px 0 16px; }
+.finale-actions .pill, .finale-actions #replay { margin: 0; line-height: 1.2; font-size: 15px; padding: 12.8px 22px 9.2px; }
+.pill.primary { background: var(--ex-accent); color: #070b16; border-color: var(--ex-accent); font-weight: 800; text-decoration: none; }
+.pill.primary:hover { filter: brightness(1.08); }
+#finale .reading-line { font-size: 14.5px; }
+#finale #sources { position: static; transform: none; margin: 14px auto 0; width: min(760px, 100%); font: 400 11px/1.6 var(--ex-font-ui); letter-spacing: .02em; color: var(--ex-text-faint); }
+.program {
+  background: var(--ex-surface); border: 1px solid var(--ex-surface-border); border-radius: var(--ex-radius);
+  padding: 10px 12px; text-align: left; min-width: 0;
+}
+.program .name { font-family: var(--ex-font-ui); font-weight: 800; font-size: 15px; letter-spacing: .04em; margin-bottom: 3px; }
+.program .name a, .reading-line a { color: var(--ex-text); text-decoration: none; }
+.program .name a:hover, .reading-line a:hover { color: var(--ex-accent); }
+.reading-line { font: 400 13px var(--ex-font-ui); color: var(--ex-text-muted); letter-spacing: .04em; margin: 4px 0 2px; }
+.reading-line a { border-bottom: 1px solid var(--ex-surface-border); }
+.program .what { font-size: 12.5px; line-height: 1.35; color: var(--ex-text-muted); width: 128px; }
+#finale .landing { font-size: clamp(15px, 1.6vw, 18px); color: var(--ex-text-muted); max-width: 620px; line-height: 1.5; margin: -10px 0 26px; }
+#sources {
+  position: absolute; bottom: 14px; left: 50%; transform: translateX(-50%);
+  width: min(880px, 92vw); font-size: 11px; color: var(--ex-text-faint); line-height: 1.55;
+}
+#sources a { color: var(--ex-text-muted); }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 700px) {
+  .org-grid { column-gap: 22px; }
+  .org-group li { font-size: 15px; line-height: 1.6; }
+  .org-group .group-label { font-size: 10.5px; letter-spacing: .14em; }
+  #brand { display: none; }
+  #readout { left: 18px; transform: none; text-align: left; }
+  #readout .primary { font-size: 22px; }
+  #readout .secondary { font-size: 10px; }
+  #playBtn { top: 12px; right: 12px; min-height: 44px; padding: 10px 16px; }
+  .cap-side { --pos: translate(0, 0); left: 4.5%; top: auto; bottom: calc(5% + env(safe-area-inset-bottom)); width: 91vw; padding: 16px 18px; }
+  .cap h2 { font-size: 25px; }
+  .cap p { font-size: 15px; }
+  .programs { gap: 6px; }
+  .program { min-width: 0; width: auto; padding: 7px 10px; }
+  .program .name { font-size: 13px; margin: 0; }
+  .program .what { display: none; }   /* names only on phones; each still links */
+  .program-group { margin-bottom: 10px; }
+  #finale .question { font-size: 32px; }
+  #finale .question { margin-bottom: 18px; }
+  #finale .landing { font-size: 14px; margin: -4px 0 18px; }
+  #sources { font-size: 9px; }
+  #hint { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div id="track">
+  <div id="stage">
+    <div id="backdrop"></div>
+    <canvas id="particles"></canvas>
+
+    <!-- ==================================================================
+         3. SCENE — world 2400×1600. Regions: A warming chart (left), B Earth
+         and its four systems (center), C impact curve + money (right),
+         D history lanes (bottom left), E the field (bottom right).
+         ================================================================== -->
+    <svg id="scene" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg" role="img"
+         aria-label="Animated explainer: warming, Earth's reflectivity, the impact curve, and the stabilization field">
+      <defs>
+        <radialGradient id="earthFill" cx="38%" cy="34%" r="75%">
+          <stop offset="0%" stop-color="#2b6cb0"/>
+          <stop offset="55%" stop-color="#173a6b"/>
+          <stop offset="100%" stop-color="#0a1830"/>
+        </radialGradient>
+        <radialGradient id="earthGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="70%" stop-color="#2dd4bf" stop-opacity="0.16"/>
+          <stop offset="100%" stop-color="#2dd4bf" stop-opacity="0"/>
+        </radialGradient>
+        <linearGradient id="nightSide" x1="78%" y1="12%" x2="18%" y2="92%">
+          <stop offset="0%" stop-color="#020409" stop-opacity="0"/>
+          <stop offset="52%" stop-color="#020409" stop-opacity="0.08"/>
+          <stop offset="100%" stop-color="#020409" stop-opacity="0.72"/>
+        </linearGradient>
+        <clipPath id="earthClip"><circle cx="1150" cy="520" r="130"/></clipPath>
+        <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="6" result="blur"/>
+          <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+        </filter>
+        <filter id="cloudBlur" x="-20%" y="-50%" width="140%" height="200%"><feGaussianBlur stdDeviation="2.2"/></filter>
+        <filter id="rimBlur" x="-10%" y="-10%" width="120%" height="120%"><feGaussianBlur stdDeviation="3.5"/></filter>
+        <clipPath id="curveClip"><rect x="1680" y="300" width="582" height="460"/></clipPath>
+        <pattern id="dots" x="1450" y="976" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="5" cy="5" r="2.3" fill="#97a0b5"/>
+        </pattern>
+        <pattern id="dotsTeal" x="1450" y="976" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="5" cy="5" r="2.5" fill="#2dd4bf"/>
+        </pattern>
+        <pattern id="dotsWarm" x="1450" y="976" width="10" height="10" patternUnits="userSpaceOnUse">
+          <circle cx="5" cy="5" r="2.3" fill="#f59e0b" fill-opacity=".85"/>
+        </pattern>
+      </defs>
+      <g id="world">
+
+        <!-- ===== A. Warming chart: x = 150 + (year − 1950) × 3.33, y = 700 − °C × 140.6 ===== -->
+        <g id="regionA">
+          <g id="chartAxes" opacity="0">
+            <line x1="150" y1="700" x2="650" y2="700" stroke="#5a6478" stroke-width="1.5"/>
+            <text class="axis-label" x="150" y="732" text-anchor="middle">1950</text>
+            <text class="axis-label" x="317" y="732" text-anchor="middle">2000</text>
+            <text class="axis-label" x="483" y="732" text-anchor="middle">2050</text>
+            <text class="axis-label" x="650" y="732" text-anchor="middle">2100</text>
+          </g>
+          <g id="line15" opacity="0">
+            <line x1="150" y1="489" x2="650" y2="489" stroke="#2dd4bf" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"/>
+            <text x="158" y="478" font-size="20" font-weight="800" fill="#2dd4bf">1.5°C</text>
+          </g>
+          <g id="line2" opacity="0">
+            <line x1="150" y1="419" x2="650" y2="419" stroke="#f59e0b" stroke-opacity=".6" stroke-width="2" stroke-dasharray="6 7"/>
+            <text x="158" y="408" font-size="20" font-weight="800" fill="#f59e0b">2°C</text>
+          </g>
+          <g id="line3" opacity="0">
+            <line x1="150" y1="278" x2="650" y2="278" stroke="#ef4444" stroke-opacity=".55" stroke-width="2" stroke-dasharray="6 7"/>
+            <text x="158" y="267" font-size="20" font-weight="800" fill="#ef4444">3°C · <tspan class="note" font-weight="400" font-size="19">what banks stress-test for</tspan></text>
+          </g>
+          <path id="obsLine" class="drawn" data-stroke="3.5" stroke="#e8ecf4"
+                pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1"
+                d="M150,658 C200,650 240,640 250,637 C285,625 300,605 317,595 C335,580 350,560 367,545 C380,530 392,510 403,496"/>
+          <g id="todayDot" opacity="0">
+            <circle class="pulse-ring" cx="403" cy="496" r="6"/>
+            <circle cx="403" cy="496" r="6" fill="#e8ecf4"/>
+            <text x="414" y="528" font-size="18" fill="#97a0b5">today</text>
+          </g>
+          <!-- outcome bands, in the colors of the keynote deck's "Every increment of warming" slide
+               (pledged, current policies, pre-Paris: 3°C+). Faster warming lifts all three. Illustrative. -->
+          <defs>
+            <clipPath id="clipPledge"><rect id="clipPledgeRect" x="403" y="0" width="0" height="800"/></clipPath>
+            <clipPath id="clipCurrent"><rect id="clipCurrentRect" x="403" y="0" width="0" height="800"/></clipPath>
+            <clipPath id="clipFast"><rect id="clipFastRect" x="403" y="0" width="0" height="800"/></clipPath>
+          </defs>
+          <!-- where the bands were, shown once faster warming lifts them -->
+          <g id="bandGhosts" opacity="0" fill="none" stroke-width="2" stroke-opacity=".9" stroke-dasharray="5 5">
+            <path stroke="#c4606e" d="M403,496 C440,430 520,300 650,138 L650,222 C520,340 440,445 403,496 Z"/><path stroke="#f4b67a" d="M403,496 C450,440 540,350 650,264 L650,334 C540,392 450,452 403,496 Z"/><path stroke="#fcd47a" d="M403,496 C450,455 540,400 650,348 L650,405 C540,440 450,470 403,496 Z"/>
+          </g>
+          <g id="bands">
+            <path clip-path="url(#clipFast)" fill="#c4606e" fill-opacity=".85" d="M403,496 C440,430 520,300 650,138 L650,222 C520,340 440,445 403,496 Z"/>
+            <path clip-path="url(#clipCurrent)" fill="#f4b67a" fill-opacity=".9" d="M403,496 C450,440 540,350 650,264 L650,334 C540,392 450,452 403,496 Z"/>
+            <path clip-path="url(#clipPledge)" fill="#fcd47a" fill-opacity=".85" d="M403,496 C450,455 540,400 650,348 L650,405 C540,440 450,470 403,496 Z"/>
+          </g>
+          <g id="preParisLabel" opacity="0"><text class="note ph" x="662" y="172" font-size="19" fill="#e48a97"><tspan x="662">3°C+, the path</tspan><tspan x="662" dy="1.15em">we were on</tspan><tspan x="662" dy="1.15em">before Paris</tspan></text></g>
+          <g id="fastLabel" opacity="0"><text class="note ph" x="180" y="150" font-size="19" fill="#e48a97"><tspan x="180">if warming speeds up,</tspan><tspan x="180" dy="1.15em">every path runs hotter ↑</tspan></text></g>
+          <g id="projLabel" opacity="0"><text class="note ph" x="662" y="306" font-size="19" fill="#f4b67a">our current path</text></g>
+          <g id="pledgeLabel" opacity="0"><text class="note ph" x="662" y="384" font-size="19" fill="#fcd47a">pledges</text></g>
+        </g>
+
+        <!-- ===== B. Earth, sunlight, and the four systems (center 1150,520) ===== -->
+        <g id="regionB">
+          <!-- the far half of the satellite's orbit, drawn before the globe so the globe hides it -->
+          <g id="orbitBack" opacity="0">
+            <path d="M985,520 A165,56 0 0 1 1315,520" transform="rotate(-18 1150 520)" fill="none" stroke="#97a0b5" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 6"/>
+          </g>
+          <g id="earthRise">
+            <circle cx="1150" cy="520" r="175" fill="url(#earthGlow)"/>
+            <circle cx="1150" cy="520" r="130" fill="url(#earthFill)"/>
+            <g clip-path="url(#earthClip)">
+              <path id="iceCap" fill="#eef4fb" d="M1020,330 L1280,330 L1280,413.5 q-13,-6 -26,0 t-26,0 t-26,0 t-26,0 t-26,0 t-26,0 t-26,0 t-26,0 t-26,0 t-26,0 Z"/>
+              <g id="clouds" fill="#f1f5f9" filter="url(#cloudBlur)">
+                <g class="cloud-drift">
+                  <path d="M1060,470 q20,-14 46,-6 q22,-10 40,4 q-8,10 -34,9 q-30,6 -52,-7z"/>
+                  <path d="M1170,500 q26,-12 58,-4 q24,-6 36,8 q-18,12 -50,8 q-28,4 -44,-12z"/>
+                  <path d="M1090,560 q30,-10 62,0 q-10,12 -36,11 q-20,2 -26,-11z"/>
+                  <path d="M1196,590 q22,-8 50,0 q14,2 20,10 q-24,8 -48,4 q-18,-2 -22,-14z"/>
+                  <path d="M1040,520 q14,-8 34,-3 q-6,8 -20,8z"/>
+                  <path d="M1110,620 q26,-8 52,0 q-14,10 -32,9z"/>
+                  <path d="M1250,440 q14,-6 30,0 q-8,6 -22,6z"/>
+                </g>
+              </g>
+              <!-- the bright clouds rays D and E bounce off (beats 2–3): they rise with the globe and drift in
+                   step with the other clouds, over a shorter range so they stay under their rays. D thins
+                   away as Earth darkens; E stays, so two reflections remain at the end. -->
+              <g class="cloud-drift-near"><path id="cloudE" fill="#f1f5f9" filter="url(#cloudBlur)" d="M1234,470 q14,-10 30,-6 q12,-4 22,6 q-6,10 -24,9 q-18,3 -28,-9z"/></g>
+              <g class="cloud-drift-near"><path id="cloudD" fill="#f1f5f9" filter="url(#cloudBlur)" d="M1214,440 q14,-12 34,-8 q16,-6 24,6 q-6,12 -26,11 q-22,4 -32,-9z"/></g>
+              <!-- night side: the sun is up and to the right -->
+              <circle cx="1150" cy="520" r="130" fill="url(#nightSide)"/>
+            </g>
+            <circle id="earthShade" cx="1150" cy="520" r="130" fill="#020409" fill-opacity=".42" opacity="0"/>
+            <circle cx="1150" cy="520" r="133" fill="none" stroke="#7dd3fc" stroke-opacity=".28" stroke-width="7" filter="url(#rimBlur)"/>
+            <circle cx="1150" cy="520" r="130" fill="none" stroke="#7dd3fc" stroke-opacity=".4" stroke-width="1.5"/>
+          </g>
+
+          <!-- sunlight (beats 2–3). Six rays, evenly spaced as seen from the sun. Ice and clouds
+               scatter light back toward the sun; open ocean absorbs it (warm glow). A hits the edge of
+               the ice cap and D a bright cloud: as the cap shrinks and the cloud thins, both give way to
+               absorption, leaving B (ice near the pole) and E (a lasting cloud) reflecting. Each reflected arrow starts
+               where its incoming ray lands, making a V at the bright surface, and is drawn longer. -->
+          <g id="sunArrows">
+            <g fill="#fbbf24">
+              <path id="rayIn1" class="drawn" stroke="#fbbf24" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1169.8,305.3 L1117.5,384.7"/>
+              <path id="rayIn2" class="drawn" stroke="#fbbf24" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1225.8,299.9 L1173.5,379.3"/>
+              <path id="rayIn3" class="drawn" stroke="#fbbf24" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1269.6,313.5 L1217.3,392.8"/>
+              <path id="rayIn4" class="drawn" stroke="#fbbf24" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1304.7,340.0 L1252.5,419.3"/>
+              <path id="rayIn5" class="drawn" stroke="#fbbf24" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1330.6,380.5 L1278.3,459.8"/>
+              <path id="rayIn6" class="drawn" stroke="#fbbf24" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1338.5,448.4 L1286.2,527.7"/>
+              <g id="rayInHeads">
+                <polygon opacity="0" points="1112.0,393.0 1113.3,377.1 1126.2,385.6"/>
+                <polygon opacity="0" points="1168.0,387.6 1169.3,371.7 1182.2,380.2"/>
+                <polygon opacity="0" points="1211.8,401.1 1213.1,385.2 1226.0,393.7"/>
+                <polygon opacity="0" points="1247.0,427.7 1248.2,411.7 1261.1,420.2"/>
+                <polygon opacity="0" points="1272.8,468.2 1274.1,452.2 1287.0,460.7"/>
+                <polygon opacity="0" points="1280.7,536.1 1282.0,520.2 1294.9,528.6"/>
+              </g>
+            </g>
+            <circle id="glowA" cx="1109.8" cy="396.4" r="7" fill="#f97316" filter="url(#softGlow)" opacity="0"/>
+            <circle id="glowG" cx="1209.6" cy="404.5" r="7" fill="#f97316" filter="url(#softGlow)" opacity="0"/>
+            <circle id="glowD" cx="1244.8" cy="431.0" r="7" fill="#f97316" filter="url(#softGlow)" opacity="0"/>
+            <circle id="glowF" cx="1278.5" cy="539.4" r="7" fill="#f97316" filter="url(#softGlow)" opacity="0"/>
+            <g id="rayOutA" fill="#e8ecf4">
+              <path class="drawn rayOutLine" stroke="#e8ecf4" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1112.0,393.0 L1261.5,260.1"/>
+              <polygon class="rayHead" opacity="0" points="1269.0,253.5 1263.6,268.6 1253.4,257.0"/>
+            </g>
+            <g id="rayOutB" fill="#e8ecf4">
+              <path class="drawn rayOutLine" stroke="#e8ecf4" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1168.0,387.6 L1317.5,254.7"/>
+              <polygon class="rayHead" opacity="0" points="1325.0,248.1 1319.6,263.2 1309.4,251.6"/>
+            </g>
+            <g id="rayOutD" fill="#e8ecf4">
+              <path class="drawn rayOutLine" stroke="#e8ecf4" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1247.0,427.7 L1396.5,294.8"/>
+              <polygon class="rayHead" opacity="0" points="1404.0,288.2 1398.6,303.3 1388.4,291.7"/>
+            </g>
+            <g id="rayOutE" fill="#e8ecf4">
+              <path class="drawn rayOutLine" stroke="#e8ecf4" stroke-width="5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1272.8,468.2 L1422.3,335.3"/>
+              <polygon class="rayHead" opacity="0" points="1429.8,328.7 1424.4,343.8 1414.2,332.2"/>
+            </g>
+            <g id="sunLabels" opacity="0">
+              <text data-edge="right" x="1362" y="424" font-size="20" font-weight="800" fill="#fbbf24">Sunlight in</text>
+              <text data-edge="right" x="1290" y="205" font-size="20" font-weight="800" fill="#e8ecf4">Reflected back</text>
+              <text x="1305" y="545" class="note" font-size="20" fill="#f97316">absorbed</text>
+            </g>
+          </g>
+
+          <!-- heat gain bars (beat 3) -->
+          <g id="heatGroup" opacity="0">
+            <text class="ph" x="1392" y="584" text-anchor="middle" font-size="18" fill="#97a0b5">Heat gain</text>
+            <rect x="1380" y="596" width="24" height="114" rx="12" fill="#0c1222" stroke="#97a0b5" stroke-width="2"/>
+            <circle cx="1392" cy="720" r="17" fill="#0c1222" stroke="#97a0b5" stroke-width="2"/>
+            <rect id="thermoFill" x="1385.5" y="666" width="13" height="50" rx="6.5" fill="#ef4444"/>
+            <circle cx="1392" cy="720" r="12" fill="#ef4444"/>
+            <text class="ph-small" x="1392" y="762" text-anchor="middle" font-size="13" fill="#5a6478">NASA CERES satellites</text>
+          </g>
+          <g id="heatX2" opacity="0"><text x="1414" y="628" font-size="24" font-weight="800" fill="#ef4444">×2</text></g>
+
+          <!-- the four systems (beat 4 onward) -->
+          <path id="ring" class="drawn" data-stroke="2" stroke="#97a0b5" stroke-opacity=".7"
+                pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1"
+                d="M1150,290 A230,230 0 1 1 1149.9,290"/>
+          <path id="ringSteady" class="drawn" data-stroke="3" stroke="#2dd4bf"
+                pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1"
+                d="M1150,290 A230,230 0 1 1 1149.9,290"/>
+          <!-- a stress pulse that runs around the ring, flaring each system it reaches (beat 4) -->
+          <circle id="cascadePulse" cx="1150" cy="290" r="9" fill="#ef4444" filter="url(#softGlow)" opacity="0"/>
+          <g id="nodes" opacity="0">
+            <circle class="node" cx="1150" cy="290" r="26" fill="#0c1222" stroke="#ef4444" stroke-width="3"/>
+            <circle class="node" cx="1380" cy="520" r="26" fill="#0c1222" stroke="#ef4444" stroke-width="3"/>
+            <circle class="node" cx="1150" cy="750" r="26" fill="#0c1222" stroke="#ef4444" stroke-width="3"/>
+            <circle class="node" cx="920"  cy="520" r="26" fill="#0c1222" stroke="#ef4444" stroke-width="3"/>
+          </g>
+          <!-- steadied one by one as the teal ring reaches them (beat 9) -->
+          <g fill="#0c1222" stroke="#2dd4bf" stroke-width="3">
+            <circle class="halo" opacity="0" cx="1150" cy="290" r="26"/>
+            <circle class="halo" opacity="0" cx="1380" cy="520" r="26"/>
+            <circle class="halo" opacity="0" cx="1150" cy="750" r="26"/>
+            <circle class="halo" opacity="0" cx="920"  cy="520" r="26"/>
+          </g>
+          <g id="nodeLabels" opacity="0" class="world-label ph-node" font-size="21">
+            <text x="1150" y="248" text-anchor="middle">Arctic &amp; ocean currents</text>
+            <text x="1380" y="578" text-anchor="middle">Ice sheets</text>
+            <text x="1150" y="808" text-anchor="middle">Ecosystems</text>
+            <text x="920"  y="578" text-anchor="middle">Brightness</text>
+          </g>
+          <g id="humanBand" opacity="0">
+            <rect x="890" y="856" width="520" height="46" fill="#0c1222" stroke="#f59e0b" stroke-opacity=".55" stroke-dasharray="5 6"/>
+            <text class="ph-band" x="1150" y="886" text-anchor="middle" font-size="19"><tspan font-weight="800" fill="#f59e0b">Human systems</tspan><tspan class="note" fill="#e8ecf4" dx="10">food · water · migration · institutions</tspan></text>
+          </g>
+
+          <!-- watching (beat 10) -->
+          <g id="orbit" opacity="0">
+            <path d="M1315,520 A165,56 0 0 1 985,520" transform="rotate(-18 1150 520)" fill="none" stroke="#97a0b5" stroke-opacity=".5" stroke-width="1.5" stroke-dasharray="3 6"/>
+          </g>
+          <g id="satellite" opacity="0">
+            <g id="satBody">
+              <rect x="-6" y="-6" width="12" height="12" fill="#e8ecf4"/>
+              <rect x="-26" y="-3" width="16" height="6" fill="#2dd4bf"/>
+              <rect x="10" y="-3" width="16" height="6" fill="#2dd4bf"/>
+            </g>
+          </g>
+          <g id="satTimeline" opacity="0">
+            <path id="satLine" class="bar" stroke="#2dd4bf" stroke-width="8" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M960,930 L1290,930"/>
+            <text class="ph" x="960" y="964" text-anchor="middle" font-size="18" fill="#97a0b5">2000</text>
+            <text class="ph" x="1290" y="964" text-anchor="middle" font-size="18" fill="#97a0b5">2027</text>
+            <text class="ph" x="1125" y="912" text-anchor="middle" font-size="18" fill="#2dd4bf">NASA CERES · Earth's energy budget</text>
+          </g>
+          <g id="satGap" opacity="0">
+            <line x1="1300" y1="930" x2="1400" y2="930" stroke="#ef4444" stroke-width="3" stroke-dasharray="4 7"/>
+            <text class="ph" x="1350" y="912" text-anchor="middle" font-size="18" fill="#ef4444">then?</text>
+          </g>
+
+          <!-- ideas (beats 11–12) -->
+          <g id="ideaReef" opacity="0"><text class="note ph" x="1150" y="834" text-anchor="middle" font-size="19" fill="#2dd4bf">brighter clouds over reefs</text></g>
+          <g id="ideaArctic" opacity="0" class="note ph" font-size="19" fill="#2dd4bf"><text x="1150" y="354" text-anchor="middle">thicker sea ice</text><text x="1150" y="378" text-anchor="middle">frozen permafrost</text></g>
+          <g id="ideaIce" opacity="0" class="note ph" font-size="19" fill="#2dd4bf">
+            <text x="1380" y="604" text-anchor="middle">slower glaciers</text>
+            <text x="1380" y="628" text-anchor="middle">seabed curtains</text>
+          </g>
+          <circle id="brightHalo" opacity="0" cx="1150" cy="520" r="146" fill="none" stroke="#2dd4bf" stroke-width="6" stroke-opacity=".55"/>
+          <g id="reflectMore" opacity="0">
+            <circle cx="920" cy="520" r="26" fill="#2dd4bf" fill-opacity=".35" stroke="#2dd4bf" stroke-width="3"/>
+            <text x="920" y="604" text-anchor="middle" class="note ph" font-size="19" fill="#2dd4bf">reflect a little more?</text>
+          </g>
+        </g>
+
+        <!-- ===== C. Impact distribution (after the summit keynote slide): severity → right, frequency ↑.
+             A century-ago curve sits left of the "adaptable" line; warming pushes it up and right and
+             grows a catastrophic tail; cutting emissions pulls it back; adapting moves the line;
+             a tail remains. The examples mark points along the severity axis. ===== -->
+        <g id="regionC">
+          <g id="curveAxis" opacity="0">
+            <line x1="1680" y1="760" x2="2262" y2="760" stroke="#5a6478" stroke-width="1.5"/>
+            <text class="axis-label" x="1680" y="790">milder</text>
+            <text class="axis-label" data-edge="right" x="2262" y="884" text-anchor="end">more severe →</text>
+            <text class="axis-label" x="1676" y="756" transform="rotate(-90 1676 756)">how often →</text>
+          </g>
+          <g id="example1" class="example" opacity="0" fill="#97a0b5"><line x1="1855" y1="763" x2="1855" y2="775" stroke="#97a0b5" stroke-opacity=".6"/><text class="note" x="1855" y="790" text-anchor="end" font-size="17" transform="rotate(-35 1855 790)">Gulf Coast hurricane</text></g>
+          <g id="example2" class="example" opacity="0" fill="#97a0b5"><line x1="1950" y1="763" x2="1950" y2="775" stroke="#97a0b5" stroke-opacity=".6"/><text class="note" x="1950" y="790" text-anchor="end" font-size="17" transform="rotate(-35 1950 790)">Sahel drought</text></g>
+          <g id="example3" class="example" opacity="0" fill="#97a0b5"><line x1="2040" y1="763" x2="2040" y2="775" stroke="#97a0b5" stroke-opacity=".6"/><text class="note" x="2040" y="790" text-anchor="end" font-size="17" transform="rotate(-35 2040 790)">failed monsoon</text></g>
+          <g id="example4" class="example" opacity="0" fill="#97a0b5"><line x1="2125" y1="763" x2="2125" y2="775" stroke="#97a0b5" stroke-opacity=".6"/><text class="note" x="2125" y="790" text-anchor="end" font-size="17" transform="rotate(-35 2125 790)">reefs lost</text></g>
+          <g id="example5" class="example" opacity="0" fill="#97a0b5"><line x1="2215" y1="763" x2="2215" y2="775" stroke="#97a0b5" stroke-opacity=".6"/><text class="note" x="2215" y="790" text-anchor="end" font-size="17" transform="rotate(-35 2215 790)">AMOC collapse</text></g>
+          <path id="safeFill" opacity="0" fill="#97a0b5" fill-opacity=".10" d="M1700,760 L1700,752.9 L1711,746.0 L1722,734.3 L1733,716.2 L1744,690.5 L1755,657.2 L1766,618.5 L1777,578.5 L1788,543.1 L1799,518.7 L1810,510.0 L1821,518.7 L1832,543.1 L1843,578.5 L1854,618.5 L1865,657.2 L1876,690.5 L1887,716.2 L1898,734.3 L1909,746.0 L1920,752.9 L1931,756.6 L1942,758.5 L1953,759.4 L1964,759.8 L1975,759.9 L1986,760.0 L1997,760.0 L2008,760.0 L2019,760.0 L2030,760.0 L2041,760.0 L2052,760.0 L2063,760.0 L2074,760.0 L2085,760.0 L2096,760.0 L2107,760.0 L2118,760.0 L2129,760.0 L2140,760.0 L2151,760.0 L2162,760.0 L2173,760.0 L2184,760.0 L2195,760.0 L2206,760.0 L2217,760.0 L2228,760.0 L2239,760.0 L2250,760.0 L2250,760 Z"/>
+          <path id="safeCurve" class="drawn" data-stroke="3" stroke="#97a0b5"
+                pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1700,752.9 L1711,746.0 L1722,734.3 L1733,716.2 L1744,690.5 L1755,657.2 L1766,618.5 L1777,578.5 L1788,543.1 L1799,518.7 L1810,510.0 L1821,518.7 L1832,543.1 L1843,578.5 L1854,618.5 L1865,657.2 L1876,690.5 L1887,716.2 L1898,734.3 L1909,746.0 L1920,752.9 L1931,756.6 L1942,758.5 L1953,759.4 L1964,759.8 L1975,759.9 L1986,760.0 L1997,760.0 L2008,760.0 L2019,760.0 L2030,760.0 L2041,760.0 L2052,760.0 L2063,760.0 L2074,760.0 L2085,760.0 L2096,760.0 L2107,760.0 L2118,760.0 L2129,760.0 L2140,760.0 L2151,760.0 L2162,760.0 L2173,760.0 L2184,760.0 L2195,760.0 L2206,760.0 L2217,760.0 L2228,760.0 L2239,760.0 L2250,760.0"/>
+          <g id="safeLabel" opacity="0"><text x="1794" y="500" text-anchor="end" class="note" font-size="19" fill="#97a0b5">a century ago</text></g>
+          <g id="curveMove" opacity="0">
+            <path id="curveFill" fill="#f59e0b" fill-opacity=".10" d="M1700,760 L1700,752.9 L1711,746.0 L1722,734.3 L1733,716.2 L1744,690.5 L1755,657.2 L1766,618.5 L1777,578.5 L1788,543.1 L1799,518.7 L1810,510.0 L1821,518.7 L1832,543.1 L1843,578.5 L1854,618.5 L1865,657.2 L1876,690.5 L1887,716.2 L1898,734.3 L1909,746.0 L1920,752.9 L1931,756.6 L1942,758.5 L1953,759.4 L1964,759.8 L1975,759.9 L1986,760.0 L1997,760.0 L2008,760.0 L2019,760.0 L2030,760.0 L2041,760.0 L2052,760.0 L2063,760.0 L2074,760.0 L2085,760.0 L2096,760.0 L2107,760.0 L2118,760.0 L2129,760.0 L2140,760.0 L2151,760.0 L2162,760.0 L2173,760.0 L2184,760.0 L2195,760.0 L2206,760.0 L2217,760.0 L2228,760.0 L2239,760.0 L2250,760.0 L2250,760 Z"/>
+            <path id="curveLine" fill="none" stroke="#f59e0b" stroke-linecap="round" stroke-linejoin="round" data-stroke="3.5" d="M1700,752.9 L1711,746.0 L1722,734.3 L1733,716.2 L1744,690.5 L1755,657.2 L1766,618.5 L1777,578.5 L1788,543.1 L1799,518.7 L1810,510.0 L1821,518.7 L1832,543.1 L1843,578.5 L1854,618.5 L1865,657.2 L1876,690.5 L1887,716.2 L1898,734.3 L1909,746.0 L1920,752.9 L1931,756.6 L1942,758.5 L1953,759.4 L1964,759.8 L1975,759.9 L1986,760.0 L1997,760.0 L2008,760.0 L2019,760.0 L2030,760.0 L2041,760.0 L2052,760.0 L2063,760.0 L2074,760.0 L2085,760.0 L2096,760.0 L2107,760.0 L2118,760.0 L2129,760.0 L2140,760.0 L2151,760.0 L2162,760.0 L2173,760.0 L2184,760.0 L2195,760.0 L2206,760.0 L2217,760.0 L2228,760.0 L2239,760.0 L2250,760.0"/>
+          </g>
+          <g id="warmLabel" opacity="0"><text x="1866" y="414" text-anchor="end" class="note" font-size="19" fill="#f59e0b">a warmer world</text></g>
+          <g id="cutLabel" opacity="0"><text x="1855" y="462" text-anchor="middle" class="note" font-size="19" fill="#f59e0b">after cuts</text></g>
+          <g id="shiftLabel" opacity="0">
+            <text x="1770" y="400" text-anchor="middle" class="note" font-size="19" fill="#2dd4bf">← fewer emissions</text>
+          </g>
+          <g clip-path="url(#curveClip)">
+            <g id="capacityWall" opacity="0">
+              <rect x="1960" y="372" width="400" height="388" fill="#ef4444" fill-opacity=".06"/>
+              <text x="1974" y="402" class="note" font-size="17" fill="#ef4444" fill-opacity=".85">can't be absorbed</text>
+            </g>
+          </g>
+          <g id="capacity" opacity="0">
+            <line x1="1960" y1="372" x2="1960" y2="760" stroke="#2dd4bf" stroke-width="2.5" stroke-dasharray="7 6"/>
+            <text x="1960" y="356" text-anchor="middle" font-size="19" font-weight="800" fill="#2dd4bf">adaptable with today's systems</text>
+          </g>
+          <path id="tail" opacity="0" fill="#ef4444" fill-opacity=".85"
+                d="M2060,760 L2060,702 L2068,703 L2076,705 L2084,706 L2092,707 L2101,709 L2109,710 L2117,712 L2125,713 L2133,714 L2141,715 L2149,716 L2158,718 L2166,719 L2174,720 L2182,721 L2190,722 L2190,760 Z"/>
+          <g id="tailLabel" opacity="0">
+            <text x="2125" y="690" text-anchor="middle" font-size="22" font-weight="800" fill="#ef4444">the tail</text>
+          </g>
+          <!-- money, to scale: $400B a year vs under $1B in total -->
+          <g id="needLabel" opacity="0"><text x="1700" y="906" font-size="20" fill="#e8ecf4"><tspan font-weight="800">$400B</tspan> <tspan class="note" fill="#97a0b5">needed each year</tspan></text></g>
+          <path id="barNeed" class="bar" stroke="#ef4444" stroke-width="24" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1700,926 L2240,926"/>
+          <g id="haveLabel" opacity="0"><text x="1700" y="978" font-size="20" fill="#e8ecf4"><tspan font-weight="800">under $1B</tspan> <tspan class="note" fill="#97a0b5">pledged to the UN fund, in total</tspan></text></g>
+          <path id="barHave" class="bar" stroke="#2dd4bf" stroke-width="24" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1700,998 L1703,998"/>
+          <g id="haveRing" opacity="0"><circle class="pulse-ring" cx="1702" cy="998" r="12" style="stroke:#2dd4bf"/></g>
+        </g>
+
+        <!-- ===== D. We've seen this before: x = 560 + (year − 1990) × 15 ===== -->
+        <g id="regionD">
+          <!-- lanes sit 130 apart so each title, line and quote read as one group -->
+          <g transform="translate(0 -10)">
+            <g id="lane1Label" opacity="0"><text class="world-label" x="560" y="1062" font-size="29">Adaptation</text></g>
+            <g id="lane1Start" opacity="0">
+              <circle class="pop" cx="590" cy="1090" r="8" fill="#f59e0b"/>
+              <text x="580" y="1128" class="note" font-size="25" fill="#f59e0b">1992 · “a kind of laziness”</text>
+            </g>
+            <path id="lane1Line" class="drawn" data-stroke="3" stroke="#97a0b5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M598,1090 L822,1090"/>
+            <g id="lane1End" opacity="0">
+              <circle class="pop" cx="830" cy="1090" r="8" fill="#2dd4bf"/>
+              <text x="842" y="1074" font-size="24" font-weight="800" fill="#2dd4bf">2008 · essential</text>
+            </g>
+            <path id="lane1Tail" class="drawn" data-stroke="3" stroke="#2dd4bf" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M838,1090 L1100,1090"/>
+          </g>
+
+          <!-- lane 2 -->
+          <g transform="translate(0 20)">
+            <g id="lane2Label" opacity="0"><text class="world-label" x="560" y="1162" font-size="29">Carbon removal</text></g>
+            <g id="lane2Start" opacity="0">
+              <circle class="pop" cx="785" cy="1190" r="8" fill="#f59e0b"/>
+              <text x="775" y="1228" class="note" font-size="25" fill="#f59e0b">2000s · “a fig leaf”</text>
+            </g>
+            <path id="lane2Line" class="drawn" data-stroke="3" stroke="#97a0b5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M793,1190 L972,1190"/>
+            <g id="lane2End" opacity="0">
+              <circle class="pop" cx="980" cy="1190" r="8" fill="#2dd4bf"/>
+              <text x="992" y="1174" font-size="24" font-weight="800" fill="#2dd4bf">2018 · essential</text>
+            </g>
+            <path id="lane2Tail" class="drawn" data-stroke="3" stroke="#2dd4bf" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M988,1190 L1100,1190"/>
+          </g>
+
+          <!-- lane 3 -->
+          <g transform="translate(0 50)">
+            <g id="lane3Label" opacity="0"><text class="world-label" x="560" y="1262" font-size="29">Stabilization</text></g>
+            <g id="lane3Start" opacity="0">
+              <circle class="pop" cx="1010" cy="1290" r="8" fill="#f59e0b"/>
+              <text x="1000" y="1328" class="note" font-size="25" fill="#f59e0b">2020s · “a distraction”</text>
+            </g>
+            <path id="lane3Line" class="drawn" data-stroke="3" stroke="#97a0b5" pathLength="1" stroke-dasharray="1 2" stroke-dashoffset="1" d="M1018,1290 L1092,1290"/>
+            <g id="lane3Next" opacity="0">
+              <line x1="1112" y1="1290" x2="1215" y2="1290" stroke="#2dd4bf" stroke-width="3" stroke-dasharray="3 8" stroke-linecap="round"/>
+              <text x="1220" y="1299" class="note" font-size="25" fill="#2dd4bf">next?</text>
+            </g>
+            <g id="lane3Now" opacity="0">
+              <circle class="pulse-ring" cx="1100" cy="1290" r="8"/>
+              <circle class="pop" cx="1100" cy="1290" r="8" fill="#e8ecf4"/>
+              <text x="1100" y="1272" text-anchor="middle" font-size="24" font-weight="800" fill="#e8ecf4">now</text>
+            </g>
+          </g>
+        </g>
+
+        <!-- ===== E. The field: each dot is a few people; areas to scale (1,000 → ~50,000). Both squares
+             are whole 10-unit tiles from one pattern origin, so every dot sits inside its square. ===== -->
+        <g id="regionE">
+          <g id="bigField" opacity="0">
+            <rect id="bigFieldRect" x="1450" y="1466" width="80" height="80" fill="url(#dotsWarm)"/>
+          </g>
+          <g id="mark2030" opacity="0">
+            <rect x="1450" y="1296" width="250" height="250" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6 5"/>
+          </g>
+          <g id="label2030" opacity="0">
+            <text x="1714" y="1320" font-size="30" font-weight="800" fill="#fbbf24">2030</text>
+            <text x="1714" y="1352" class="note" font-size="22" fill="#97a0b5">10× the funding,</text>
+            <text x="1714" y="1380" class="note" font-size="22" fill="#97a0b5">up to 10× the people</text>
+          </g>
+          <g id="smallField" opacity="0">
+            <rect x="1450" y="1466" width="80" height="80" fill="#070b16"/>
+            <rect x="1450" y="1466" width="80" height="80" fill="url(#dots)"/>
+            <rect x="1450" y="1466" width="80" height="80" fill="none" stroke="#97a0b5" stroke-opacity=".6" stroke-width="1"/>
+          </g>
+          <g id="quarter" opacity="0">
+            <rect x="1450" y="1466" width="40" height="40" fill="#070b16"/>
+            <rect x="1450" y="1466" width="40" height="40" fill="url(#dotsTeal)"/>
+          </g>
+          <g id="fieldLabel1" opacity="0"><text x="1552" y="1512" class="world-label" font-size="24">Fewer than 1,000 people</text></g>
+          <g id="fieldLabel2" opacity="0"><text x="1552" y="1542" class="note" font-size="19" fill="#97a0b5">a few tens of millions of dollars a year</text></g>
+          <g id="reykLabel" opacity="0"><text x="1552" y="1478" font-size="21" font-weight="800" fill="#2dd4bf">250+ met in Reykjavík</text></g>
+          <g id="growLabel1" opacity="0"><text x="1450" y="905" font-size="46" font-weight="800" fill="#e8ecf4">50,000 people by 2035</text></g>
+          <g id="growLabel2" opacity="0"><text x="1450" y="952" class="note" font-size="32" fill="#97a0b5">still under a quarter of 1% of climate spending</text></g>
+        </g>
+      </g>
+    </svg>
+
+    <div id="vignette"></div>
+
+    <!-- ==================================================================
+         4. CAPTIONS + HUD
+         ================================================================== -->
+    <div id="hud">
+      <div id="progressBar"></div>
+      <div id="brand">STABILIZATION <span>●</span></div>
+      <div id="readout">
+        <div class="primary" id="hudPrimary"></div>
+        <div class="secondary" id="hudSecondary"></div>
+      </div>
+      <button id="playBtn" class="pill"><span class="ico">▶</span><span class="lbl">Play</span></button>
+      <div id="hint">Press play — or scroll<br>▼</div>
+    </div>
+
+    <div class="cap cap-center" data-caption="intro">
+      <div class="kicker">A three-minute explainer</div>
+      <h2 class="hero-title">Where we stand on <em>stabilization</em></h2>
+      <span id="introClock" hidden></span>
+      <button id="heroPlay" aria-label="Play">▶</button>
+    </div>
+
+    <div class="cap cap-side" data-caption="b1">
+      <div class="kicker">Where we are</div>
+      <h2>We're heading past 1.5°C.</h2>
+      <p>2°C is slipping too, and every tenth of a degree still matters. Banks already stress-test for 3°C.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b2">
+      <div class="kicker">Where we are</div>
+      <h2>Earth is getting <em>darker.</em></h2>
+      <p>With less bright ice and fewer bright clouds, the planet reflects less sunlight than it did 20 years ago.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b3">
+      <div class="kicker">Where we are</div>
+      <h2>So warming may be speeding up.</h2>
+      <p>The heat Earth gains each year roughly doubled in about 20 years. <a id="sparkLink" href="https://www.sparkclimate.org/explainers/eei-declining-reflectivity.html" target="_blank" rel="noopener">Spark Climate explains the science →</a></p>
+    </div>
+    <div class="cap cap-side" data-caption="b3b">
+      <div class="kicker">Where we are</div>
+      <h2>That could make even this look <em>optimistic.</em></h2>
+      <p>If a darker Earth keeps speeding up warming, today's path runs hotter still.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b4">
+      <div class="kicker">Where we are</div>
+      <h2>Big systems could break down.</h2>
+      <p>The Arctic, ice sheets, ecosystems, the planet's brightness. Each pushes on the others, and people feel it first.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b5">
+      <div class="kicker">The gap</div>
+      <h2>Picture climate impacts as a curve.</h2>
+      <p>This is the climate of a century ago. Most impacts fell left of the line, where warnings, evacuations and insurance absorb the losses.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b5b">
+      <div class="kicker">The gap</div>
+      <h2>Warming pushes it up and to the right.</h2>
+      <p>Severe impacts get more common, and a tail of catastrophic ones appears.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b5c">
+      <div class="kicker">The gap</div>
+      <h2>Cutting emissions and removing carbon pull it back.</h2>
+      <p>We need far more of both. On their own, they can't pull it back far enough.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b6">
+      <div class="kicker">The gap</div>
+      <h2>Adapting moves the line.</h2>
+      <p>Better warnings, defenses and insurance let society absorb more.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b7">
+      <div class="kicker">The gap</div>
+      <h2>But a <em>tail</em> is left.</h2>
+      <p>Even done well, some warming is locked in and tipping points are uncertain. A tail of catastrophic impacts remains.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b8">
+      <div class="kicker">The gap</div>
+      <h2>Today, we pay for it afterward.</h2>
+      <p>The UN calls this tail “loss and damage.” About <strong>$400B a year</strong> is needed. The fund for it has under <strong>$1B</strong> pledged.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b9">
+      <div class="kicker">What we could do</div>
+      <h2>There's another kind of climate work.</h2>
+      <p>Keeping ice sheets, ocean currents and reefs from tipping while emissions fall. It's called <strong>stabilization</strong>, and it doesn't replace cutting emissions.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b10">
+      <div class="kicker">What we could do</div>
+      <h2>It starts with watching.</h2>
+      <p>NASA's CERES satellites have tracked Earth's energy budget for about 25 years. The next instrument launches in 2027. What comes after it is uncertain.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b11">
+      <div class="kicker">What we could do</div>
+      <h2>Then local and regional ideas.</h2>
+      <p>Brighter clouds over a reef in a heatwave. Thicker Arctic sea ice and frozen permafrost. Slower glaciers, and seabed curtains that keep warm water off the ice.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b12">
+      <div class="kicker">What we could do</div>
+      <h2>If Earth reflects less, could we help it reflect <em>more?</em></h2>
+      <p>That would be global, and it raises the hardest questions: side effects, who decides, and what happens if it stops. It starts as research.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b13">
+      <div class="kicker">What we could do</div>
+      <h2>We've seen this before.</h2>
+      <p>In 1992, Al Gore called adaptation “a kind of laziness.” Carbon removal was dismissed as “a fig leaf” for polluters. Both are now essential.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b14">
+      <div class="kicker">What we could do</div>
+      <h2>Stabilization looks like the next one.</h2>
+      <p>The harder the questions, the sooner the research should start.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b15">
+      <div class="kicker">The field</div>
+      <h2>The field is tiny.</h2>
+      <p>Fewer than 1,000 people. A few tens of millions of dollars a year.</p>
+    </div>
+    <div class="cap cap-side" data-caption="b16">
+      <div class="kicker">The field</div>
+      <h2>It's starting to form.</h2>
+      <p>In October, more than 250 people from six continents met in Reykjavík.</p>
+    </div>
+    <div class="cap cap-side" data-caption="grow">
+      <div class="kicker">The field</div>
+      <h2>Where it's going.</h2>
+      <p>By 2030, ten times the funding and up to ten times the people. By 2035, 50,000 people. Even then, it would cost under a quarter of 1% of what the world spends on climate.</p>
+    </div>
+
+    <div id="dim"></div>
+    <div id="finale" data-caption="finale">
+      <div class="kicker">Who's doing the work</div>
+      <div class="question">A field <span class="highlight">taking shape.</span></div>
+      <div class="landing">Patient funding for observation, research and the people who do it. These groups are doing the work.</div>
+      <div class="org-grid">
+        <div class="org-group">
+          <div class="group-label">Building the field</div>
+          <ul>
+            <li><a href="https://arc.renaissancephilanthropy.org/" target="_blank" rel="noopener">ARC</a> · <a href="https://arcinit.substack.com/p/building-a-coalition-for-a-nonlinear" target="_blank" rel="noopener">CEF</a></li>
+            <li><a href="https://www.outlierprojects.org/" target="_blank" rel="noopener">Outlier</a> · <a href="https://www.navigation.org/" target="_blank" rel="noopener">Navigation Fund</a></li>
+            <li>Atlantic Climate Forum</li>
+            <li><a href="https://www.cc-hub.org/" target="_blank" rel="noopener">Climate Hub</a></li>
+            <li>Climate Intervention Futures Initiative</li>
+            <li>Emerging Climate Frontiers</li>
+            <li><a href="https://fas.org/" target="_blank" rel="noopener">FAS</a></li>
+            <li><a href="https://www.thefai.org/" target="_blank" rel="noopener">FAI</a></li>
+          </ul>
+        </div>
+        <div class="org-group">
+          <div class="group-label">Earth's brightness</div>
+          <ul>
+            <li><a href="https://www.sparkclimate.org/" target="_blank" rel="noopener">Spark Climate</a></li>
+            <li><a href="https://arc.renaissancephilanthropy.org/project/tracking-tropospheric-sulfur/" target="_blank" rel="noopener">CLARO</a></li>
+          </ul>
+        </div>
+        <div class="org-group">
+          <div class="group-label">Permafrost and methane</div>
+          <ul>
+            <li><a href="https://www.woodwellclimate.org/" target="_blank" rel="noopener">Woodwell</a></li>
+            <li><a href="https://www.alaskafutureecology.org/" target="_blank" rel="noopener">AFEI</a></li>
+            <li><a href="https://www.edf.org/" target="_blank" rel="noopener">EDF</a></li>
+            <li><a href="https://www.sparkclimate.org/" target="_blank" rel="noopener">Spark Climate</a></li>
+          </ul>
+        </div>
+        <div class="org-group">
+          <div class="group-label">Ice sheets and sea level</div>
+          <ul>
+            <li><a href="https://www.areteglaciers.org/" target="_blank" rel="noopener">Arête</a></li>
+            <li><a href="https://arc.renaissancephilanthropy.org/project/inland-sea-reflooding/" target="_blank" rel="noopener">CFRI</a></li>
+            <li><a href="https://scar.org/" target="_blank" rel="noopener">SCAR</a></li>
+          </ul>
+        </div>
+        <div class="org-group">
+          <div class="group-label">The Arctic and reefs</div>
+          <ul>
+            <li><a href="https://www.arcticstabilization.org/" target="_blank" rel="noopener">ASI</a></li>
+            <li><a href="https://www.operaatioarktis.fi/" target="_blank" rel="noopener">Operaatio Arktis</a></li>
+            <li><a href="https://oceanvisions.org/" target="_blank" rel="noopener">Ocean Visions</a></li>
+            <li><a href="https://gbrrestoration.org/" target="_blank" rel="noopener">RRAP · Southern Cross</a></li>
+          </ul>
+        </div>
+        <div class="org-group">
+          <div class="group-label">Sunlight reflection: research and governance</div>
+          <ul>
+            <li><a href="https://www.reflective.org/" target="_blank" rel="noopener">Reflective</a></li>
+            <li><a href="https://www.edf.org/" target="_blank" rel="noopener">EDF</a></li>
+            <li><a href="https://www.nrdc.org/bio/jackie-wong/ignorance-not-option-why-nrdc-engaging-solar-geoengineering" target="_blank" rel="noopener">NRDC</a></li>
+            <li><a href="https://climateengineering.uchicago.edu/" target="_blank" rel="noopener">CSEI · UChicago</a></li>
+            <li><a href="https://www.sgdeliberation.org/" target="_blank" rel="noopener">DSG</a></li>
+            <li><a href="https://www.degrees.ngo/" target="_blank" rel="noopener">Degrees Initiative</a></li>
+          </ul>
+        </div>
+        <div class="org-group">
+          <div class="group-label">Governance and voice</div>
+          <ul>
+            <li><a href="https://thecvf.org/" target="_blank" rel="noopener">Climate Vulnerable Forum</a></li>
+            <li><a href="https://gna.org.gh/2026/02/scientists-stakeholders-examine-climate-intervention-options-amid-rising-global-temperatures/" target="_blank" rel="noopener">ACIRH</a></li>
+            <li><a href="https://law.ucla.edu/academics/centers/emmett-institute-climate-change-environment" target="_blank" rel="noopener">UCLA Emmett</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="finale-actions">
+        <a class="pill primary" href="https://globalstabilization.org/summit-risk-longform-v1-2026/" target="_blank" rel="noopener">Read the full version →</a>
+        <button id="replay" class="pill">⟲ &nbsp;Replay</button>
+      </div>
+      <div class="reading-line">Read more: <a href="https://arcinit.substack.com/" target="_blank" rel="noopener">ARC on Substack</a> · <a href="https://arcinit.substack.com/p/beasts-of-burden-meet-climate-interventions" target="_blank" rel="noopener">AFEI's permafrost work</a> · <a href="https://globalstabilization.org/" target="_blank" rel="noopener">the Reykjavík summit</a> · <a href="https://legal-planet.org/2026/10/16/these-3-numbers-explain-earth-system-interventions-in-2026/" target="_blank" rel="noopener">Reykjavík in three numbers</a></div>
+      <div id="sources">Sources: UNEP, <em>Limiting Overshoot</em> (2026) · NASA CERES · Fund for Responding to Loss and Damage (April 2026). Charts and scenes are illustrative.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ======================================================================
+   5. CONFIG — written in seconds on an authoring clock, converted to progress.
+   T[i] is when beat i's caption is fully in; MOVE[i] is how long the camera
+   travels into it (0 = same view). Captions fade out before the camera moves,
+   except across the slow pull-backs in HOLD. TRIM removes idle stretches from
+   the authoring clock without renumbering anything.
+   ====================================================================== */
+(() => {
+  // Pacing. Beats are authored on a fixed clock; at load each beat is resized to how long its
+  // caption takes to read (≈ 1.6 s + 0.24 s a word, 4.2–8.5 s) plus its exit move, and everything inside it —
+  // animations and the camera's move — scales with it. More words, longer loiter.
+  const AUTHORED_END = 192, AUTHORED_FINALE_HOLD = 8;
+  let clock = seconds => seconds;   // replaced once the beat table below exists
+  const s = seconds => clock(seconds) / TOTAL;
+  const w = (a, b) => [s(a), s(b)];
+
+  //            b1   b2    b3    b3b   b4    b5    b5b   b5c   b6    b7    b8    b9    b10    b11    b12    b13    b14    b15    b16    grow   finale
+  const T    = [4.5, 13.5, 21.5, 31.5, 40.5, 50.5, 58.5, 66.5, 74.5, 81.5, 89.5, 99.5, 108.5, 117.5, 127.5, 138.5, 146.5, 156.5, 164.5, 174.0, 182.5];
+  const MOVE = [2.4, 2.2,  0,    2.2,  2.6,  2.4,  0,    0,    0,    0,    1.8,  2.4,  1.8,   1.8,   0,     2.4,   7.5,   2.4,   0,     4.0,   0];
+  const VIEW = ['A', 'B1', 'B1', 'A2', 'B2', 'C',  'C',  'C',  'C',  'C',  'C2', 'B2', 'B3',  'B2',  'B2',  'D0',  'D',   'E1',  'E1',  'E2',  'E2'];
+  const HOLD = new Set([16, 19]);                  // b14 and grow: the camera pulls back under the caption
+  const OUT_OVERRIDE = { 18: [171.6, 172.4] };     // b16's caption leaves partway through the field's pull-back
+  const IDS  = ['b1','b2','b3','b3b','b4','b5','b5b','b5c','b6','b7','b8','b9','b10','b11','b12','b13','b14','b15','b16','grow','finale'];
+
+  const wordCount = id => {
+    const caption = document.querySelector(`[data-caption="${id}"]`);
+    const text = caption ? [...caption.querySelectorAll('h2, p')].map(el => el.textContent).join(' ') : '';
+    return text.trim().split(/\s+/).filter(Boolean).length;
+  };
+  // b16's span also carries the field's growth, so it gets extra time to land before the square grows
+  const EXTRA_HOLD = { b16: 2 };
+  // A beat's span also carries the camera's move into the next beat, so that move is added on top
+  // of the reading time (except the slow pull-backs in HOLD, which happen under the next caption).
+  // Reading time: ~0.8 s to find the caption, 250 words a minute for it, and a glance (0.12 s a word)
+  // at scene labels that appear in the beat (SCENE_WORDS, counted from the SVG). The earlier, looser
+  // model is kept as a ceiling so no beat gets longer than it was.
+  const SCENE_WORDS = { b1: 21, b2: 5, b3: 6, b3b: 4, b4: 16, b5: 24, b5b: 6, b5c: 2, b7: 4, b8: 13,
+                        b10: 9, b11: 11, b12: 8, b13: 7, b14: 20, b15: 13, b16: 5, grow: 22 };
+  const movePad = i => HOLD.has(i + 1) ? 0 : (MOVE[i + 1] || 0);
+  const ceilingHold = i => Math.min(8.5, Math.max(4.2, 1.6 + 0.24 * wordCount(IDS[i]))) + 0.8 * movePad(i) + (i === 18 ? 3 : 0);
+  const readingHold = i => Math.min(ceilingHold(i),
+    Math.min(8, Math.max(3.6, 0.8 + 0.25 * wordCount(IDS[i]) + 0.12 * (SCENE_WORDS[IDS[i]] || 0)))
+      + 0.6 * movePad(i) + (EXTRA_HOLD[IDS[i]] || 0));
+  // A camera move into a new view gets its own stretch of the clock and plays at its authored length,
+  // so reading-time compression never rushes a transition. The pull-backs in HOLD stay under their captions.
+  const moves = i => MOVE[i] > 0 && !HOLD.has(i);
+  const anchors = [[0, 0], [T[0], T[0]]];
+  for (let i = 1; i < T.length; i++) {
+    const readEnd = anchors[anchors.length - 1][1] + readingHold(i - 1) - (moves(i) ? 0.6 * MOVE[i] : 0);
+    if (moves(i)) anchors.push([T[i] - MOVE[i], readEnd]);
+    anchors.push([T[i], readEnd + (moves(i) ? MOVE[i] : 0)]);
+  }
+  anchors.push([AUTHORED_END, anchors[anchors.length - 1][1] + AUTHORED_FINALE_HOLD]);
+  clock = seconds => {
+    let i = 0;
+    while (i < anchors.length - 2 && seconds > anchors[i + 1][0]) i++;
+    const [a0, b0] = anchors[i], [a1, b1] = anchors[i + 1];
+    return b0 + (seconds - a0) * (b1 - b0) / (a1 - a0);
+  };
+  const TOTAL = clock(AUTHORED_END);
+
+  // [focusX, focusY, scale] — desktop frames the action right of the caption panel;
+  // phone frames it in the upper half, above the bottom caption.
+  const DRIFT_MAX_FOR_FIT = 0.045;   // the shots' slow push-in, allowed for when fitting
+  const CAMERAS = {
+    hero: { d: [820, 185, 1.6],   p: [1150, 200, 1.2] },
+    A:    { d: [300, 470, 1.8],   p: [480, 690, 0.95] },
+    A2:   { d: [300, 430, 1.75],  p: [480, 690, 0.95] },
+    B1:   { d: [985, 500, 2.0],   p: [1185, 683, 1.15] },
+    B2:   { d: [921, 520, 1.75],  p: [1150, 735, 1.05] },
+    B3:   { d: [900, 600, 1.6],   p: [1150, 800, 1.0] },
+    C:    { d: [1760, 590, 2.0],  p: [1960, 790, 1.1] },
+    C2:   { d: [1744, 700, 1.75], p: [1960, 930, 0.95] },
+    D0:   { d: [700, 1100, 2.8],  p: [800, 1264, 1.2] },
+    D:    { d: [740, 1205, 1.9],  p: [915, 1450, 0.85] },
+    E1:   { d: [1550, 1500, 2.8], p: [1650, 1630, 1.3] },
+    E2:   { d: [1537, 1260, 1.2], p: [1740, 1450, 0.62] },
+  };
+  // Shots: consecutive beats on one view share a slow push-in, so the frame is never
+  // dead still; the camera then travels to the next view. Extra keyframes ride on
+  // beats that share an anchor, so keyboard stops and progress ticks are unchanged.
+  // Wherever the side caption panel shows (wider than 700px), it covers the left of the frame (4.5% + up to 390px).
+  // Fit each view's content (world-x extents) between the panel and the right edge, shrinking only if needed.
+  // Near-square windows use the portrait camera, so they take the fitted pose too instead of a centered one.
+  const EXTENTS = { A: [150, 850], A2: [150, 850], B1: [970, 1480], B2: [860, 1440], B3: [860, 1440],
+                    C: [1680, 2280], C2: [1680, 2280], D0: [560, 900], D: [560, 1300], E1: [1450, 1940], E2: [1450, 2100] };
+  if (innerWidth > 700) {
+    const W = innerWidth, base = Math.max(W / 2400, innerHeight / 1600);
+    const left = 0.045 * W + Math.min(390, 0.4 * W) + 32, right = W - 28, room = right - left;
+    for (const [view, [l, r]] of Object.entries(EXTENTS)) {
+      const d = CAMERAS[view].d, grow = 1 + DRIFT_MAX_FOR_FIT;
+      let scale = Math.min(d[2], room / ((r - l) * base * grow));
+      let x = d[0];
+      const px = scale * base;
+      if ((l - x) * px + W / 2 < left) x = l - (left - W / 2) / px;
+      if ((r - x) * px * grow + W / 2 > right) x = r - (right - W / 2) / (px * grow);
+      CAMERAS[view].d = [x, d[1], scale];
+      if (innerWidth / innerHeight < 1.05) CAMERAS[view].p = CAMERAS[view].d;
+    }
+  }
+  const DRIFT_PER_SECOND = 0.0028, DRIFT_MAX = 0.045;
+  const pushed = (pose, seconds) => { const k = 1 + Math.min(DRIFT_MAX, DRIFT_PER_SECOND * seconds); return [pose[0], pose[1], pose[2] * k]; };
+  const frame = (name, at, pose, portraitPose, cameraAt) => ({
+    name, at, camera: { x: pose[0], y: pose[1], scale: pose[2], at: cameraAt },
+    portrait: { x: portraitPose[0], y: portraitPose[1], scale: portraitPose[2] },
+  });
+  const shots = [{ view: 'hero', start: 0, first: -1 }];
+  VIEW.forEach((view, i) => { if (view !== shots[shots.length - 1].view) shots.push({ view, start: T[i], first: i }); });
+  shots.forEach((shot, k) => {
+    const next = shots[k + 1];
+    shot.end = next ? next.start - MOVE[next.first] : AUTHORED_END;
+  });
+  const beats = [];
+  shots.forEach(shot => {
+    const name = shot.first < 0 ? 'intro' : IDS[shot.first];
+    const anchor = shot.first < 0 ? 0 : s(T[shot.first]);
+    const d = CAMERAS[shot.view].d, ph = CAMERAS[shot.view].p, length = shot.end - shot.start;
+    shot.endFrame = [pushed(d, length), pushed(ph, length)];
+    beats.push(frame(name, anchor, d, ph, s(shot.start)));
+    beats.push(frame(name + '-drift', anchor, shot.endFrame[0], shot.endFrame[1], s(shot.end)));
+  });
+  // Beats inside a shot only add keyboard anchors; their camera repeats the shot's end frame.
+  T.forEach((t, i) => {
+    if (shots.some(shot => shot.first === i)) return;
+    const shot = [...shots].reverse().find(candidate => candidate.start <= t);
+    beats.push(frame(IDS[i], s(t), shot.endFrame[0], shot.endFrame[1], s(shot.end)));
+  });
+  beats.sort((a, b) => a.at - b.at);
+
+  // Captions: in over [T − 0.5, T + 0.7]; out finishes before the next move begins.
+  const outBefore = i => {
+    if (OUT_OVERRIDE[i - 1]) return w(...OUT_OVERRIDE[i - 1]);
+    const lead = HOLD.has(i) ? 0.6 : Math.max(MOVE[i], 0.6);
+    return w(T[i] - lead - 0.9, T[i] - lead - 0.1);
+  };
+  const captions = [{ id: 'intro', in: [-0.02, -0.01], out: outBefore(0) }];
+  IDS.forEach((id, i) => {
+    const caption = { id, in: w(T[i] - 0.5, T[i] + 0.7) };
+    if (i < IDS.length - 1) caption.out = outBefore(i + 1);
+    if (id === 'finale') { caption.in = w(T[i] - 1.2, T[i] + 0.4); caption.interactiveFrom = s(T[i]); }
+    captions.push(caption);
+  });
+
+  // HUD: one readout per beat. A function label is a live counter; it gets f in
+  // [0, 1) while its scene element animates (COUNTERS), eased like the element.
+  const READOUT = ['',
+    f => `+${(0.3 + 1.2 * f).toFixed(1)}°C`, '', f => `Heat gain ×${(1 + f).toFixed(1)}`, '', '4 systems',
+    '', '', '', '', '', f => `$${Math.round(400 * f)}B a year`,
+    '', '2000 → 2027', '', '', '1992 → 2018', '2026',
+    '<1,000 people', () => fieldPeople > 1000 ? `${fieldPeople.toLocaleString('en-US')} people` : '250+',
+    () => `${fieldPeople.toLocaleString('en-US')} people`,
+    ''];
+  const PART = ['', 'Where we are', 'Where we are', 'Where we are', 'Where we are', 'Where we are',
+                'The gap', 'The gap', 'The gap', 'The gap', 'The gap', 'The gap',
+                'What we could do', 'What we could do', 'What we could do', 'What we could do', 'What we could do', 'What we could do',
+                'The field', 'The field', 'The field', 'The field'];
+  const COUNTERS = { 1: [3.0, 5.4], 3: [22.4, 24.2], 11: [89.2, 91.4] };
+  const ALMOST = 0.999, smooth = x => x * x * (3 - 2 * x);
+  const steps = [[0, 0]], partSteps = [[0, 0]];
+  T.forEach((t, i) => {
+    const label = i + 1, before = COUNTERS[i] ? i + ALMOST : i;
+    steps.push([s(t - 0.55), before], [s(t - 0.5), label]);
+    partSteps.push([s(t - 0.55), i], [s(t - 0.5), label]);
+    const counter = COUNTERS[label];
+    if (counter) for (let k = 0; k <= 8; k++) steps.push([s(counter[0] + (counter[1] - counter[0]) * k / 8), label + ALMOST * smooth(k / 8)]);
+  });
+  steps.sort((a, b) => a[0] - b[0]);
+  const stepFormat = labels => v => {
+    const index = Math.floor(v + 1e-6), label = labels[index];
+    return typeof label === 'function' ? label(Math.min(1, (v - index) / ALMOST)) : label;
+  };
+
+  const link = document.getElementById('sparkLink');
+  const satellite = document.getElementById('satBody');
+  const iceCap = document.getElementById('iceCap'), clouds = document.getElementById('clouds');
+  const earthShade = document.getElementById('earthShade'), regionA = document.getElementById('regionA'), regionB = document.getElementById('regionB');
+  const rayHeads = [...document.querySelectorAll('.rayHead')], rayOutLines = [...document.querySelectorAll('.rayOutLine')];
+  const rayInLines = [1, 2, 3, 4, 5, 6].map(i => document.getElementById(`rayIn${i}`)), rayInHeads = [...document.querySelectorAll('#rayInHeads polygon')];
+  // each arrowhead rides the tip of its ray as the ray draws, so a paused scroll never shows a headless line
+  const rideTip = (line, head, k) => {
+    if (!line.span) { const a = line.getPointAtLength(0), b = line.getPointAtLength(line.getTotalLength()); line.span = [b.x - a.x, b.y - a.y]; }
+    line.style.strokeDashoffset = 1 - k;
+    head.setAttribute('transform', `translate(${(-(1 - k) * line.span[0]).toFixed(1)} ${(-(1 - k) * line.span[1]).toFixed(1)})`);
+    head.style.opacity = Math.min(1, k * 8);
+  };
+  const query = selector => document.querySelector(selector), queryAll = selector => [...document.querySelectorAll(selector)];
+  let fieldPeople = 1000;
+  const bigFieldRect = query('#bigFieldRect'), thermoFill = query('#thermoFill'), capacity = query('#capacity'), capacityWall = query('#capacityWall'), barNeed = query('#barNeed');
+  const cascadePulse = query('#cascadePulse'), ringSteady = query('#ringSteady'), finale = query('#finale');
+  const nodes = queryAll('.node'), halos = queryAll('.halo'), pops = queryAll('.pop');
+  const bands = query('#bands'), bandLabels = [[query('#preParisLabel'), 172], [query('#projLabel'), 306], [query('#pledgeLabel'), 384]];
+  const tail = query('#tail'), curveLine = query('#curveLine'), curveFill = query('#curveFill');
+  // when each .pop dot appears, in document order: lane 1 start/end, lane 2 start/end, lane 3 start, now
+  const popTimes = [138.3, 140.5, 141.9, 143.9, 146.3, 147.7];
+
+  // polar ice follows the story: starts large (±35° from the pole), eases back as Earth slides in
+  // (0.72 here is where the sunlight rays meet ice and ocean), shrinks as Earth darkens and warming speeds up,
+  // holds while the systems are at risk, regrows most of the way with "thicker sea ice"
+  // ("then local and regional ideas") and again with "reflect a little more" (authoring seconds → cap scale)
+  const ICE = [[11.0, 1.0], [12.8, 0.72], [13.6, 0.72], [18.0, 0.447], [22.4, 0.447], [25.0, 0.36], [118.2, 0.36], [120.6, 0.632], [127.8, 0.632], [130.4, 0.75]];
+  const keyed = (p, frames) => {
+    let i = 0;
+    while (i < frames.length - 2 && p > s(frames[i + 1][0])) i++;
+    const [t0, v0] = frames[i], [t1, v1] = frames[i + 1];
+    const k = Math.min(1, Math.max(0, (p - s(t0)) / (s(t1) - s(t0))));
+    return v0 + (v1 - v0) * k * k * (3 - 2 * k);
+  };
+
+  // the impact curve: a century ago (gray) and in a warmer world (amber), same 51 x-steps
+  const SAFE_Y = [752.9, 746.0, 734.3, 716.2, 690.5, 657.2, 618.5, 578.5, 543.1, 518.7, 510.0, 518.7, 543.1, 578.5, 618.5, 657.2, 690.5, 716.2, 734.3, 746.0, 752.9, 756.6, 758.5, 759.4, 759.8, 759.9, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0, 760.0];
+  const WARM_Y = [759.0, 758.0, 756.3, 753.5, 748.8, 741.5, 730.7, 715.3, 694.7, 668.2, 636.1, 599.4, 559.8, 520.4, 484.4, 455.4, 436.5, 430.0, 438.5, 454.5, 476.6, 502.9, 531.1, 559.3, 585.6, 608.9, 628.6, 644.6, 657.2, 666.9, 674.3, 680.0, 684.5, 688.2, 691.3, 694.1, 696.6, 698.9, 701.1, 703.2, 705.3, 707.2, 709.1, 710.9, 712.7, 714.4, 716.0, 717.6, 719.1, 720.6, 722.0];
+
+  // smooth a polyline through points (Catmull-Rom as cubic Béziers)
+  const smoothPath = pts => pts.reduce((d, p, i) => {
+    if (i === 0) return `M${p[0].toFixed(1)},${p[1].toFixed(1)}`;
+    const p0 = pts[i - 2] || pts[i - 1], p1 = pts[i - 1], p3 = pts[i + 1] || p;
+    return d + ` C${(p1[0] + (p[0] - p0[0]) / 6).toFixed(1)},${(p1[1] + (p[1] - p0[1]) / 6).toFixed(1)} ${(p[0] - (p3[0] - p1[0]) / 6).toFixed(1)},${(p[1] - (p3[1] - p1[1]) / 6).toFixed(1)} ${p[0].toFixed(1)},${p[1].toFixed(1)}`;
+  }, '');
+  // impact curves from a few shape parameters: peak position and height, width on each side, tail weight and length.
+  // A century ago; a warmer world; after cuts (still right of a century ago, more often overall, a lighter tail).
+  const SHAPES = {
+    century: { mu: 1810, height: 250, left: 41, right: 41, tail: 0,   reach: 350 },
+    warmer:  { mu: 1887, height: 330, left: 55, right: 65, tail: .3,  reach: 350 },
+    cut:     { mu: 1855, height: 285, left: 48, right: 54, tail: .17, reach: 330 },
+  };
+  const mixShape = (a, b, t) => Object.fromEntries(Object.keys(a).map(key => [key, a[key] + (b[key] - a[key]) * t]));
+  // stage 0 = a century ago, 1 = a warmer world, 2 = after cuts
+  const shapeAt = stage => stage <= 1 ? mixShape(SHAPES.century, SHAPES.warmer, stage) : mixShape(SHAPES.warmer, SHAPES.cut, stage - 1);
+  const curvePoints = shape => Array.from({ length: 101 }, (_, i) => {
+    const x = 1700 + 5.5 * i, d = x - shape.mu;
+    const h = d < 0 ? Math.exp(-(d * d) / (2 * shape.left ** 2))
+                    : (1 - shape.tail) * Math.exp(-(d * d) / (2 * shape.right ** 2)) + shape.tail * Math.exp(-d / shape.reach);
+    return [x, 760 - shape.height * h];
+  });
+  // easing curves
+  const inOutCubic = x => x < 0.5 ? 4 * x * x * x : 1 - (-2 * x + 2) ** 3 / 2;
+  const expoOut = x => x >= 1 ? 1 : 1 - 2 ** (-10 * x);
+  const backOut = (x, overshoot = 1.7) => x <= 0 ? 0 : 1 + (overshoot + 1) * (x - 1) ** 3 + overshoot * (x - 1) ** 2;
+  // a damped spring: rises past 1, rings once, settles
+  const springOut = x => x <= 0 ? 0 : x >= 1 ? 1 : 1 - Math.exp(-6 * x) * Math.cos(9.5 * x);
+
+  {
+    const safe = smoothPath(curvePoints(SHAPES.century));
+    query('#safeCurve').setAttribute('d', safe);
+    query('#safeFill').setAttribute('d', `M1700,760 L${safe.slice(1)} L2250,760 Z`);
+  }
+  window.EXPLAINER = {
+    intro: { countUp: { el: '#introClock', to: 1, duration: 1900, format: () => '' } },
+    world: { width: 2400, height: 1600 },
+    scrollLengthVh: innerWidth / innerHeight < 1.05 ? 5000 : 3800,   // ≈1.8 screens of scrolling per beat (2.4 on phones), so a flick can't skip ahead
+    autoplaySeconds: TOTAL,
+    portraitScaleFactor: 0.55,
+    beats,
+    captions,
+    tracks: [
+      { el: '#backdrop', prop: { name: 'opacity', range: w(0.0, 49.0), from: 0.3, to: 1 } },
+
+      // A — warming
+      { el: '#chartAxes', show: w(2.4, 3.4) },
+      { el: '#obsLine',   draw: w(3.0, 5.4) },
+      { el: '#line15',    show: w(4.0, 4.8) },
+      { el: '#todayDot',  show: w(5.2, 5.9) },
+      { el: '#clipCurrentRect', prop: { name: 'width', range: w(5.8, 7.6), from: 0, to: 250, attr: true } },
+      { el: '#clipPledgeRect',  prop: { name: 'width', range: w(6.2, 8.0), from: 0, to: 250, attr: true } },
+      { el: '#pledgeLabel', show: w(7.8, 8.4) },
+      { el: '#line2',     show: w(6.4, 7.2) },
+      { el: '#projLabel', show: w(7.4, 8.0) },
+      { el: '#line3',     show: w(8.0, 8.8) },
+      { el: '#clipFastRect', prop: { name: 'width', range: w(6.6, 8.4), from: 0, to: 250, attr: true } },
+      { el: '#preParisLabel', show: w(8.2, 8.8) },
+      { el: '#bandGhosts', show: w(31.2, 32.2) },
+      { el: '#fastLabel', show: w(33, 33.8) },
+
+      // B — darker Earth, faster warming
+      { el: '#glowG',      show: w(13.95, 14.45) },
+      { el: '#glowF',      show: w(14.15, 14.65) },
+      { el: '#rayOutA',    hide: w(15.2, 17.2) },
+      { el: '#rayOutD',    hide: w(16.4, 18.6) },
+      { el: '#glowA',      show: w(15.8, 17.4) },
+      { el: '#glowD',      show: w(17.0, 18.7) },
+      { el: '#sunLabels',  show: w(13.6, 14.6) },
+      { el: '#cloudD',     hide: w(16.2, 18.4) },
+      { el: '#heatGroup',  show: w(21.0, 21.8), hide: w(38.0, 38.8) },
+      { el: '#heatX2',     show: w(24.4, 25.2), hide: w(38.0, 38.8) },
+      { el: '#sunArrows',  hide: w(38.0, 38.8) },
+
+      // B — four systems, then people
+      { el: '#ring',       draw: w(39.6, 42.0) },
+      { el: '#nodes',      show: w(39.8, 40.4) },
+      { el: '#nodeLabels', show: w(40.6, 41.6) },
+      { el: '#humanBand',  show: w(45.8, 46.8), hide: w(99.4, 100.2) },
+
+      // C — the curve, adaptation, the tail, the bill
+      { el: '#curveAxis',  show: w(48.6, 49.6) },
+      { el: '#safeCurve',  draw: w(49.0, 51.2) },
+      { el: '#safeFill',   show: w(50.0, 51.4) },
+      { el: '#example1', show: w(51.60, 52.20) },
+      { el: '#example2', show: w(51.95, 52.55) },
+      { el: '#example3', show: w(52.30, 52.90) },
+      { el: '#example4', show: w(52.65, 53.25) },
+      { el: '#example5', show: w(53.0, 53.6) },
+      { el: '#curveMove',  show: w(58.4, 58.7) },
+      { el: '#safeLabel',  show: w(59.6, 60.4) },
+      { el: '#warmLabel',  show: w(60.8, 61.6), hide: w(67.6, 68.2) },
+      { el: '#shiftLabel', show: w(69.6, 70.4), hide: w(72.6, 73.2) },
+      { el: '#cutLabel',   show: w(70.4, 71) },
+      { el: '#capacity',   show: w(50.8, 51.6) },
+      { el: '#capacityWall', show: w(59.8, 61.2) },
+      { el: '#tail',       show: w(81.2, 81.6) },
+      { el: '#tailLabel',  show: w(81.8, 82.6) },
+      { el: '#needLabel',  show: w(88.8, 89.6) },
+      { el: '#haveLabel',  show: w(91.2, 92.0) },
+      { el: '#barHave',    draw: w(91.8, 92.1) },
+      { el: '#haveRing',   show: w(92.2, 92.8), hide: w(95.6, 96.2) },
+      { el: '#regionC',    hide: w(97.4, 99.2) },
+
+      // B — stabilization, watching, ideas, reflect more
+      { el: '#orbit',      show: w(107.6, 108.6), hide: w(115.6, 116.4) },
+      { el: '#orbitBack',  show: w(107.6, 108.6), hide: w(115.6, 116.4) },
+      { el: '#satellite',  show: w(107.8, 108.6), hide: w(115.6, 116.4) },
+      { el: '#satTimeline', show: w(108.0, 108.6), hide: w(115.6, 116.4) },
+      { el: '#satLine',    draw: w(108.2, 110.4) },
+      { el: '#satGap',     show: w(110.4, 111.2), hide: w(115.6, 116.4) },
+      { el: '#ideaReef',   show: w(117.4, 118.4) },
+      { el: '#ideaArctic', show: w(118.4, 119.4) },
+      { el: '#ideaIce',    show: w(119.4, 120.4) },
+      { el: '#brightHalo',  show: w(128.0, 130.0) },
+      { el: '#reflectMore', show: w(127.4, 128.4) },
+
+      // D — we've seen this before
+      { el: '#lane1Label', show: w(137.4, 138.2) },
+      { el: '#lane1Start', show: w(138.2, 139.0) },
+      { el: '#lane1Line',  draw: w(138.8, 140.6) },
+      { el: '#lane1End',   show: w(140.4, 141.2) },
+      { el: '#lane1Tail',  draw: w(141.0, 142.0) },
+      { el: '#lane2Label', show: w(141.4, 142.2) },
+      { el: '#lane2Start', show: w(141.8, 142.6) },
+      { el: '#lane2Line',  draw: w(142.4, 144.0) },
+      { el: '#lane2End',   show: w(143.8, 144.6) },
+      { el: '#lane2Tail',  draw: w(144.4, 145.2) },
+      { el: '#lane3Label', show: w(146.0, 146.8) },
+      { el: '#lane3Start', show: w(146.2, 146.9) },
+      { el: '#lane3Line',  draw: w(146.8, 147.8) },
+      { el: '#lane3Now',   show: w(147.6, 148.4) },
+      { el: '#lane3Next',  show: w(148.4, 149.4) },
+      { el: '#regionD',    hide: w(154.4, 156.2) },
+
+      // E — the field
+      { el: '#smallField',  show: w(154.0, 155.4) },
+      { el: '#fieldLabel1', show: w(156.4, 157.2), hide: w(169.6, 170.4) },
+      { el: '#fieldLabel2', show: w(157.2, 158.0), hide: w(169.6, 170.4) },
+      { el: '#quarter',     show: w(164.2, 165.4) },
+      { el: '#reykLabel',   show: w(164.8, 165.6), hide: w(169.6, 170.4) },
+      { el: '#bigField',    show: w(169.9, 170.3) },
+      { el: '#mark2030',    show: w(172.0, 172.6) },
+      { el: '#label2030',   show: w(172.2, 172.9), hide: w(174.4, 174.9) },
+      { el: '#growLabel1',  show: w(176.6, 177.4), hide: w(180.0, 180.8) },
+      { el: '#growLabel2',  show: w(177.4, 178.2), hide: w(180.0, 180.8) },
+      { el: '#dim',         show: w(180.4, 182.0) },
+
+      // physical motion: springs, a cascade, sequential steadying, pops
+      { fn: (p, h) => {
+          const raw = (a, b) => h.clamp((p - s(a)) / (s(b) - s(a)), 0, 1);
+          // faster warming lifts every outcome band away from today's point; labels ride with their bands
+          const lift = 1 + 0.25 * inOutCubic(raw(31.0, 33.4));
+          bands.setAttribute('transform', `translate(403 496) scale(1 ${lift.toFixed(4)}) translate(-403 -496)`);
+          bandLabels.forEach(([label, y]) => label.setAttribute('transform', `translate(0 ${(-(496 - y) * (lift - 1)).toFixed(1)})`));
+          // the thermometer's level springs from 0.4 to 0.8 as the heat gain doubles
+          const level = 0.4 + 0.4 * springOut(raw(22.4, 24.2)), height = 104 * level + 6;
+          thermoFill.setAttribute('y', (712 - height).toFixed(1));
+          thermoFill.setAttribute('height', height.toFixed(1));
+          // adaptation pushes the line right, with a little give
+          const push = `translate(${(100 * backOut(raw(75.0, 77.0), 1.2)).toFixed(2)} 0)`;
+          capacity.setAttribute('transform', push);
+          capacityWall.setAttribute('transform', push);
+          // the bill: fast out of the gate, then it keeps going
+          barNeed.style.strokeDashoffset = 1 - expoOut(raw(89.2, 91.6));
+          // the four systems arrive one after another, each with a small overshoot
+          nodes.forEach((node, i) => {
+            const k = backOut(raw(39.8 + 0.18 * i, 40.35 + 0.18 * i), 2.0);
+            const cx = node.getAttribute('cx'), cy = node.getAttribute('cy');
+            node.setAttribute('transform', `translate(${cx} ${cy}) scale(${Math.max(k, 0.001).toFixed(3)}) translate(${-cx} ${-cy})`);
+          });
+          // warming pushes the curve up and to the right, and its tail out past the line (b5b)
+          // warming (b5b) moves the curve right and grows a tail; cutting emissions (b5c) brings it partway back
+          const stage = inOutCubic(raw(58.6, 61.6)) + inOutCubic(raw(68.2, 70.6));
+          const curvePts = curvePoints(shapeAt(stage)), curveD = smoothPath(curvePts);
+          curveLine.setAttribute('d', curveD);
+          curveFill.setAttribute('d', `M1700,760 L${curveD.slice(1)} L2250,760 Z`);
+          // the tail: whatever of the live curve lies past the adapted line
+          const edge = 2060, past = curvePts.filter(([x]) => x > edge), k = (edge - past[0][0] + 5.5) / 5.5;
+          const atEdge = [edge, past[0][1] + (curvePts[curvePts.indexOf(past[0]) - 1][1] - past[0][1]) * (1 - k)];
+          tail.setAttribute('d', `M${edge},760 L${smoothPath([atEdge, ...past]).slice(1)} L2250,760 Z`);
+          // the tail grows out of the capacity line, then its examples arrive one at a time
+          const tailGrow = inOutCubic(raw(81.2, 82.8));
+          tail.setAttribute('transform', `translate(2060 760) scale(${Math.max(tailGrow, 0.001).toFixed(4)} 1) translate(-2060 -760)`);
+          // cascade: a stress pulse runs once round the ring, flaring each system it passes
+          const c = raw(43.2, 48.4), angle = -90 + 380 * inOutCubic(c);
+          const r = angle * Math.PI / 180;
+          cascadePulse.setAttribute('cx', (1150 + 230 * Math.cos(r)).toFixed(1));
+          cascadePulse.setAttribute('cy', (520 + 230 * Math.sin(r)).toFixed(1));
+          cascadePulse.style.opacity = c > 0 && c < 1 ? Math.min(1, c * 12, (1 - c) * 12) : 0;
+          nodes.forEach((node, i) => {
+            const gap = Math.abs(((angle - (-90 + 90 * i)) % 360 + 540) % 360 - 180);
+            const flare = c > 0 && c < 1 ? Math.exp(-((gap / 16) ** 2)) : 0;
+            node.setAttribute('r', (26 + 7 * flare).toFixed(2));
+            node.setAttribute('stroke-width', (3 + 4 * flare).toFixed(2));
+          });
+          // stabilization: the teal ring draws and steadies each system as it arrives
+          const q = inOutCubic(raw(99.8, 103.2));
+          ringSteady.style.strokeDashoffset = 1 - q;
+          halos.forEach((halo, i) => {
+            const arrive = q > 0 ? h.clamp((q - i / 4 + 0.02) * 14, 0, 1) : 0;
+            halo.style.opacity = arrive;
+            halo.setAttribute('r', (26 + 8 * (1 - arrive) * arrive * 4 * 0.5).toFixed(2));
+          });
+          // dots pop in with a small overshoot
+          popTimes.forEach((at, i) => {
+            const k = backOut(raw(at, at + 0.55), 2.2), dot = pops[i];
+            const cx = dot.getAttribute('cx'), cy = dot.getAttribute('cy');
+            dot.setAttribute('transform', `translate(${cx} ${cy}) scale(${k.toFixed(3)}) translate(${-cx} ${-cy})`);
+          });
+          // the field: to 10× by 2030 (hold), then to ~50× by 2035, in whole 10-unit tiles
+          const toward2030 = inOutCubic(raw(170.0, 172.2)), toward2035 = inOutCubic(raw(174.6, 176.8));
+          const side = toward2035 > 0 ? 250 + 320 * toward2035 : 80 + 170 * toward2030, tiles = Math.round(side / 10) * 10;
+          bigFieldRect.setAttribute('y', 1546 - tiles);
+          bigFieldRect.setAttribute('width', tiles);
+          bigFieldRect.setAttribute('height', tiles);
+          fieldPeople = Math.round((toward2035 > 0 ? 10000 + 40000 * toward2035 : 1000 + 9000 * toward2030) / 100) * 100;
+          finale.classList.toggle('in', p > s(181.8));
+        } },
+
+      // satellite orbit, and the Spark link only clickable while its caption shows
+      { fn: (p, h) => {
+          const t = a => h.segment(p, s(a[0]), s(a[1]));
+          // clouds thin as Earth darkens, brighten with "brighter clouds over reefs", and again with "reflect more"
+          const darken = t([13.6, 18.0]), cloudBoost = t([117.4, 119.0]), brighten = t([128.0, 130.6]);
+          const iceScale = keyed(p, ICE), cloudScale = 1 - 0.14 * darken + 0.08 * cloudBoost + 0.05 * brighten;
+          iceCap.setAttribute('transform', `translate(1150 390) scale(${iceScale.toFixed(4)} ${(iceScale * iceScale).toFixed(4)}) translate(-1150 -390)`);
+          iceCap.style.opacity = 0.95 - 0.25 * darken + 0.15 * brighten;
+          clouds.setAttribute('transform', `translate(1150 520) scale(${cloudScale.toFixed(4)}) translate(-1150 -520)`);
+          clouds.style.opacity = Math.min(1, 0.8 - 0.42 * darken + 0.45 * cloudBoost + 0.15 * brighten);
+          earthShade.style.opacity = darken * (1 - 0.3 * cloudBoost - 0.4 * brighten);
+          rayInLines.forEach((line, i) => rideTip(line, rayInHeads[i], t([12.8 + i * 0.1, 13.40 + i * 0.1])));
+          rayOutLines.forEach((line, i) => rideTip(line, rayHeads[i], t([13.85 + i * 0.1, 14.45 + i * 0.1])));
+          regionA.style.opacity = Math.max(1 - t([11.6, 13.4]), t([29.6, 31.0]) * (1 - t([38.2, 39.6])));
+          // off-screen scenes fade out so their edge-pinned labels don't slide into another view
+          regionB.style.opacity = (1 - t([29.4, 30.6]) + t([38.4, 39.8])) * (1 - t([48.4, 50.3]) + t([98.4, 99.6])) * (1 - t([136.2, 138.2]));
+          const angle = p * TOTAL * 0.55, rad = -18 * Math.PI / 180;
+          const ex = 165 * Math.cos(angle), ey = 56 * Math.sin(angle);
+          const x = 1150 + ex * Math.cos(rad) - ey * Math.sin(rad), y = 520 + ex * Math.sin(rad) + ey * Math.cos(rad);
+          satellite.setAttribute('transform', `translate(${x.toFixed(1)} ${y.toFixed(1)}) rotate(-18)`);
+          // behind Earth it fades out well before the limb (the body and panels reach ~26 units), so it never sits over the globe
+          satellite.style.opacity = Math.sin(angle) < 0 ? h.clamp((Math.hypot(x - 1150, y - 520) - 150) / 24, 0, 1) : 1;
+          if (link) link.style.pointerEvents = p > s(21.2) && p < s(29.2) ? 'auto' : 'none';
+        } },
+    ],
+    hud: [
+      { el: '#hudPrimary',   keyframes: steps, format: stepFormat(READOUT) },
+      { el: '#hudSecondary', keyframes: partSteps, format: stepFormat(PART) },
+    ],
+    particles: { max: 45, ramp: [0.02, 0.6] },
+  };
+})();
+</script>
+
+<script>
+/* ======================================================================
+   6. ENGINE — generic runtime. Reads window.EXPLAINER; no per-project edits.
+   ====================================================================== */
+(() => {
+  const config = window.EXPLAINER;
+  const query = selector => document.querySelector(selector);
+  const clamp = (value, low, high) => value < low ? low : value > high ? high : value;
+  const lerp = (a, b, t) => a + (b - a) * t;
+  const smoothstep = t => t * t * (3 - 2 * t);
+  const segment = (p, start, end) => smoothstep(clamp((p - start) / (end - start), 0, 1));
+  const helpers = { query, clamp, lerp, segment };
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  const track = query('#track'), scene = query('#scene'), world = query('#world');
+  const worldWidth = config.world.width, worldHeight = config.world.height;
+  track.style.height = config.scrollLengthVh + 'vh';
+  scene.setAttribute('viewBox', `0 0 ${worldWidth} ${worldHeight}`);
+
+  // ---------- keyframe interpolation ----------
+  function interpolate(frames, p, ease) {
+    let i = 0;
+    while (i < frames.length - 2 && p > frames[i + 1][0]) i++;
+    const a = frames[i], b = frames[i + 1];
+    const span = b[0] - a[0];
+    const t = span > 0 ? clamp((p - a[0]) / span, 0, 1) : 1;
+    const k = ease ? smoothstep(t) : t;
+    return a.slice(1).map((value, index) => lerp(value, b[index + 1], k));
+  }
+  function withEndFrame(frames) {
+    const sorted = frames.slice().sort((a, b) => a[0] - b[0]);
+    const last = sorted[sorted.length - 1];
+    if (last[0] < 1) sorted.push([1, ...last.slice(1)]);
+    return sorted;
+  }
+
+  // ---------- cameras (landscape + portrait) ----------
+  const landscapeFrames = withEndFrame(config.beats.map(beat => {
+    const cam = beat.camera;
+    return [cam.at ?? beat.at, cam.x, cam.y, cam.scale];
+  }));
+  const portraitFrames = withEndFrame(config.beats.map(beat => {
+    const cam = beat.portrait || { x: beat.camera.x, y: beat.camera.y, scale: beat.camera.scale * config.portraitScaleFactor };
+    return [beat.camera.at ?? beat.at, cam.x, cam.y, cam.scale];
+  }));
+  let cameraFrames = landscapeFrames;
+  let visibleWorldWidth = worldWidth;   // world units visible horizontally (slice crops the sides)
+  function onResize() {
+    cameraFrames = innerWidth / innerHeight < 1.05 ? portraitFrames : landscapeFrames;
+    visibleWorldWidth = innerWidth / Math.max(innerWidth / worldWidth, innerHeight / worldHeight);
+  }
+  window.addEventListener('resize', onResize);
+
+  // ---------- compile tracks ----------
+  const compiledTracks = config.tracks.map(trackSpec => {
+    const element = trackSpec.el ? query(trackSpec.el) : null;
+    if (trackSpec.el && !element) console.warn('scroll-explainer: no element for', trackSpec.el);
+    return { ...trackSpec, element, isSvg: element instanceof SVGElement };
+  }).filter(t => t.element || t.fn);
+
+  const captionElements = config.captions.map(spec => ({ ...spec, element: query(`[data-caption="${spec.id}"]`) }))
+    .filter(c => c.element);
+  const edgeLabels = [...document.querySelectorAll('[data-edge]')].map(el => ({ el, side: el.dataset.edge, baseX: parseFloat(el.getAttribute('x')) }));
+  const scaledStrokes = [...document.querySelectorAll('[data-stroke]')].map(el => ({ el, width: parseFloat(el.dataset.stroke) }));
+  const hudReadouts = config.hud.map(spec => ({ ...spec, element: query(spec.el), frames: withEndFrame(spec.keyframes) })).filter(h => h.element);
+
+  const progressBar = query('#progressBar'), hint = query('#hint');
+  const playButton = query('#playBtn'), heroPlay = query('#heroPlay'), replayButton = query('#replay');
+
+  function applyRange(spec, p) { return lerp(spec.from, spec.to, segment(p, spec.range[0], spec.range[1])); }
+
+  // ---------- render one frame ----------
+  function render(p) {
+    const [focusX, focusY, scale] = interpolate(cameraFrames, p, true);
+    world.setAttribute('transform', `translate(${worldWidth / 2 - focusX * scale} ${worldHeight / 2 - focusY * scale}) scale(${scale})`);
+
+    for (const { el, width } of scaledStrokes) el.style.strokeWidth = width / scale;
+
+    const rightEdge = focusX + visibleWorldWidth / (2 * scale) - 18 / scale;
+    const leftEdge = focusX - visibleWorldWidth / (2 * scale) + 18 / scale;
+    for (const { el, side, baseX } of edgeLabels) {
+      el.setAttribute('x', side === 'left' ? Math.max(baseX, leftEdge) : Math.min(baseX, rightEdge));
+    }
+
+    for (const t of compiledTracks) {
+      if (t.fn) { t.fn(p, helpers); if (!t.element) continue; }
+      const el = t.element;
+      if (t.show || t.hide) {
+        const visible = (t.show ? segment(p, t.show[0], t.show[1]) : 1) * (t.hide ? 1 - segment(p, t.hide[0], t.hide[1]) : 1);
+        el.style.opacity = visible;
+      }
+      if (t.draw) el.style.strokeDashoffset = 1 - segment(p, t.draw[0], t.draw[1]);
+      if (t.translateX || t.translateY || t.scale) {
+        const tx = t.translateX ? applyRange(t.translateX, p) : 0;
+        const ty = t.translateY ? applyRange(t.translateY, p) : 0;
+        const s = t.scale ? applyRange(t.scale, p) : 1;
+        const [ox, oy] = t.origin || [0, 0];
+        const transform = t.isSvg
+          ? `translate(${tx + ox} ${ty + oy}) scale(${s}) translate(${-ox} ${-oy})`
+          : `translate(${tx}px, ${ty}px) scale(${s})`;
+        if (t.isSvg) el.setAttribute('transform', transform); else el.style.transform = transform;
+      }
+      if (t.prop) {
+        const value = applyRange(t.prop, p);
+        const formatted = t.prop.format ? t.prop.format(value) : value;
+        if (t.prop.attr) el.setAttribute(t.prop.name, formatted); else el.style[t.prop.name] = formatted;
+      }
+      if (t.text) el.textContent = t.text(p, helpers);
+    }
+
+    for (const caption of captionElements) {
+      const k = (caption.in ? segment(p, caption.in[0], caption.in[1]) : 1) * (caption.out ? 1 - segment(p, caption.out[0], caption.out[1]) : 1);
+      caption.element.style.setProperty('--k', k);
+      caption.element.style.opacity = k;   // also direct, for elements without the .cap/.chip rules
+      if (caption.interactiveFrom != null) caption.element.style.pointerEvents = p > caption.interactiveFrom ? 'auto' : 'none';
+    }
+
+    for (const readout of hudReadouts) {
+      const [value] = interpolate(readout.frames, p, false);
+      readout.element.textContent = readout.format ? readout.format(value) : value;
+    }
+
+    if (progressBar) progressBar.style.width = (p * 100).toFixed(2) + '%';
+    if (hint) hint.style.opacity = 1 - segment(p, 0.012, 0.04);
+  }
+
+  // ---------- progress: scroll → target → smoothed ----------
+  let targetProgress = 0, smoothedProgress = -1;
+  function maxScroll() { return track.offsetHeight - window.innerHeight; }
+  function onScroll() {
+    const max = maxScroll();
+    targetProgress = max > 0 ? clamp(window.scrollY / max, 0, 1) : 0;
+    // render on the scroll event too, so the page responds even where
+    // requestAnimationFrame is throttled (background tabs, low-power webviews)
+    render(smoothedProgress < 0 ? targetProgress : (smoothedProgress += (targetProgress - smoothedProgress) * 0.5));
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ---------- particles ----------
+  const canvas = query('#particles'), context = canvas && canvas.getContext('2d');
+  let canvasWidth, canvasHeight, particles = [];
+  function resizeCanvas() {
+    if (!canvas) return;
+    canvasWidth = canvas.width = innerWidth * devicePixelRatio;
+    canvasHeight = canvas.height = innerHeight * devicePixelRatio;
+    canvas.style.width = innerWidth + 'px'; canvas.style.height = innerHeight + 'px';
+  }
+  window.addEventListener('resize', resizeCanvas);
+  function particleColor() { return getComputedStyle(document.documentElement).getPropertyValue('--ex-particle').trim() || '255,255,255'; }
+  function drawParticles(p) {
+    if (!context) return;
+    context.clearRect(0, 0, canvasWidth, canvasHeight);
+    if (!config.particles || reducedMotion) return;
+    const wanted = Math.floor(8 + segment(p, config.particles.ramp[0], config.particles.ramp[1]) * config.particles.max);
+    const dpr = devicePixelRatio;
+    while (particles.length < wanted) particles.push({
+      x: Math.random() * canvasWidth, y: canvasHeight + 20, life: 0, max: 400 + Math.random() * 400,
+      vy: (0.3 + Math.random() * 0.9) * dpr, vx: (Math.random() - 0.5) * 0.3 * dpr, r: (0.8 + Math.random() * 1.8) * dpr,
+    });
+    particles = particles.filter(pt => pt.life < pt.max && pt.y > -20);
+    const rgb = particleColor();
+    for (const pt of particles) {
+      pt.x += pt.vx + Math.sin((pt.life + pt.y) * 0.01) * 0.2 * dpr; pt.y -= pt.vy; pt.life++;
+      const alpha = 0.32 * Math.sin(Math.PI * clamp(pt.life / pt.max, 0, 1));
+      context.beginPath(); context.arc(pt.x, pt.y, pt.r, 0, 6.2832);
+      context.fillStyle = `rgba(${rgb},${alpha.toFixed(3)})`; context.fill();
+    }
+  }
+
+  // ---------- autoplay ----------
+  let playing = false;
+  function setPlaying(on) {
+    playing = on;
+    if (playButton) {
+      playButton.querySelector('.ico').textContent = on ? '❚❚' : '▶';
+      playButton.querySelector('.lbl').textContent = on ? 'Pause' : 'Play';
+    }
+    if (on && heroPlay) heroPlay.classList.add('gone');
+  }
+  if (heroPlay) heroPlay.addEventListener('click', () => setPlaying(true));
+  if (playButton) playButton.addEventListener('click', () => {
+    if (!playing && targetProgress > 0.985) window.scrollTo(0, 0);
+    setPlaying(!playing);
+  });
+  ['wheel', 'touchstart'].forEach(type => window.addEventListener(type, () => { if (playing) setPlaying(false); }, { passive: true }));
+
+  // ---------- intro count-up, then invite playback ----------
+  const countUp = config.intro && config.intro.countUp;
+  const countElement = countUp && query(countUp.el);
+  const introDuration = countUp ? countUp.duration : 600;
+  const startTime = performance.now();
+  (function introTick(now) {
+    const t = clamp((now - startTime) / introDuration, 0, 1);
+    if (countElement) countElement.textContent = countUp.format((1 - Math.pow(1 - t, 3)) * countUp.to);
+    if (t < 1) requestAnimationFrame(introTick);
+    else if (heroPlay && !playing) heroPlay.classList.add('show');
+  })(startTime);
+
+  // ---------- deep link (?p=0.0–1.0) and stills (window.__forceP) ----------
+  const urlProgress = parseFloat(new URLSearchParams(location.search).get('p'));
+  if (!isNaN(urlProgress)) requestAnimationFrame(() => window.scrollTo(0, clamp(urlProgress, 0, 1) * maxScroll()));
+
+  // ---------- main loop ----------
+  let lastFrameTime = null;
+  function frame(now) {
+    if (playing && window.__forceP == null) {
+      const dt = lastFrameTime == null ? 16 : Math.min(now - lastFrameTime, 100);
+      const next = clamp(targetProgress + dt / (config.autoplaySeconds * 1000), 0, 1);
+      window.scrollTo(0, next * maxScroll());
+      targetProgress = next;
+      if (next >= 1) setPlaying(false);
+    }
+    lastFrameTime = now;
+    if (window.__forceP != null) targetProgress = clamp(window.__forceP, 0, 1);
+    const snap = Math.abs(targetProgress - Math.max(smoothedProgress, 0)) > 0.2 || reducedMotion || window.__forceP != null;
+    smoothedProgress = snap || smoothedProgress < 0 ? targetProgress : smoothedProgress + (targetProgress - smoothedProgress) * 0.10;
+    render(smoothedProgress);
+    drawParticles(smoothedProgress);
+    requestAnimationFrame(frame);
+  }
+
+  // ---------- beats: keyboard navigation + ticks on the progress bar ----------
+  const beatAnchors = config.beats.map(beat => beat.at);
+  function goToBeat(progress) { window.scrollTo({ top: progress * maxScroll(), behavior: reducedMotion ? 'auto' : 'smooth' }); }
+  window.addEventListener('keydown', event => {
+    // Space plays and pauses, like a video; the arrow and page keys step between beats.
+    if (event.key === ' ') {
+      event.preventDefault();
+      if (event.repeat) return;
+      if (!playing && targetProgress > 0.985) window.scrollTo(0, 0);
+      setPlaying(!playing);
+      return;
+    }
+    const forward = event.key === 'ArrowDown' || event.key === 'PageDown';
+    const backward = event.key === 'ArrowUp' || event.key === 'PageUp';
+    if (!forward && !backward) return;
+    event.preventDefault();
+    if (playing) setPlaying(false);
+    goToBeat(forward ? (beatAnchors.find(b => b > targetProgress + 0.015) ?? 1)
+                     : ([...beatAnchors].reverse().find(b => b < targetProgress - 0.015) ?? 0));
+  });
+  const hud = query('#hud');
+  if (hud) for (const anchor of beatAnchors.slice(1)) {
+    const tick = document.createElement('div');
+    tick.className = 'beat-tick'; tick.style.left = (anchor * 100) + '%';
+    hud.appendChild(tick);
+  }
+  if (replayButton) replayButton.addEventListener('click', () => {
+    setPlaying(false); window.scrollTo({ top: 0, behavior: 'auto' }); smoothedProgress = 0; targetProgress = 0;
+  });
+
+  // ---------- init ----------
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';   // always open at the start
+  if (isNaN(urlProgress)) window.scrollTo(0, 0);
+  onResize(); resizeCanvas(); onScroll();
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>

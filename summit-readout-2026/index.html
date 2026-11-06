@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Summit Readout — The Global Risk and Stabilization Summit</title>
+<meta name="description" content="What participants said at the Global Risk and Stabilization Summit in Reykjavík, October 12–14, 2026, where they disagreed, and what the organizers think should come next.">
+<link rel="icon" href="/assets/favicon.ico?v=c302b58f" sizes="any">
+<link rel="canonical" href="https://globalstabilization.org/summit-readout-2026/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://globalstabilization.org/summit-readout-2026/">
+<meta property="og:site_name" content="The Global Risk and Stabilization Summit">
+<meta property="og:title" content="Summit Readout — The Global Risk and Stabilization Summit">
+<meta property="og:description" content="What participants said at the Global Risk and Stabilization Summit in Reykjavík, October 12–14, 2026, where they disagreed, and what the organizers think should come next.">
+<meta property="og:image" content="https://globalstabilization.org/assets/images/social-card.jpg?v=ad44cda4">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bison running across open grassland">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="/styles.css?v=31f979df">
+<style>
+@font-face { font-family: "Summit Display"; font-weight: 300; font-display: swap; src: url(/assets/fonts/Dirk-Light.woff2?v=7bca59de) format("woff2"); }
+@font-face { font-family: "Summit Sans"; font-weight: 400; font-display: swap; src: url(/assets/fonts/NewEdge666-RegularRounded.woff2?v=f5d55f0e) format("woff2"); }
+@font-face { font-family: "Summit Sans"; font-weight: 800; font-display: swap; src: url(/assets/fonts/NewEdge666-UltraBoldRounded.woff2?v=48187657) format("woff2"); }
+@font-face { font-family: "Summit Serif"; font-weight: 400; font-display: swap; src: url(/assets/fonts/OTScholar-Book.woff2?v=773ebd05) format("woff2"); }
+@font-face { font-family: "Summit Serif"; font-weight: 400; font-style: italic; font-display: swap; src: url(/assets/fonts/OTScholar-BookItalic.woff2?v=5bf3edfc) format("woff2"); }
+
+/* Same tokens as the survey insights page. The charts are light-background images, so dark mode frames them on paper. */
+:root {
+  --paper: #FEFEF2; --ink: #1F190B; --indigo: #4C4C6E; --indigo-200: #EFF2FE; --muted: #4C4C6E; --rule: #C8C9E4;
+  --band: #313151; --band-ink: #FEFEF2; --band-muted: #C8C9E4; --chart-bg: #FEFEF2;
+  --font-display: "Summit Display", "Roboto Slab", Georgia, serif;
+  --font-sans: "Summit Sans", "Figtree", "Helvetica Neue", Arial, sans-serif;
+  --font-serif: "Summit Serif", "Source Serif 4", Georgia, serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --paper: #1B1B2C; --ink: #FEFEF2; --indigo-200: #26263D; --muted: #C8C9E4; --rule: #47476A;
+    --band: #12121F; --indigo: #ABADCF; --offwhite: #1B1B2C; --offblack: #FEFEF2; color-scheme: dark; }
+  :root:not([data-theme="light"]) .nav-marks img, :root:not([data-theme="light"]) footer .marks img { filter: brightness(0) invert(1); }
+}
+:root[data-theme="dark"] { --paper: #1B1B2C; --ink: #FEFEF2; --indigo-200: #26263D; --muted: #C8C9E4; --rule: #47476A;
+  --band: #12121F; --indigo: #ABADCF; --offwhite: #1B1B2C; --offblack: #FEFEF2; color-scheme: dark; }
+:root[data-theme="dark"] .nav-marks img, :root[data-theme="dark"] footer .marks img { filter: brightness(0) invert(1); }
+/* On globalstabilization.org the site's nav, footer and stylesheet wrap this page (build.js); these rules keep the
+   readout's own look under the site styles, and clear the site's sticky nav (91px tall). */
+:root { --sticky-top: 91px; }
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--font-serif); font-size: 18px; line-height: 1.55; }
+a { color: inherit; text-decoration: underline solid var(--indigo); text-underline-offset: 2px; overflow-wrap: anywhere; }
+a:hover { color: inherit; }
+.band { background: var(--band); color: var(--band-ink);
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 14px 32px; }
+.band-inner { max-width: 1040px; margin: 0 auto; }
+.lockup { font-family: var(--font-sans); font-size: 15px; display: flex; justify-content: space-between; gap: 4px 12px; flex-wrap: wrap;
+  border: 1px dashed rgba(254, 254, 242, 0.35); padding: 8px 12px; }
+.lockup a { text-decoration: none; }
+.lockup b { font-weight: 800; }
+.lockup span { color: var(--band-muted); }
+h1 { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; letter-spacing: -0.02em;
+  font-size: clamp(34px, 7vw, 60px); line-height: 1; margin: 28px 0 14px; text-wrap: balance; }
+.lede { margin: 0; font-family: var(--font-serif); letter-spacing: normal; max-width: 62ch; color: var(--band-muted); font-size: 19px; }
+.actions { margin-top: 18px; font-family: var(--font-sans); font-size: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+/* NewEdge leaves extra room below the baseline, so each weight gets top padding to centre its letters in the box. */
+.actions a { display: inline-flex; align-items: center; height: 36px; padding: 3px 14px 0; line-height: 1; border: 1px dashed var(--band-muted); text-decoration: none; }
+.actions a:hover { border-style: solid; }
+.actions a.primary { background: var(--band-ink); color: var(--band); border: 1px solid var(--band-ink); font-weight: 800; padding-top: 5px; }
+.actions a.primary:hover { background: transparent; color: var(--band-ink); }
+.layout { max-width: 1040px; margin: 0 auto; display: grid; grid-template-columns: 220px minmax(0, 1fr); gap: 48px;
+  padding: 28px max(16px, env(safe-area-inset-right, 0px)) 64px max(16px, env(safe-area-inset-left, 0px)); }
+/* Contents: the section being read is bold with an indigo rule, and its subsections open beneath it. */
+nav.toc { position: sticky; top: calc(var(--sticky-top) + 16px); align-self: start; max-height: calc(100vh - var(--sticky-top) - 32px); overflow-y: auto; overscroll-behavior: contain;
+  font-family: var(--font-sans); font-size: 14px; line-height: 1.3; }
+nav.toc .toc-label { font-weight: 800; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px 10px; }
+nav.toc ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+nav.toc a { display: block; text-decoration: none; padding: 5px 8px; border-left: 2px solid var(--rule); color: var(--muted); }
+nav.toc a:hover { color: var(--ink); }
+nav.toc li.active > a { font-weight: 800; color: var(--ink); border-left-color: var(--indigo); }
+nav.toc ol.sub { display: none; margin: 2px 0 6px; font-size: 13px; }
+nav.toc li.active > ol.sub { display: grid; }
+nav.toc ol.sub a { padding: 4px 8px 4px 20px; }
+nav.toc ol.sub li.active > a { font-weight: 800; color: var(--ink); border-left-color: var(--indigo); }
+article { min-width: 0; max-width: 70ch; }
+section { scroll-margin-top: calc(var(--sticky-top) + 16px); margin-bottom: 36px; }
+h2 { font-family: var(--font-display); font-weight: 300; text-transform: uppercase; letter-spacing: -0.01em; font-size: clamp(26px, 4.5vw, 34px);
+  line-height: 1.05; margin: 0 0 16px; padding-top: 16px; border-top: 1px dashed var(--rule); text-wrap: balance; }
+h3 { font-family: var(--font-sans); font-weight: 800; font-size: 17px; line-height: 1.3; margin: 28px 0 10px; scroll-margin-top: calc(var(--sticky-top) + 16px); }
+h4 { font-family: var(--font-sans); font-weight: 800; font-size: 15px; margin: 20px 0 8px; }
+p { margin: 0 0 14px; }
+ul, ol { margin: 0 0 16px; padding-left: 22px; display: grid; gap: 8px; }
+li::marker { color: var(--indigo); }
+b { font-family: var(--font-sans); font-size: 0.92em; font-weight: 800; }
+.cite { font-family: var(--font-sans); font-size: 13px; color: var(--muted); white-space: normal; }
+.cta { background: var(--indigo-200); border: 1px dashed var(--rule); padding: 18px 20px; margin: 8px 0 18px; display: grid; gap: 14px; justify-items: start; }
+.cta p { margin: 0; }
+.cta .button { display: inline-flex; align-items: center; height: 40px; padding: 5px 18px 0; line-height: 1; font-family: var(--font-sans); font-weight: 800; font-size: 15px;
+  background: var(--ink); color: var(--paper); border: 1px solid var(--ink); text-decoration: none; }
+.cta .button:hover { background: transparent; color: var(--ink); border-color: var(--ink); }
+.table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 4px 0 18px; }
+table { border-collapse: collapse; width: 100%; font-family: var(--font-sans); font-size: 14px; line-height: 1.35; }
+th, td { padding: 8px 10px 8px 0; border-bottom: 1px dashed var(--rule); text-align: left; vertical-align: top; }
+th { font-weight: 800; font-size: 13px; }
+td b { font-size: 1em; }
+.charts { display: grid; gap: 28px; margin: 20px 0 8px; }
+figure.chart { margin: 0; display: grid; gap: 8px; }
+figure.chart img { width: 100%; height: auto; display: block; background: var(--chart-bg); }
+figure.chart figcaption { font-size: 16px; color: var(--muted); font-style: italic; }
+.colophon { display: none; max-width: 1040px; margin: 0 auto; padding: 0 16px 48px; font-family: var(--font-sans); font-size: 14px; color: var(--muted); }
+/* The site nav already carries the summit name, so the band's lockup shows only in print. */
+.nav-wrap ~ .band .lockup { display: none; }
+.nav-wrap ~ .band h1 { margin-top: 14px; }
+:focus-visible { outline: 2px solid var(--indigo); outline-offset: 2px; }
+/* On phones each table row becomes a card, with the column name above each value. */
+@media (max-width: 640px) {
+  .table-wrap table, .table-wrap tbody, .table-wrap tr, .table-wrap td { display: block; width: 100%; }
+  .table-wrap thead { display: none; }
+  .table-wrap tr { border-bottom: 1px dashed var(--rule); padding: 12px 0; }
+  .table-wrap td { border: 0; padding: 3px 0; }
+  .table-wrap td::before { content: attr(data-label); display: block; font-weight: 800; font-size: 12px; color: var(--muted); }
+  .table-wrap td:first-child::before { display: none; }
+}
+@media (max-width: 860px) {
+  .layout { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  nav.toc { position: static; max-height: none; }
+  nav.toc > ol { display: flex; flex-wrap: wrap; gap: 6px; }
+  nav.toc > ol > li > a { border: 1px dashed var(--rule); padding: 5px 10px; }
+  nav.toc li.active > a { font-weight: 400; border-color: var(--rule); }
+  nav.toc li.active > ol.sub { display: none; }
+}
+@media print {
+  /* Pages print on the charts' off-white, margins included, so the figures sit on the page without a visible box. */
+  @page { size: Letter; margin: 0.7in 0.75in 0.85in; background: #FEFEF2;
+    @bottom-center { content: counter(page) " of " counter(pages); font-family: "Summit Sans", Arial, sans-serif; font-size: 9pt; color: #4C4C6E; } }
+  :root { --paper: #FEFEF2; }
+  html, body { -webkit-print-color-adjust: exact; print-color-adjust: exact; background: #FEFEF2; }
+  body { font-size: 11pt; line-height: 1.45; color: #1F190B; }
+  .band { background: #FEFEF2; color: #1F190B; padding: 0 0 12pt; }
+  .lockup { border-color: #ABADCF; } .lockup span, .lede { color: #4C4C6E; }
+  .actions, nav.toc, .nav-wrap, footer { display: none; }
+  .colophon { display: block; } .nav-wrap ~ .band .lockup { display: flex; }
+  .nav-wrap ~ .band h1 { margin-top: 28px; }
+  .layout { display: block; padding: 0; }
+  article { max-width: none; }
+  h2 { break-after: avoid; } h3, h4 { break-after: avoid; }
+  li, figure.chart, tr { break-inside: avoid; }
+  section#appendix-a-terms { break-before: page; }
+  section#appendix-c-more-from-the-sessions { break-before: page; }
+  a { text-decoration: none; }
+  figure.chart img { max-height: 7.5in; width: auto; max-width: 100%; }
+}
+</style>
+</head>
+<body>
+<div class="nav-wrap"><nav class="nav">
+  <a class="nav-brand" href="/"><span class="wordmark-inline"><span class="wm-light">Global Risk &amp;</span><span class="wm-bold">Stabilization</span><span class="wm-light">Summit</span></span></a>
+  <div class="nav-right">
+    <div class="nav-links"><a class="nav-link" href="/">Summit</a><a class="nav-link" href="/summit-readout-2026/" aria-current="page">Readout</a><a class="nav-link" href="/program/">Program</a><a class="nav-link" href="/report/">Report</a></div>
+    <div class="nav-marks">
+      <a class="mark" href="https://arc.renaissancephilanthropy.org/"><img class="arc" src="/assets/logos/arc-logo-offwhite.webp?v=836d32b6" alt="ARC — Advanced Research for Climate Emergencies"></a>
+      <a class="mark" href="https://www.renaissancephilanthropy.org/"><img src="/assets/logos/renphil-logo-offwhite.webp?v=91bf81d2" alt="Renaissance Philanthropy"></a>
+    </div>
+  </div>
+</nav></div>
+<header class="band">
+  <div class="band-inner">
+    <div class="lockup"><a href="/">Global Risk &amp; <b>Stabilization</b> Summit</a><span>Reykjavík · October 12–14, 2026 · Readout</span></div>
+    <h1>Global Risk and Stabilization Summit Readout Report</h1>
+    <p class="lede">What participants said at the summit, where they disagreed, what attendees told us afterward, and what we as organizers think should come next.</p>
+    <p class="actions"><a class="primary" href="https://tally.so/r/zEjgEZ?source=readout" target="_blank" rel="noopener">Get involved</a> <a href="/summit-readout-2026/global-risk-and-stabilization-summit-readout.pdf">Download PDF</a></p>
+  </div>
+</header>
+<div class="layout">
+  <nav class="toc" aria-label="Contents"><p class="toc-label">Contents</p><ol><li><a href="#a-note-from-the-organizers">A note from the organizers</a></li><li><a href="#at-a-glance">At a glance</a></li><li><a href="#main-findings">Main findings</a></li><li><a href="#part-1-the-sessions-october-12-13">Part 1: The sessions, October 12–13</a><ol class="sub"><li><a href="#the-risks">The risks</a></li><li><a href="#how-risk-managers-read-these-risks">How risk managers read these risks</a></li><li><a href="#the-responses-discussed">The responses discussed</a></li><li><a href="#governance-and-consent">Governance and consent</a></li><li><a href="#talking-about-it">Talking about it</a></li><li><a href="#money-and-people">Money and people</a></li><li><a href="#where-participants-disagreed">Where participants disagreed</a></li></ol></li><li><a href="#part-2-the-workshop-october-14">Part 2: The workshop, October 14</a><ol class="sub"><li><a href="#what-we-were-trying-to-do">What we were trying to do</a></li><li><a href="#what-s-in-the-way-today">What's in the way today</a></li><li><a href="#what-tables-wanted-2050-to-look-like">What tables wanted 2050 to look like</a></li><li><a href="#the-next-two-years">The next two years</a></li><li><a href="#where-participants-disagreed-2">Where participants disagreed</a></li></ol></li><li><a href="#also-in-both-the-sessions-and-the-workshop">Also in both the sessions and the workshop</a></li><li><a href="#open-questions">Open questions</a></li><li><a href="#what-attendees-told-us">What attendees told us</a><ol class="sub"><li><a href="#what-people-wrote-afterward">What people wrote afterward</a></li></ol></li><li><a href="#what-we-took-from-it">What we took from it</a><ol class="sub"><li><a href="#what-worked">What worked</a></li><li><a href="#what-surprised-us">What surprised us</a></li><li><a href="#what-we-d-do-differently">What we'd do differently</a></li></ol></li><li><a href="#what-we-believe-should-come-next">What we believe should come next</a><ol class="sub"><li><a href="#open-fundable-gaps">Open, fundable gaps</a></li><li><a href="#where-research-could-go-next">Where research could go next</a></li></ol></li><li><a href="#thanks">Thanks</a></li><li><a href="#appendix-a-terms">Appendix A: Terms</a></li><li><a href="#appendix-b-session-guide">Appendix B: Session guide</a><ol class="sub"><li><a href="#day-1-monday-october-12-harpa">Day 1: Monday, October 12, Harpa</a></li><li><a href="#day-2-tuesday-october-13-harpa">Day 2: Tuesday, October 13, Harpa</a></li><li><a href="#day-3-wednesday-october-14-blue-lagoon">Day 3: Wednesday, October 14, Blue Lagoon</a></li></ol></li></ol></nav>
+  <article>
+<section id="a-note-from-the-organizers"><h2>A note from the organizers</h2>
+<p>We organized the Global Risk and Stabilization Summit because the people working on catastrophic climate risk rarely get to talk to each other. Climate scientists, risk managers, funders, engineers, governance and policy experts, and communicators mostly go to their own meetings, so the arguments between them happen in private or not at all.</p>
+<p>We set out to put those communities in one room and bring those arguments into the open. They include how fast to move, whether regional interventions belong with global ones like Stratospheric Aerosol Injection (SAI), who should build and pay for them, whether the field should advocate in public, and if so, for what. We weren't trying to settle these debates. Instead, we wanted a shared starting point for a field that is still forming and spans many disciplines.</p>
+<p>Below, we report what participants said and where they disagreed. We also included our own reading at the end.</p>
+<p>The summit was hosted by ARC (Advanced Research for Climate Emergencies), a philanthropic fund at Renaissance Philanthropy, through the Climate Emergencies Forum (CEF), which convenes scientists, policymakers, funders, and others working on climate tipping points. In the opening keynote, Joshua Elliott, ARC's director, called the work "Earth system stabilization," a goal and organizing principle "something like pandemic preparedness," with systems plural "because I mean specific systems with their own physics and their own timelines." Not everyone at the summit accepted the term, and we report where they disagreed. He also set out five goals for the summit: take stock of what we know, what we don't, and what we may not be able to know; share experiences, lessons, and motivations; surface the debates that usually happen only in private; identify pathways that could inform decisions by governments, funders, and communities; and leave with collaborations that last well beyond the week.</p>
+</section><section id="at-a-glance"><h2>At a glance</h2>
+<ul>
+<li>The summit ran for two days at Harpa in Reykjavík, October 12–13, 2026, with an opening talk and keynote, two opening panels, four risk tracks, a Day 2 opening, fifteen parallel sessions, and a closing plenary. A workshop day followed at the Blue Lagoon on October 14, with three rounds of table conversations.</li>
+<li>More than 250 people from six continents came to Reykjavík. Of the survey respondents who said how long they'd been in the field, nearly two-thirds had been in it less than five years, and nearly a quarter less than a year.</li>
+<li>91 attendees answered our survey afterward. Most plan to follow up with six or more people they met, and most who answered want to join a working group.</li>
+<li>The summit covered catastrophic climate risks in the Arctic and the Atlantic circulation / AMOC (Atlantic Meridional Overturning Circulation), sea level and ice sheets, Earth's reflectivity, the biosphere, and society and human systems, and the responses to them, from observation and adaptation to regional and global interventions. In the opening keynote, Joshua Elliott, ARC's director, called interventions "strategies," not solutions, and said the solution to climate change is and will remain bringing down greenhouse gas concentrations. He counted carbon removal, with emissions cuts, as part of that solution, so carbon removal was largely outside the summit's scope.</li>
+</ul>
+<p>The organizers ran some of the sessions, designed and facilitated the workshop, and wrote this readout, so read it with that in mind. The note at the top and the last two sections—What we took from it and What we think should come next—are our own views. Everything else is our report of what participants said, along with the public sources we cite. This readout is not the synthesis report on the state of the field, which we're putting together separately with several dozen co-authors.</p>
+<p>We summarized the summit sessions and the workshop day separately, because in the sessions speakers and panels made their own arguments, and in the workshop the whole room worked through the same questions together. The summit ran under the Chatham House Rule, so we don’t name anyone who spoke there apart from the opening keynote, which we quote on the record. Each point made in this report cites the sessions it came from, and a count means it came up in several places. Appendix A explains terms like SAI, Marine Cloud Brightening (MCB), and AMOC. The names in parentheses are sessions, listed in Appendix B. We synthesized this readout from AI-generated transcripts of the sessions and the workshop, and we don't have recordings of every session, so it may contain errors or omissions. If you spot one, please tell us at cef@renphil.org.</p>
+</section><section id="main-findings"><h2>Main findings</h2>
+<p>These came up both in the sessions and at the workshop tables, roughly in order of how often. The workshop counts refer to the discussion tables on October 14: eight in round 1 and six in rounds 2 and 3. Everyone in Reykjavík chose to come or was invited, we wrote the workshop questions, and two tables said skeptics were missing, so the wider field may see some of this differently. Treat the counts as a rough guide.</p>
+<ol>
+<li><b>Observation is the no-regrets priority.</b> Speakers in three of the four science tracks called for better observation: continuous satellite records of Earth's energy budget and aerosols, monitoring of West Antarctic ice and the Atlantic circulation, and basic weather data in the poorest countries. One speaker questioned how much more it adds. <span class="cite">(6 sessions; 3 workshop tables)</span></li>
+<li><b>Politics, not technology, is the main obstacle.</b> Most workshop tables named politics, organized opposition, and moral objections ahead of engineering, though some engineers said the technology for some interventions isn't there yet. <span class="cite">(Round 1, 5 of 8 tables; Engineering and scaling)</span></li>
+<li><b>The field wants a shared, authoritative reference on the science and the options.</b> Participants asked for an authoritative assessment, a review body, or a way to triage ideas. Nobody agrees who should run it, and some doubt a central one is needed. <span class="cite">(6 sessions; workshop tables in rounds 1 and 3, and the workshop closing)</span></li>
+<li><b>Policymakers and the Global South were underrepresented.</b> The Global South is not included enough, from governments and scientists to the communities most affected, and policymakers topped the survey's list of who was missing. <span class="cite">(6 sessions; 4 workshop tables; survey)</span></li>
+<li><b>The mainstream money isn't here yet.</b> <span class="cite">(4 sessions; 3 workshop tables and the workshop closing)</span></li>
+<li><b>The field is split on speaking in public.</b> Participants disagreed over whether the field needs an advocacy organization, and whether going public now helps or pulls the issue into partisan camps. <span class="cite">(Workshop closing; Round 1; Round 3, 3 tables)</span></li>
+<li><b>Workshop participants expected local, regional, and research work to be more durable than global interventions.</b> Asked what would survive a change of government by 2050, no workshop table starred a global intervention. <span class="cite">(Round 2, all 6 tables)</span></li>
+</ol>
+</section><section id="part-1-the-sessions-october-12-13"><h2>Part 1: The sessions, October 12–13</h2>
+<h3 id="the-risks">The risks</h3>
+<p>The summit began with the risks facing different Earth systems. The risk clusters included Arctic &amp; AMOC, Sea-level rise &amp; Ice Sheet destabilization, Biosphere &amp; Ecosystems, and Earth’s Reflectivity. These risks are ones that could move quickly, be hard to reverse, and/or outpace efforts to adapt. In particular, some of the Arctic timelines below are shorter than policy targets such as net zero by 2050.</p>
+<ul>
+<li><b>How the risks connect.</b> Every panelist on the risk plenary panel pointed to links between risks, a "theory of many." A deployment decision justified by one tipping element is likely to be wrong for others, and as Elliott put it in the keynote, "a system doesn't need to have a tipping point to be in serious trouble." <span class="cite">(4 sessions)</span></li>
+<li><b>Arctic &amp; AMOC.</b> Some climate models show the subpolar gyre collapsing this century, with the cooling unfolding in less than a decade (<a href="https://doi.org/10.1038/ncomms14375" target="_blank" rel="noopener">source</a>). Ice-free Septembers could come as soon as the 2030s (<a href="https://doi.org/10.1038/s41467-023-38511-8" target="_blank" rel="noopener">source</a>). Many of the models banks and mortgage lenders use leave out such a collapse. <span class="cite">(Arctic and AMOC track; Stabilizing society)</span></li>
+<li><b>Sea level rise &amp; ice sheets.</b> The median projection is a little under a meter of sea level rise this century. The tail adds about another meter whatever the emissions path, so cutting emissions shifts the distribution only a little and "leaves the tail." About 90% of the uncertainty in future sea level rise sits in West Antarctica. <span class="cite">(Day 1)</span></li>
+<li><b>Earth's reflectivity.</b> The planet is getting darker. The gap between incoming and outgoing energy has roughly doubled in about 20 years, so warming may run faster than most projections assume. Aerosols also mask about half a degree of warming. <span class="cite">(Opening keynote)</span></li>
+<li><b>The energy-budget record.</b> The satellite record of Earth's energy budget is about 26 years long. NASA says the next instrument, Libera, launches in September 2027, and that there are "no plans to launch another" after it (<a href="https://ceres.larc.nasa.gov/instruments/demeter/" target="_blank" rel="noopener">source</a>). Libera's main mission is planned to last five years (<a href="https://doi.org/10.5194/amt-19-6229-2026" target="_blank" rel="noopener">source</a>). One speaker said a break in that record might be the biggest risk. <span class="cite">(Risk landscape panel; Day 2 opening)</span></li>
+<li><b>Biosphere &amp; ecosystems.</b> Permafrost doesn't seem to have a tipping point, but counting abrupt and fire-driven thaw more than doubles its projected emissions. One estimate put warming-driven emissions in the northern high latitudes at "about 25 years" of current fossil emissions that nobody is counting. <span class="cite">(Biosphere track; Risk landscape panel)</span></li>
+<li><b>Oceans and coral reefs.</b> Marine heatwaves are becoming more intense and more frequent, ocean temperatures over reefs have risen about 0.81°C since 1985, and coral cover drops after each global bleaching event. At 3°C, even well-managed marine protected areas can't withstand the warming. Speakers said the marine impacts of interventions are "very understudied," and that Solar Radiation Modification (SRM) would address warming, the main stressor on coral, while leaving ocean acidification untouched. <span class="cite">(Biosphere track)</span></li>
+<li><b>Interventions and the biosphere.</b> If interventions were used, "we just don't know what will happen to the biosphere," because the data are too thin to model the response. One modeling study found SAI would not slow biodiversity loss, with losses concentrated in the tropics. Speakers turned the gap into four research questions from an ecology workshop held earlier in the year: how changes in the quality and quantity of light under SAI would affect species and ecosystems; what happens when temperature and CO2 no longer move together; whether ecological effects would reverse if an intervention stopped; and what all this means for endangered species, biodiversity hotspots, and other conservation targets. They called for work beyond modeling, including natural analogs such as volcanic eruptions and wildfire smoke, shading experiments on land and in aquatic mesocosms, and better observation of the stratosphere. <span class="cite">(Day 2 opening; Biosphere track)</span></li>
+<li><b>Society and human systems.</b> "Derailment risk" is the chance that the consequences of climate change derail climate action itself. Social collapse has no clear threshold the way physical tipping points do. In the keynote, Elliott put the cost of loss and damage at about $400 billion a year, possibly much more (<a href="https://us.boell.org/sites/default/files/2023-05/the_loss_and_damage_finance_landscape_hbf_ldc_15052023.pdf" target="_blank" rel="noopener">source</a>), against less than $1 billion committed to the new fund (<a href="https://www.climatechangenews.com/2026/04/24/new-loss-and-damage-fund-could-run-out-of-money-next-year/" target="_blank" rel="noopener">source</a>). <span class="cite">(Day 2; Opening keynote)</span></li>
+</ul>
+<h3 id="how-risk-managers-read-these-risks">How risk managers read these risks</h3>
+<p>Finance, insurance, and security planners help decide where money goes and how governments prepare. At the summit they took these risks seriously but described tools that weren't built for them.</p>
+<ul>
+<li>One speaker said a climate science assessment is not a risk assessment, and two speakers in another session said decisions have to be made under uncertainty that won't go away. <span class="cite">(Security leaders; Sensemaking)</span></li>
+<li>Banks are already stress testing against a three-degree world. In one view, tipping-point risk is entering markets at both ends, among long-horizon and early-stage investors, but "it's not in the middle yet," and the scenarios regulators rely on leave tipping points out, so distant risks look immaterial. <span class="cite">(Opening keynote; Day 1; Financial services)</span></li>
+<li>Finance has a translation problem. Climate risk arrives as warming scenarios, Environmental, Social, and Governance (ESG) scores, and disclosure reports, not the price curves, cash flows, and loss estimates finance works with. Insurers work on one-year horizons, and institutions that honestly disclose their exposure could be punished for it. <span class="cite">(Financial services; Sensemaking)</span></li>
+<li>No investment structure exists for interventions whose benefits spread across many countries, companies, and communities, so that no single investor captures enough of the return to pay for them. <span class="cite">(Financial services; Science meets capitalism)</span></li>
+<li>Governments are starting to treat Earth-system risk as a security matter. In Germany, the foreign intelligence service co-wrote the first comprehensive assessment of climate risks to the country's security (<a href="https://adelphi-research.de/en/publications/national-interdisciplinary-climate-risk-assessment" target="_blank" rel="noopener">source</a>), Iceland formally designated a potential AMOC collapse a national security risk (<a href="https://www.rcinet.ca/eye-on-the-arctic/2025/11/12/iceland-sees-security-risk-existential-threat-in-atlantic-ocean-currents-possible-collapse/" target="_blank" rel="noopener">source</a>), and Finland's government is funding a study of how a weakening AMOC would affect the country, to inform its national risk assessment and its strategy for security of society (<a href="https://valtioneuvosto.fi/en/-/1410903/finland-prepares-for-a-weakened-amoc-new-research-project-launched" target="_blank" rel="noopener">source</a>). <span class="cite">(public record)</span></li>
+<li>Talking about these risks as security risks has downsides too. Accusations of weather theft are already used politically, a new EU research call on monitoring and attribution covers deterring unilateral deployment (<a href="https://www.energyconnects.com/news/renewables/2026/october/eu-wants-to-track-potential-rogue-efforts-to-block-out-sun/" target="_blank" rel="noopener">source</a>), and one researcher said calling climate a "threat multiplier," which casts climate-hit countries as sources of instability, now reads as blame in the Global South. <span class="cite">(The future is minilateral; Policy and politics panel; Security leaders)</span></li>
+</ul>
+<h3 id="the-responses-discussed">The responses discussed</h3>
+<p>The responses discussed range from watching the risks more closely and preparing for them to interventions that would try to slow or offset a change in one region or across the planet. Many interventions are still ideas on paper.</p>
+<ul>
+<li><b>Observation.</b> Speakers in three of the four science tracks called for better observation, and in the reflectivity track it was the top priority. Speakers called for continuous Earth observation, said West Antarctic monitoring is limited "more by budget than by technology," and noted that the UN's Systematic Observations Financing Facility, which pays for basic weather observations in the poorest countries, has about $150 million in donor pledges (<a href="https://www.un-soff.org/" target="_blank" rel="noopener">source</a>) against an estimated $500 million needed (<a href="https://www.un-soff.org/soff-action-report-2025/" target="_blank" rel="noopener">source</a>), and covers weather only, not aerosols. <span class="cite">(6 sessions)</span></li>
+<li><b>Adaptation and preparedness.</b> In an AMOC scenario exercise, tables gave nearly all their attention to protecting people and little to preventing collapse. Asked how to stop a social slide, tables suggested stockpiles, redundant supply chains, and drills. <span class="cite">(Sensemaking; Stabilizing society)</span></li>
+<li><b>Field tests.</b> Track reporters asked how to move from modeling to small field tests, and what scale of test gives enough information without worrying the wider community. <span class="cite">(Day 2 opening)</span></li>
+<li><b>Regional interventions.</b> One participant said marine cloud brightening "is not just one thing," and others described regional MCB as seasonal and reversible, with local beneficiaries such as reefs and fisheries. Modeling shows regional brightening can harm places far away. <span class="cite">(MCB: the next 365 days)</span></li>
+<li><b>Arctic and ice-sheet engineering.</b> In a public road map, Ocean Visions judged that at least 15 of 21 Arctic sea-ice approaches could reach demonstration scale or beyond within ten years, and flagged large gaps in what is known about governance and justice (<a href="https://oceanvisions.org/arctic-sea-ice-road-map/" target="_blank" rel="noopener">source</a>). <span class="cite">(public record)</span></li>
+<li><b>Global interventions.</b> Cooling only the Northern Hemisphere could shift monsoons and cause famine in Africa. The engineering gap at global scale is large. Systems that disperse solid particles at the right size release about a gram a second, but an aircraft would need to release about ten kilograms a second to keep costs reasonable. Ocean sprayers would need to become orders of magnitude more efficient to make global MCB workable. <span class="cite">(Reflectivity track; Engineering and scaling)</span></li>
+</ul>
+<h3 id="governance-and-consent">Governance and consent</h3>
+<p>Some interventions could affect people far beyond the place where they are tested or used, and it is not settled who has the authority to approve or stop them. Much of the discussion was about groups of countries, standards, and existing rules. In the social legitimacy session especially, it turned to who gives consent and how consent fails in practice.</p>
+<ul>
+<li>Panelists said no new multilateral body for these interventions is coming soon. Panelists in one session saw small groups of willing countries, built on trust, as the realistic first step. As one panelist put it, "governance develops at the speed of trust." <span class="cite">(Policy and politics panel; The future is minilateral)</span></li>
+<li>What a first-mover coalition would be for is unsettled. It could be a route to large outdoor experiments or even limited deployment, a shared knowledge base built in the public interest, or a voluntary moratorium with conditions for lifting it. <span class="cite">(Day 1)</span></li>
+<li>Participants asked whether intervention research should have its own governance, and whether one set of shared standards should cover interventions as different as sea-ice thickening and SAI. One panelist said there is no authoritative way to tell which studies count as SRM research, and another that doing research can be read as advocating deployment. <span class="cite">(Ethics and transparency; Translational R&amp;D; Arctic and AMOC track)</span></li>
+<li>New and recent governance tools include a voluntary research governance platform with a public disclosure system (<a href="https://news.agu.org/agu-and-global-partners-announce-platform-to-advance-responsible-governance-of-solar-geoengineering-research/" target="_blank" rel="noopener">source</a>), a scientific society's ethics principles (<a href="https://news.agu.org/press-release/ethical-framework-climate-intervention-research/" target="_blank" rel="noopener">source</a>), and a proposed public register of intervention research. <span class="cite">(public record; Governance)</span></li>
+<li>Many countries have no law to approve, condition, or refuse an outdoor experiment. Participants asked for host-state consent and "the ability to say no" to be explicit, and for research money held regionally with no strings on which questions get asked. <span class="cite">(Governance)</span></li>
+<li>No government department owns these risks or the responses to them. <span class="cite">(Sensemaking; Governance)</span></li>
+<li>Speakers in four sessions said Indigenous peoples and local communities should shape the research from the design stage, not be consulted after it. <span class="cite">(4 sessions)</span></li>
+<li>Panelists described how consent fails in practice, through community spokespeople who are paid or captured, consultation models that assume everyone votes, and project deadlines that clash with community time. One said that free, prior, and informed consent, as practiced where they work, is not real consent. <span class="cite">(Social legitimacy)</span></li>
+<li>One panelist said consent should have its own budget line, and another asked for co-ownership beyond consent. <span class="cite">(Social legitimacy)</span></li>
+</ul>
+<h3 id="talking-about-it">Talking about it</h3>
+<p>Few people outside the field know much about these ideas, and any research done outdoors depends on public and political support. Much of the discussion was about who should carry the message and when.</p>
+<ul>
+<li>Participants in four sessions said who carries a message matters as much as what it says. One participant said policymakers look to their science advisors, who look to a community where the topic is stigmatized. The same participant said messengers who come to the issue on their own can't be manufactured. <span class="cite">(4 sessions)</span></li>
+<li>Awareness is low. By one estimate, 20 to 30% of relevant policymakers understand SRM accurately. Many people, at least in the US, meet the topic through conspiracy theories first, neutral information is hard to find, and even at New York Climate Week "most of the events are not about these things." <span class="cite">(Policy and politics panel; How do we talk about this; Translational R&amp;D)</span></li>
+<li>Decision-makers hear different answers from different scientists. <span class="cite">(Reflectivity track; Funding the field; Governance)</span></li>
+<li>Participants advised choosing a theme that fits the place, such as extreme heat; no longer arguing over whether to say "tipping point"; not presenting SRM as inevitable; and fitting the message to the audience, from navigating overshoot to farm revenue to "resiliency and sovereignty." <span class="cite">(5 sessions)</span></li>
+<li>Participants pointed to the 2024 test of cloud-brightening spray equipment in Alameda, which the city halted (<a href="https://www.nbcnews.com/science/environment/cloud-brightening-research-shut-down-california-rcna155516" target="_blank" rel="noopener">source</a>), as a lesson in involving local communities before an experiment starts. <span class="cite">(Day 2)</span></li>
+<li>Where the money comes from affects how people see the work, whether it is tech wealth, venture capital, or government funding that can look partisan. <span class="cite">(Funding the field)</span></li>
+<li>Participants asked for "boundary people" who work between science, policy, and society; for neutral "third spaces"; and for private dialogue alongside public debate. <span class="cite">(How do we talk about this; Governance; Day 2 closing)</span></li>
+</ul>
+<h3 id="money-and-people">Money and people</h3>
+<p>Research and engineering on these problems take years and people with specialist skills.</p>
+<ul>
+<li>Estimates of the field's funding ranged from "a few tens of millions of dollars a year" (the opening keynote) to roughly $100 million of philanthropy last year (one funder), possibly because they count different things. The funder said it has grown fast from a low base, and that while more of the funders come from tech, more of the money comes from outside it, including finance. <span class="cite">(Opening keynote; Funding the field)</span></li>
+<li>Public money is the main gap. Speakers in two sessions said public funding gives legitimacy, because officials who fund research answer to taxpayers. Others answered that government money can delegitimize as much as it legitimizes, for example by casting researchers as a partisan government voice, and is no safe alternative to philanthropy. <span class="cite">(Scientists entering the field; Arctic and AMOC track; Funding the field)</span></li>
+<li>One participant argued that philanthropy's role is to carry the work until a government is willing to back it publicly, as the UK eventually did. <span class="cite">(Funding the field)</span></li>
+<li>Grant cycles run one or two years, but engineering work takes three to five. In most countries the conversation about this work "has not even started." <span class="cite">(Engineering and scaling; Funding the field)</span></li>
+<li>Stigma blocks careers, speakers in four sessions said. One participant said elders in the environmental community still warn off young people who come to the field. <span class="cite">(4 sessions)</span></li>
+<li>Speakers said far too few people work on these problems, though the capacity may be larger than the funding: one funder said its first call drew more strong proposals than it could fund. <span class="cite">(Sea level track; Arctic and AMOC track)</span></li>
+<li>Ecological and climate modelers barely know each other's fields, and ecological research on interventions has no obvious home in US federal funding. <span class="cite">(Biosphere track; Day 2 opening)</span></li>
+<li>Participants proposed a map of fellowships and application cycles, and sabbaticals and travel money for Global South scientists, as practical ways to help. <span class="cite">(Scientists entering the field)</span></li>
+</ul>
+<h3 id="where-participants-disagreed">Where participants disagreed</h3>
+<p>These questions were still open when the sessions ended, and most had experienced people on more than one side.</p>
+<ul>
+<li><b>Urgency versus care.</b> In several sessions, including the Day 2 closing, some speakers said the work is too urgent to pause, and others that it is too consequential to rush. Deploying SAI might take institutions that last centuries. <span class="cite">(6 sessions)</span></li>
+<li><b>Research versus deployment.</b> Participants disagreed on whether, when, and how to talk about deployment, and on whether research should have its own rules. <span class="cite">(Science meets capitalism; Ethics and transparency; Governance)</span></li>
+<li><b>Government's role.</b> Participants argued over who should build and pay for interventions (governments, philanthropy, companies, or polluters), whether public ownership helps or hurts where trust in government is low, and whether small groups of willing countries are the right first step, and if so, for what. <span class="cite">(6 sessions)</span></li>
+<li><b>Which frames work.</b> Participants disagreed about security and "tipping points" as frames, and about whether "social license" is the right goal, or whether the people affected should own the problem themselves. <span class="cite">(5 sessions)</span></li>
+<li><b>Whether regional interventions should be treated apart from SAI.</b> Some speakers grouped regional interventions with SAI without discussing it, for example in a role-play brief and an insurance analogy. Speakers in the MCB, translational R&amp;D, and engineering sessions separated them explicitly. <span class="cite">(5 sessions)</span></li>
+<li><b>Whether permission or engineering is the real bottleneck.</b> Most intervention leads said permission and regulation are the first limit they hit; others said that for some interventions the technology isn't there yet. <span class="cite">(Engineering and scaling)</span></li>
+<li><b>What critics object to.</b> Participants described critics' main arguments as moral hazard (that talk of interventions weakens emissions cuts), consent, and whether global interventions can be governed at all. Some participants shared these worries. <span class="cite">(4 sessions)</span></li>
+</ul>
+</section><section id="part-2-the-workshop-october-14"><h2>Part 2: The workshop, October 14</h2>
+<p>On the third day, about 70 people worked through three rounds, at eight tables in round 1 and six risk-cluster tables in rounds 2 and 3. We report answers by round and by type, not by table, and attribute remarks only to "a participant" or "one table."</p>
+<h3 id="what-we-were-trying-to-do">What we were trying to do</h3>
+<ul>
+<li>We designed the day around two time frames at once. The people who will make the big decisions on these risks are probably in the first half of their careers today, so the field has to think in decades. But the climate is changing faster than the field is, so we need real plans for the next two years too.</li>
+<li>In round 1, we asked what is in the way today. In round 2, we asked each table to imagine it is 2050 and describe how its risk was managed. In round 3, we asked what has to happen in the next two years to get there.</li>
+</ul>
+<h3 id="what-s-in-the-way-today">What's in the way today</h3>
+<p>Participants chose round 1's topics by dot vote, and each picked a table.</p>
+<ul>
+<li>Politics, organized opposition, and moral objections were bigger obstacles than technology. One table pointed to bills to ban SRM, which have been proposed in 37 US states (<a href="https://srm360.org/us-bans/" target="_blank" rel="noopener">source</a>), and one participant said the field has "no effective counter" to them yet. Another at the same table argued that, for policymakers, the greater risk is that interventions go ahead "willy-nilly," without a decade of good research behind them. <span class="cite">(Round 1, 5 of 8 tables)</span></li>
+<li>Very low awareness of tipping points. One table wrote that public awareness was "starting from zero," and one participant said the report that warm-water coral reefs had reached their tipping point drew "crickets from the media" (<a href="https://news.exeter.ac.uk/research/new-reality-as-world-reaches-first-climate-tipping-point/" target="_blank" rel="noopener">source</a>). <span class="cite">(Round 1)</span></li>
+<li>No credible story on cutting emissions. One participant said a token nod to decarbonization won't do. Climate movements are "the only people who are putting any pressure on politicians right now," the participant said, and the field risks alienating them. <span class="cite">(Round 1)</span></li>
+<li>Reluctance among scientists. One participant said some glaciologists still won't discuss interventions for fear of undercutting decarbonization, even though, in their view, meters of sea level rise are coming regardless. <span class="cite">(Round 1)</span></li>
+<li>The wrong kind of money. Philanthropy is too cautious, and one table added that venture capital invests too early. <span class="cite">(Round 1, 2 tables)</span></li>
+<li>No one has a shared estimate of how much money the field needs. <span class="cite">(Round 1)</span></li>
+<li>There is no agreed owner for review standards, or for what "good" looks like. <span class="cite">(Round 1, 3 tables)</span></li>
+<li>Warnings aren't tied to the impacts decision-makers can act on. <span class="cite">(Round 1)</span></li>
+<li>The current US government is a liability, and one table said US leadership won't regain its credibility. <span class="cite">(Rounds 1 to 3, 3 tables)</span></li>
+<li>SAI gets conflated with every other intervention. <span class="cite">(Round 1)</span></li>
+<li>The field has no settled name. <span class="cite">(Round 1)</span></li>
+</ul>
+<h3 id="what-tables-wanted-2050-to-look-like">What tables wanted 2050 to look like</h3>
+<p>In round 2, each risk-cluster table imagined it was 2050 and described what managing its risk had come to mean, what existed by then, who built and paid for it, and what would survive a change of government.</p>
+<ul>
+<li>Our worksheets asked each table whether its risk would be avoided, reduced, or postponed by 2050. Five of the six chose reduced. None chose postponed, and the one table that circled avoided crossed it out. <span class="cite">(Round 2, 5 of 6 tables)</span></li>
+<li>Most tables starred local and regional measures, profitable projects, and research as likely to survive a change of government. No table starred a global intervention. <span class="cite">(Round 2, all 6 tables)</span></li>
+<li>Tables found it easier to say what would exist than who pays for it or how the public comes along. <span class="cite">(Round 2, 5 of 6 tables)</span></li>
+<li>Participants said that for ice sheets, interventions have to be in place by 2050 even though the benefits come later. One added that managing the risk has to mean protecting the people exposed to it, as well as slowing the ice. <span class="cite">(Round 2)</span></li>
+<li>Most tables pictured new institutions by 2050, such as a body for AMOC and other tipping points alongside early warning systems, an international board to monitor and regulate SAI, institutions to judge where interventions could be sited, and a "Ministry for the Future." <span class="cite">(Round 2, 5 of 6 tables)</span></li>
+<li>Two tables gave China a major role in their 2050. <span class="cite">(Round 2, 2 tables)</span></li>
+<li>Across tables, the responses ranged from local and regional measures, such as passive radiative cooling in building codes, Arctic rewilding, and sea-ice thickening, to large engineering for ice sheets and, at one table, SAI. <span class="cite">(Round 2, all 6 tables)</span></li>
+</ul>
+<div class="charts"><figure class="chart"><img src="/assets/summit-readout/05-2050-exercise.png?v=4852df82" alt="Grid of the six workshop tables in round 2. Five marked their risk reduced by 2050, none postponed; the sea level table circled avoided and crossed it out, and the Arctic table circled nothing. What tables starred as likely to survive a change of government was local, regional, profitable or research work." loading="lazy" decoding="async"><figcaption>Five of six tables pictured their risk reduced, not avoided, by 2050. What they expected to outlast a change of government was local, regional, profitable or research work, never a global intervention.</figcaption></figure></div>
+<h3 id="the-next-two-years">The next two years</h3>
+<p>In round 3, the same tables named what has to happen in the next two years to reach their 2050 pictures. These are the priorities they named on their worksheets and at the closing, including the one request of the field that four of the six tables wrote down.</p>
+<ul>
+<li>Coordination and a shared reference, such as an authoritative assessment or a way to triage ideas. <span class="cite">(Round 3, 4 of 6 tables)</span></li>
+<li>A public voice for the field. Proposals included narrative groups, statements, a field-defining paper, and advocacy organizations ranging from one that would publicly back SRM research to one that would responsibly advocate for deployment. <span class="cite">(Round 3, 3 tables; workshop closing)</span></li>
+<li>Observation and research roadmaps for specific risks. <span class="cite">(Round 3, 3 tables)</span></li>
+<li>Regional coalitions, and moving convenings toward the Global South. <span class="cite">(Round 3, 3 tables)</span></li>
+<li>Bringing mainstream climate funders in. <span class="cite">(Round 3)</span></li>
+<li>Shifting the focus from peak warming to the rate of warming. <span class="cite">(Round 3, 2 tables)</span></li>
+<li>Starting from the problems decision-makers face today, in human terms. <span class="cite">(Round 3)</span></li>
+</ul>
+<h3 id="where-participants-disagreed-2">Where participants disagreed</h3>
+<p>Disagreements came up at the round 1 tables and in the open discussion at the end of the day, which was mostly about whether and how the field should speak publicly.</p>
+<ul>
+<li><b>An advocacy organization.</b> Participants disagreed over whether the field needs one, or should keep neutral spaces and grow an inclusive field. <span class="cite">(Workshop closing; Round 3, 3 tables)</span></li>
+<li><b>When to go public.</b> One participant asked whether going public now would pull the issue into partisan camps. Others said "this is the best time we have" and that it is "so dangerous to keep saying we have time." Another warned that "the wrong kind of attention" may soon become a bigger risk than too little attention. <span class="cite">(Round 1)</span></li>
+<li><b>Whether buying time is credible.</b> One participant said it only sounds credible with conditions, such as no SRM without carbon removal and emissions cuts. Another answered that today's carbon removal is tiny next to annual emissions. <span class="cite">(Round 1)</span></li>
+<li><b>Ties to defense.</b> One participant objected to intervention companies keeping defense work as a fallback, saying it's there to protect investors: "the off-ramp is for the capital." Others said work at this scale is hard to imagine without defense ministries or the oil and gas industry. <span class="cite">(Round 1)</span></li>
+<li><b>Whether to name tipping points.</b> Some participants said the term is hard to define for a specific system at a specific time. <span class="cite">(Round 1)</span></li>
+<li><b>Disagreements to settle.</b> Round 1 tables listed disagreements they wanted settled, about public versus private financing, whether to lead with fear, whether the focus should be SAI alone, how much weight public opinion should carry, and one story or many. <span class="cite">(Round 1, 2 tables)</span></li>
+</ul>
+</section><section id="also-in-both-the-sessions-and-the-workshop"><h2>Also in both the sessions and the workshop</h2>
+<p>Beyond the main findings at the top, these points came up both in the sessions and at the workshop tables.</p>
+<ul>
+<li>US institutions have lost standing as the lead. <span class="cite">(1 session; 3 workshop tables)</span></li>
+<li>Beyond the Global South, participants said the room was missing China, governments and regulators, insurers and pension funds, humanitarian and peacebuilding organizations and the officials who release aid, faith communities, disaster relief, and skeptics. They asked for these conversations to happen in places like Accra, Bangalore, and Bogotá, and one participant asked for a container people "co-produce by a wider invite." Survey respondents named many of the same groups. <span class="cite">(3 sessions; 7 workshop tables and the workshop closing)</span></li>
+<li>Who carries a message matters as much as what it says. <span class="cite">(4 sessions; 2 workshop tables)</span></li>
+<li>Lead with the impacts people feel, in human terms. <span class="cite">(2 sessions; 2 workshop tables)</span></li>
+<li>The field's vocabulary isn't settled, starting with what "stabilization" means. <span class="cite">(5 sessions; 2 workshop tables and the workshop closing)</span></li>
+</ul>
+</section><section id="open-questions"><h2>Open questions</h2>
+<p>Participants raised these questions at the summit, and none of them has a clear answer yet.</p>
+<ul>
+<li><b>Research and observation.</b> Open questions include how to get the rate of warming treated as a key variable; how far fire, permafrost, and wetland emissions can be cut; no systematic study of moving seawater into inland basins; the regional impacts of interventions and how they interact with human systems; whether anyone could tell if someone were brightening clouds on their own; and what continues the satellite energy-budget record after Libera, the instrument due to launch in 2027, ends its planned five-year mission. <span class="cite">(2 sessions; 3 workshop tables)</span></li>
+<li><b>Governance.</b> Open questions include where an experiment ends and deployment begins; what scale of field test is acceptable; what forum could govern an ice-sheet intervention; who controls the data from dense sensor networks; who the end user of an Arctic intervention would even be; and how a country builds its own capacity for independent scientific analysis. <span class="cite">(2 sessions; 3 workshop tables)</span></li>
+<li><b>The public.</b> Participants asked how much the public needs to know and how to explain terms that can create fear. <span class="cite">(Day 2 opening; Arctic and AMOC track)</span></li>
+<li><b>Security and geopolitics.</b> Participants asked how others would respond if a bloc deployed, and where Russia stands. <span class="cite">(The future is minilateral)</span></li>
+<li><b>Topics that got too little time.</b> One participant said social stabilization, as distinct from Earth systems, had barely been discussed, and one speaker said the biosphere gets too little attention next to SAI. <span class="cite">(Day 2; Biosphere track)</span></li>
+</ul>
+</section><section id="what-attendees-told-us"><h2>What attendees told us</h2>
+<p>After the summit, 91 people answered our survey, about a third of those who registered. They chose to answer, and some groups below are small, so read these statements as directional rather than representative of everyone who came. Full results are on the <a href="https://globalstabilization.org/summit-insights-2026/" target="_blank" rel="noopener">survey insights page</a>.</p>
+<ul>
+<li><b>The field is new, and its newcomers are mid-career.</b> Nearly two-thirds of respondents had been in the field less than five years. More than three-quarters of those newcomers are 35 or older.</li>
+<li><b>People want to keep working together.</b> Most want to join a working group, and most plan to follow up with six or more people they met.</li>
+<li><b>Money is the top need, and few in the room can supply it.</b> Connections to philanthropic funders tied for the most-wanted support. Of 70 who picked ways to stay involved, 7 would fund grants and 6 would invest.</li>
+<li><b>So is a map of the field.</b> A shared map of the risks and potential intervention responses, who works on what, and where the gaps are tied with funder connections, backed mostly by people one to four years in.</li>
+<li><b>Newcomers think the field needs public backing.</b> Of the 18 who named public and political support as the biggest gap, 15 had been in the field under five years.</li>
+<li><b>Veterans want focus and governments.</b> People with ten or more years were the ones asking the field to narrow its options, and 10 of 14 named policymakers as missing.</li>
+<li><b>The best part happened between sessions.</b> Conversations outside the sessions were among the most-valued moments. The top requests were fewer parallel sessions and more unstructured time.</li>
+</ul>
+<div class="charts"><figure class="chart"><img src="/assets/summit-readout/04-how-new.png?v=b8b24179" alt="64% of 84 respondents had been in the field under five years (54 people) and 23% under a year (19 people)." loading="lazy" decoding="async"><figcaption>Nearly two-thirds of respondents had been in the field less than five years.</figcaption></figure><figure class="chart"><img src="/assets/summit-readout/03-interest-to-commitment.png?v=c75da8be" alt="Of 70 respondents who picked ways to stay involved: 56 would join a working group, 29 lead or co-lead one, 39 make the case to policymakers, 7 fund grants, 6 invest." loading="lazy" decoding="async"><figcaption>Many want to join a working group, and few would put money in.</figcaption></figure><figure class="chart"><img src="/assets/summit-readout/06-gaps.png?v=bc612087" alt="Biggest gap for the field, 85 answers: public and political support and communication 18, field tests and engineering 16, governance 13, defining and organizing the field 11, money 7, narrowing the options 7, a specific risk or community 6, Global South representation 2." loading="lazy" decoding="async"><figcaption>Public and political support was the gap named most often, mostly by people under five years in the field.</figcaption></figure><figure class="chart"><img src="/assets/summit-readout/02-who-was-missing.png?v=9a43e77c" alt="Who was missing, 80 respondents, up to three each: policymakers 36, Global South voices 24, critics and skeptics 23, Indigenous and frontline communities 22, humanitarian groups 19, security and defense 18, insurers 15, journalists 13, young people 12, investors 10, environmental justice groups 10." loading="lazy" decoding="async"><figcaption>Policymakers topped the list of who was missing.</figcaption></figure><figure class="chart"><img src="/assets/summit-readout/01-what-belongs.png?v=be1bd86f" alt="Share of respondents who put each of 21 approaches inside the field, for everyone, those under a year in the field, and those five or more years in. Stratospheric aerosols, marine cloud brightening and sea ice thickening are near the top; phasing out fossil fuels is lowest." loading="lazy" decoding="async"><figcaption>Nearly everyone counted the core interventions as part of the field; fewer counted mitigation and adaptation.</figcaption></figure></div>
+<h3 id="what-people-wrote-afterward">What people wrote afterward</h3>
+<p>We found more than 50 public posts and articles about the summit by people outside the organizing team. Below is a sample, including some more critical ones. We name the authors here because the quotes come from their own <i>public</i> posts.</p>
+<ul>
+<li>Ed Whittingham: "two days of frank, productive conversations about climate risk and how we govern our response to it." (<a href="https://www.linkedin.com/posts/ed-whittingham_leaving-iceland-after-a-full-week-the-global-ugcPost-7516523277931089921-5hRU/" target="_blank" rel="noopener">LinkedIn</a>)</li>
+<li>Susan Su, in <a href="https://climatemoney.substack.com/p/the-climate-stabilization-era-is" target="_blank" rel="noopener">her newsletter</a>: "I was blown away by how many new people were coming into this space."</li>
+<li>María Inés Carabajal, an anthropologist from Argentina: "an amazing experience to share the stage with colleagues and experts from different backgrounds." (<a href="https://www.linkedin.com/posts/maria-ines-carabajal-phd_i-had-the-privilege-of-attending-the-global-ugcPost-7516888346061664256-VK35/" target="_blank" rel="noopener">LinkedIn</a>)</li>
+<li>Shuchi Talati and Whitney Peterson of the Alliance for Just Deliberation on Solar Geoengineering, on Reykjavík's cost and distance: "who is in the room depends on where the room is." (<a href="https://www.sgdeliberation.org/dsg-writing/big-ambitions-bigger-questions-our-takeaways-from-reykjavik" target="_blank" rel="noopener">blog</a>)</li>
+<li>Catherine Nakalembe: "The primary remaining gap is a direct link among cross-system science, regional early-warning systems, and on-the-ground action." (<a href="https://www.linkedin.com/pulse/facing-systemic-climate-risk-non-linear-worlddispatch-catherine-h7q4e" target="_blank" rel="noopener">LinkedIn</a>)</li>
+<li>Julian A Velasco <a href="https://juvelas.substack.com/p/global-risk-and-stabilization-summit" target="_blank" rel="noopener">wrote</a> that the SRM discussion "lacked a cross-cutting ecological and conservation perspective."</li>
+<li>Alison Smart: "storytelling and good communication are essential infrastructure for any field." (<a href="https://www.linkedin.com/posts/ams09_i-recently-spent-a-few-days-in-reykjav%C3%ADk-ugcPost-7519458230662533120-1V-8" target="_blank" rel="noopener">LinkedIn</a>)</li>
+<li>Mehrad Yaghmai: "That debate [between staged research, early deployment, and a moratorium on even studying it] deserves to happen in the open." (<a href="https://www.linkedin.com/posts/mehrady_last-week-i-was-in-reykjav%C3%ADk-for-the-first-ugcPost-7517976726522568704-mJB4/" target="_blank" rel="noopener">LinkedIn</a>)</li>
+<li>Bhargav Krishna: "Uncertainty about when thresholds are crossed cuts both ways. It is a reason to take the risks seriously, not a reason to cut short deliberation about interventions whose own risks are still poorly understood." (<a href="https://www.sustainablefutures.org/blog/stabilising-the-climate-but-for-whom-reflections-from-reykjavik-and-questions-for-india/" target="_blank" rel="noopener">Sustainable Futures Collaborative</a>)</li>
+<li>Oliver Cronk, on how he left: "more open-minded than I arrived, but not converted." (<a href="https://www.linkedin.com/pulse/systems-built-stability-unwind-world-isnt-oliver-cronk-qchzf/" target="_blank" rel="noopener">LinkedIn</a>)</li>
+<li>Robert Höglund, in <a href="https://marginalcarbon.substack.com/p/will-we-cool-the-earth" target="_blank" rel="noopener">Marginal Carbon</a>: "This was not a summit where everyone had a shared agenda or goal."</li>
+<li>Kaja Wasik: "beautiful to witness the birth of a community." (<a href="https://www.linkedin.com/posts/kaja-wasik-8a8aa26b_in-2019-iceland-held-a-funeral-for-a-glacier-ugcPost-7516109182731862017-1uct/" target="_blank" rel="noopener">LinkedIn</a>)</li>
+<li>Ben Shread-Hewitt, in <a href="https://benshreadhewitt.substack.com/p/on-the-global-risk-and-stabilization" target="_blank" rel="noopener">The Geopolitical Climate</a>: "It will, I think, come to be seen as historically important."</li>
+</ul>
+</section><section id="what-we-took-from-it"><h2>What we took from it</h2>
+<p>These are our own views as the organizers.</p>
+<p>In September 2025, CEF held a half-day workshop during New York Climate Week (<a href="https://docs.google.com/document/d/1vMvF6ylqUBo_GTuTx2VHg8BMI1yfllB7jxmt8SW0z8g/edit?tab=t.bgjn3potlfp7" target="_blank" rel="noopener">synthesis</a>). Participants there came out with a list of recommended next steps that included hosting a summit in 2026. We thought that bringing these very different communities into one room would move the field forward, and we believe it did. Attendees told us the conversations outside the sessions were among the most valuable parts, and most are planning follow-ups with people they met.</p>
+<h3 id="what-worked">What worked</h3>
+<ul>
+<li><b>Working at tables.</b> Several attendees told us the sessions where they talked through questions at their tables, or played out a scenario, were more useful to them than panels.</li>
+<li><b>The disagreements were useful.</b> People disagreed openly about urgency, governance, money, and whether the field should speak in public, and the conversations were productive. We were glad to see it.</li>
+</ul>
+<h3 id="what-surprised-us">What surprised us</h3>
+<ul>
+<li><b>Attendees organized their own events around the summit.</b> Planetary Solvency hosted welcome drinks on the Sunday night before it opened, and Ben Kalina screened his film <i>Plan C for Civilization</i> on Tuesday night. We hadn't planned for it, and we were glad to see people make use of having so much of the field in one city. Next time we'd like to make more room for events like these.</li>
+<li><b>Many attendees want to keep working together.</b> Over half of survey respondents want to join a working group, and 29 would lead or co-lead one. That is more appetite for follow-on work than we expected.</li>
+</ul>
+<h3 id="what-we-d-do-differently">What we'd do differently</h3>
+<ul>
+<li><b>Bring more people into the room.</b> We want more people from the regions and communities most exposed to these risks, and the field will be better with them in it. Participants asked for these conversations to happen closer to the people most affected, and that's one reason we are targeting regional meetings in 2027. We deprioritized policymakers for this first summit on purpose, to focus on the field's early stages and its science. They were the group attendees most often said were missing, and the field will need them more as it grows. We'd also like more skeptics and critics of interventions in the room.</li>
+<li><b>More time to talk.</b> Attendees asked for fewer parallel sessions and more unstructured networking time.</li>
+<li><b>More sessions proposed by others.</b> Many partners built sessions with us, but we set most of the topics and then worked with partners to build around them. Next time we'd like more people to propose sessions, and we'll support pulling them together.</li>
+<li><b>Keep the conversation broad.</b> Stabilization covers far more than just SAI. It includes regional interventions, the biosphere, observation, preparedness, and the many organizations working on each, and much of that range was on the program. Even so, some attendees told us SAI and SRM took up too much of the conversation, and participants at the 2025 workshop raised the same worry about the field as a whole. We'll keep working on this as we plan what comes next.</li>
+</ul>
+</section><section id="what-we-believe-should-come-next"><h2>What we believe should come next</h2>
+<div class="table-wrap"><table><thead><tr><th>Initiative</th><th>Who leads</th><th>First milestone</th><th>Funding</th><th>How to join</th></tr></thead><tbody><tr><td data-label="Initiative"><b>A synthesis report on the state of the field.</b> Already under way before the summit.</td><td data-label="Who leads">ARC, with several dozen co-authors, many of whom were at the summit</td><td data-label="First milestone">Publication in early 2027</td><td data-label="Funding">Complete</td><td data-label="How to join">Co-authors are already working on it</td></tr><tr><td data-label="Initiative"><b>Working groups.</b> 56 survey respondents want to join one, and 29 would lead or co-lead.</td><td data-label="Who leads">ARC and CEF, with participants</td><td data-label="First milestone">A list of proposed groups, then a shortlist that can deliver something in about 90 days</td><td data-label="Funding">Needed</td><td data-label="How to join">Write to cef@renphil.org</td></tr><tr><td data-label="Initiative"><b>An open map of the field.</b> Risk by risk: the interventions under way and the specific gaps someone could fund or pick up, starting from ARC's intervention database.</td><td data-label="Who leads">ARC and CEF</td><td data-label="First milestone">A first version targeted for Q1 2027, pending funding</td><td data-label="Funding">Actively fundraising</td><td data-label="How to join">We'll send details on contributing data separately</td></tr><tr><td data-label="Initiative"><b>Regional and topical meetings in 2027.</b> Regional meetings, particularly in low- and middle-income countries, and deeper dives on single topics such as the Atlantic circulation. Participants at the 2025 workshop proposed regional meetings as well.</td><td data-label="Who leads">ARC and CEF</td><td data-label="First milestone">First meeting TBD</td><td data-label="Funding">Needed</td><td data-label="How to join">Write to cef@renphil.org</td></tr><tr><td data-label="Initiative"><b>Online learning sessions.</b></td><td data-label="Who leads">CEF</td><td data-label="First milestone">Ongoing</td><td data-label="Funding">Ongoing</td><td data-label="How to join">Propose a session at cef@renphil.org</td></tr></tbody></table></div>
+<p><b>A much larger field.</b> We want to see ten times today's funding by 2030, and 50,000 people or more working in the field by 2035, with government programs putting billions of dollars into it. For a baseline, the opening keynote put the field's core at fewer than a thousand people and its funding at a few tens of millions of dollars a year. One funder counted philanthropy at around $100 million a year, measuring more broadly.</p>
+<h3 id="open-fundable-gaps">Open, fundable gaps</h3>
+<p>These came up at the summit as needs that no one is yet paying for in full.</p>
+<ul>
+<li>Keeping the satellite record of Earth's energy budget going after Libera's planned five-year mission.</li>
+<li>Funding that matches engineering timelines. Grant cycles run one or two years, and engineering work takes three to five.</li>
+<li>Consent as its own budget line in intervention research.</li>
+<li>Fellowships, sabbaticals, and travel money for scientists from the Global South.</li>
+<li>Ecological research on interventions, which has no obvious home in US federal funding.</li>
+</ul>
+<h3 id="where-research-could-go-next">Where research could go next</h3>
+<p>These are the directions participants pointed to for each risk cluster. We expect the working groups and the open map to pick them up.</p>
+<ul>
+<li><b>Arctic and AMOC.</b> Better observation and early warning for the subpolar gyre and the AMOC, and risk models that include a collapse.</li>
+<li><b>Sea level and ice sheets.</b> West Antarctic monitoring, and systematic study of regional interventions such as seabed curtains and storing seawater inland.</li>
+<li><b>Earth's reflectivity.</b> Continuous observation of the energy budget and aerosols, and a credible engineering path to dispersing particles at scale.</li>
+<li><b>Biosphere and ecosystems.</b> The four ecology questions above, tested with natural analogs and field experiments as well as models, and the marine impacts of interventions.</li>
+<li><b>Society and human systems.</b> Preparing for socioeconomic shocks such as food and financial crises, and ways to track derailment risk.</li>
+</ul>
+<div class="cta"><p><b>Get involved.</b> To join a working group, help build the map, host a regional meeting, talk with us about funding, or join the summit WhatsApp group (self-organized by attendees, not run by Renaissance Philanthropy), use the form below. To propose an online learning session, write to cef@renphil.org.</p><a class="button" href="https://tally.so/r/zEjgEZ?source=readout" target="_blank" rel="noopener">Get involved</a></div>
+</section><section id="thanks"><h2>Thanks</h2>
+<p>Many people and organizations made the summit happen. Partner organizations built and led many of the sessions with us, and our sponsors funded it. We also thank the track leads, moderators, facilitators, rapporteurs, note-takers, and table leads who ran the sessions and the workshop, the teams at Harpa and the Blue Lagoon, and everyone who came to Reykjavík and took part. If we've missed anyone, please tell us at cef@renphil.org.</p>
+<ul>
+<li><b>Host.</b> ARC (Advanced Research for Climate Emergencies) at Renaissance Philanthropy, through the Climate Emergencies Forum.</li>
+<li><b>Organizing team.</b> Cynthia Thomson, Ben Lachman, Meg DiMartino, Erik Martin, Max Berger, Nick van Osdol, Paul Gambill, and Joshua Elliott.</li>
+<li><b>Sponsors.</b> Kissick Family Foundation, LAD Climate Fund, The Navigation Fund, Outlier Projects, Spitzer Charitable Trust, and Ocean Visions.</li>
+<li><b>Partners.</b> The Degrees Initiative, Federation of American Scientists, Varða, Spark Climate Solutions, Arête Glacier Initiative, Arctic Stabilization Initiative, Reflective, Centre for Climate Repair, SRM360, American Geophysical Union, Institute and Faculty of Actuaries, African Tech Futures Lab, The Earth Elders, Woodwell Climate Research Center, Environmental Defense Fund, Strategic Climate Risks Initiative, Operaatio Arktis, the Climate Systems Engineering initiative at the University of Chicago, the Emmett Institute on Climate Change and the Environment at UCLA School of Law, and the Reykjavík Institute.</li>
+<li><b>Everyone else who helped.</b> Harpa and its team; the Blue Lagoon; Graduale Nobili, who sang at the opening; Showreal Studio, who filmed the summit; Partner &amp; Partners, who designed its look and printed materials; and the Renaissance Philanthropy staff and volunteers.</li>
+</ul>
+</section><section id="appendix-a-terms"><h2>Appendix A: Terms</h2>
+<ul>
+<li><b>AMOC (Atlantic Meridional Overturning Circulation).</b> The Atlantic current system that carries warm water north toward Europe and the Arctic.</li>
+<li><b>CBD (Convention on Biological Diversity).</b> The UN treaty whose 2010 decision on geoengineering is cited in debates over whether outdoor research is allowed.</li>
+<li><b>Earth's energy budget.</b> The balance between the sunlight Earth absorbs and the heat it sends back to space. When more comes in than goes out, the planet warms.</li>
+<li><b>Free, prior, and informed consent.</b> The right of Indigenous peoples to give or withhold consent to projects that affect them.</li>
+<li><b>MCB (Marine Cloud Brightening).</b> Spraying fine sea-salt particles into low ocean clouds to make them reflect more sunlight. It can be aimed at a region, such as a reef.</li>
+<li><b>Overshoot.</b> Temporarily exceeding a temperature target, such as 1.5°C, before bringing warming back down.</li>
+<li><b>Permafrost.</b> Ground that stays frozen year-round and holds large stores of carbon.</li>
+<li><b>Regional and global interventions.</b> Regional interventions aim at a place or system, such as a reef, a glacier, or a stretch of sea ice. Global interventions, such as SAI, change the whole planet's energy balance. People disagree about where the line falls.</li>
+<li><b>SAI (Stratospheric Aerosol Injection).</b> Putting reflective particles into the stratosphere to cool the planet. Its effects would be global.</li>
+<li><b>Sea-ice thickening.</b> Pumping seawater onto sea ice in winter so it freezes thicker and lasts longer.</li>
+<li><b>SRM (Solar Radiation Modification).</b> Approaches that would cool the planet, or a region, by reflecting more sunlight back to space. SAI is the main global form. Most assessments count MCB as a form of SRM, though regional MCB differs from SAI in scale, risk, and governance, and some argue it should be treated separately.</li>
+<li><b>Subpolar gyre.</b> A circulating current in the North Atlantic, south of Greenland, that some models show could collapse abruptly.</li>
+<li><b>Tipping point.</b> A threshold past which a change becomes self-sustaining and hard to reverse.</li>
+<li>"Stabilization" is left undefined here because participants disagreed about what it means.</li>
+</ul>
+</section><section id="appendix-b-session-guide"><h2>Appendix B: Session guide</h2>
+<p>The bold names are the session tags used throughout this readout. Sessions appear in program order.</p>
+<h3 id="day-1-monday-october-12-harpa">Day 1: Monday, October 12, Harpa</h3>
+<ul>
+<li><b>Opening talk.</b> Andri Snær Magnason opened the summit.</li>
+<li><b>Opening keynote.</b> Joshua Elliott, ARC's director, laid out the risks of a world in overshoot, from a darkening planet to linked risk clusters, and proposed Earth system stabilization as an overall goal for many kinds of response. He also set out the summit's five goals.</li>
+<li><b>Risk landscape panel.</b> Mapping the risk landscape. This plenary panel took each afternoon track's risk in turn (the Arctic, sea level and ice sheets, the biosphere, and Earth's declining reflectivity) and discussed how the risks connect.</li>
+<li><b>Policy and politics panel.</b> The policy and politics of stabilization. A plenary panel looked at how governments and international bodies handle climate risk and interventions, mostly global ones such as SAI. It covered treating AMOC risk as a security issue, national research programs, and coalitions of willing countries as an alternative to a new multilateral body.</li>
+<li><b>Reflectivity track.</b> Earth's Reflectivity. The first half was a science panel, with table questions, on Earth's declining reflectivity and the observations needed to track it. The second half was on SAI, with a role-play in which tables advised governments on joining a coalition program.</li>
+<li><b>Arctic and AMOC track.</b> Arctic and AMOC Destabilization. After a talk on Arctic risks, from sea ice and permafrost to the subpolar gyre and AMOC, and one on response options, participants broke into groups on barriers, timelines, and governance.</li>
+<li><b>Sea level track.</b> Sea Level Rise and Ice Sheets. After talks on high-end sea level rise from West Antarctica and on local coastal risk, a panel discussed regional interventions to slow ice loss and sea level rise, and a policy talk covered what the Antarctic Treaty system allows. Breakouts followed.</li>
+<li><b>Biosphere track.</b> Biosphere and Ecosystems. Short science briefings covered permafrost and fire feedbacks, linked ocean and forest risks, and cascades from ecosystems into food security and displacement. A fishbowl discussion on the ecological risks of interventions followed, starting with SAI, and then groups refined and voted on research questions.</li>
+</ul>
+<h3 id="day-2-tuesday-october-13-harpa">Day 2: Tuesday, October 13, Harpa</h3>
+<ul>
+<li><b>Day 2 opening.</b> Takeaways from Day One and Day Two setup. After a short overview of the day, rapporteurs from the four Day 1 tracks answered questions on what stood out, what their tracks left unresolved, and what struck them on the first morning.</li>
+</ul>
+<p>Morning sessions</p>
+<ul>
+<li><b>Scientists entering the field.</b> Scientists Entering the Stabilization Field. Panelists and the audience discussed how to bring more scientists into stabilization research and keep them there, including career stigma, training built around academic jobs, institutions outside universities, and public versus philanthropic funding.</li>
+<li><b>Social legitimacy.</b> Building and Sustaining Social Legitimacy. A panel with audience questions discussed consent and social license for intervention research in Indigenous and local communities. It covered what consent means over time, project deadlines against community timelines, capture of community representatives, and whether any of it applies to SAI.</li>
+<li><b>Sensemaking.</b> Sensemaking Around Catastrophic Climate Risk. After short talks on deciding under deep uncertainty, participants did a scenario exercise. Tables acted as a government task force facing a severe European winter and warnings of a North Atlantic current collapse, then named what they wished had been funded five years earlier.</li>
+<li><b>Science meets capitalism.</b> When Science Meets Capitalism. An open discussion covered the role of companies and private capital in intervention research, much of it on whether private companies should build intervention capability. Participants also talked about governments as customers, independent checks on company claims, and who pays for oversight.</li>
+<li><b>Funding the field.</b> Funding the Field. A philanthropy panel and a government panel, along with table discussions, asked who funds the field now and who else could. Topics included the field's reliance on American and tech money, national research programs, and the role of security framing.</li>
+</ul>
+<p>Midday sessions</p>
+<ul>
+<li><b>Governance.</b> Governance of Earth System Interventions. After a presentation on how interventions from regional projects to SAI are governed today, a panel took audience questions. Discussion covered observation, research capacity in the Global South, regional versus multilateral routes, and whether a coalition of early movers would count as governance.</li>
+<li><b>Translational R&amp;D.</b> Translational R&amp;D for Interventions. A panel compared how public and philanthropic programs fund and manage intervention research. It covered stage gates, regranting versus in-house work, building public trust, and shared research standards.</li>
+<li><b>How do we talk about this.</b> How Do We Actually Talk About This? Through short case studies and a fishbowl, participants discussed how to talk about interventions, which here mostly meant SRM, especially SAI. Topics included reaching policymakers, trusted messengers, storytelling, and the reach of chemtrail beliefs.</li>
+<li><b>Financial services.</b> Activating Financial Services for Earth System Stability. Panelists and breakout groups looked at how finance prices catastrophic and tipping-point risk. Discussion covered translating physical risk into costs, one-year insurance against thirty-year mortgages, and whether any investment vehicle could fund a large regional intervention.</li>
+<li><b>Security leaders.</b> Engaging Security Leaders on Catastrophic Climate Risks. A fishbowl-style panel asked how to bring catastrophic climate risk to defense and security leaders. Discussion covered which framings work, whether to mention tipping points, the risks of treating climate as a security issue, and how SAI could itself become a security concern.</li>
+</ul>
+<p>Afternoon sessions</p>
+<ul>
+<li><b>Ethics and transparency.</b> No Time to Waste: Ethics and Transparency in Climate Intervention Research. A panel with audience questions discussed ethics and transparency in intervention research, mostly with SRM in mind. Topics included whether research should have its own governance rules, early engagement with communities, social license versus community ownership, and how fast the work should move.</li>
+<li><b>Engineering and scaling.</b> Engineering and Scaling Challenges. A fishbowl discussion covered the steps to field trials for regional interventions on glaciers, sea ice, and clouds, and for MCB and SAI. Speakers debated whether engineering or permission is the harder constraint, and participants then broke out to design hypothetical experiments.</li>
+<li><b>Stabilizing society.</b> Stabilizing Society. A speaker opened with a provocation on catastrophic socioeconomic risks, such as famine, food shocks, and financial panic, and how they relate to Earth system change. Tables then worked through how societies could prepare for and respond to such shocks.</li>
+<li><b>MCB: the next 365 days.</b> Marine Cloud Brightening: the Next 365 Days. This informal working session covered the next year of research on MCB as a regional intervention, mostly how to make particles at scale and regional modeling and research priorities.</li>
+<li><b>The future is minilateral.</b> The Future is Minilateral. In a working session, participants asked how blocs or coalitions might deploy SAI without global consensus, who might pay, how other countries might respond, and what scenario work is needed.</li>
+</ul>
+<p>Closing</p>
+<ul>
+<li><b>Day 2 closing.</b> A Letter to the Future from an Emergent Field. A closing panel of people mostly from outside the field reflected on what they had heard, including the tension between urgency and getting the work right. In a lightning round, each panelist named one thing they wanted to see before the next gathering, among them wider participation, neutral spaces, and plain-language communication with communities.</li>
+</ul>
+<h3 id="day-3-wednesday-october-14-blue-lagoon">Day 3: Wednesday, October 14, Blue Lagoon</h3>
+<ul>
+<li><b>Round 1.</b> What's in the way today. Eight tables, on topics chosen by dot vote (early warning and decision support, funding the field, for-profit and nonprofit roles, permission to research without permission to deploy, geopolitics and durable political commitments, governance and institutions, from idea to scale, and public communication and timing), named what is stuck, what disagreement must be settled, and who was missing.</li>
+<li><b>Operaatio Arktis talk.</b> A Finnish group described what has worked for it in putting AMOC risk on Finland's political agenda, mostly relationships with officials rather than reports, then took questions.</li>
+<li><b>Round 2.</b> It's 2050. Six risk-cluster tables (the Arctic, AMOC, sea level and ice sheets, Earth's declining reflectivity, the biosphere, and society and human systems) imagined that by 2050 their risk was on its way to being managed, and described what had been built and who paid for it.</li>
+<li><b>Round 3.</b> The next two years. The same six tables chose the round 2 items that mattered most and could really happen, named what has to start in the next 24 months, and were asked for one request of the field.</li>
+<li><b>Workshop closing.</b> Each table reported its round 3 priorities, and some named one request of the field. Participants then discussed whether the field needs a more public and coordinated voice, including shared statements and an advocacy organization for SRM research, before the organizers set out next steps.</li>
+</ul></section><div class="cta"><p><b>Get involved.</b> To join a working group, help build the map, host a regional meeting, talk with us about funding, or join the summit WhatsApp group (self-organized by attendees, not run by Renaissance Philanthropy), use the form below. To propose an online learning session, write to cef@renphil.org.</p><a class="button" href="https://tally.so/r/zEjgEZ?source=readout" target="_blank" rel="noopener">Get involved</a></div>
+  </article>
+</div>
+<p class="colophon">Climate Emergencies Forum, ARC (Advanced Research for Climate Emergencies) at Renaissance Philanthropy · cef@renphil.org</p>
+<footer>
+  <a class="footer-brand" href="/"><span class="wordmark-inline"><span class="wm-light">Global Risk &amp;</span><span class="wm-bold">Stabilization</span><span class="wm-light">Summit</span></span></a>
+  <div class="marks">
+    <a class="mark" href="https://arc.renaissancephilanthropy.org/"><img class="arc" src="/assets/logos/arc-logo-offwhite.webp?v=836d32b6" alt="ARC — Advanced Research for Climate Emergencies"></a>
+    <a class="mark" href="https://www.renaissancephilanthropy.org/"><img src="/assets/logos/renphil-logo-offwhite.webp?v=91bf81d2" alt="Renaissance Philanthropy"></a>
+  </div>
+  <a href="mailto:cef@renphil.org">cef@renphil.org</a>
+</footer>
+<script>
+// Mark the contents entry (and subsection) for the heading most recently scrolled past.
+(function () {
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.toc a"));
+  var targets = links.map(function (a) { return document.getElementById(a.getAttribute("href").slice(1)); });
+  var ticking = false;
+  function update() {
+    ticking = false;
+    var line = window.innerHeight * 0.25, current = -1;
+    targets.forEach(function (el, i) { if (el && el.getBoundingClientRect().top <= line) current = i; });
+    links.forEach(function (a) { a.parentNode.classList.remove("active"); a.removeAttribute("aria-current"); });
+    if (current < 0) return;
+    var item = links[current].parentNode;
+    links[current].setAttribute("aria-current", "location");
+    while (item && item.tagName === "LI") { item.classList.add("active"); item = item.parentNode.parentNode; }
+  }
+  window.addEventListener("scroll", function () { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+  window.addEventListener("resize", update);
+  update();
+})();
+</script>
+</body>
+</html>
